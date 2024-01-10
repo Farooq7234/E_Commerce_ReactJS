@@ -13,7 +13,7 @@ const Header = ({ price, cartvalue }) => {
 
   return (
     <>
-      <div className='  bg-white h-20 flex justify-between items-center shadow-md '>
+      <div className='  bg-white h-20 flex justify-between items-center shadow-md'>
         {/* left side of the header section */}
         <ul className='flex justify-center items-center'>
           <img

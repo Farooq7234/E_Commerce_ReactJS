@@ -7,10 +7,10 @@ function TrendProduct({category,productName,image,productPrice}) {
 
   return (
     <>
-    <div className='mt-4 h-auto sm:w-56 max-sm:flex-wrap bg-white hover:bg-slate-50 hover:cursor-pointer flex flex-col justify-center items-center rounded shadow-2xl max-sm:w-auto border-black '>
-      <img className='h-56 w-auto mt-4 rounded-2xl px-4' src={`https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/${image}-300x300.jpg`} alt="" />
-      <p className='text-xs text-gray-500 mt-2'>{category}</p>
-      <p className='text-xs font-semibold my-2'>{productName}</p>
+    <div className='mt-5 h-auto mx-4 bg-white hover:bg-slate-50 hover:cursor-pointer flex flex-col justify-center items-center rounded-2xl shadow-2xl max-sm:w-full  border-black '>
+      <img className='h-auto w-auto  rounded-t-2xl max-sm:mt-4 max-sm:rounded-none' src={`https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/${image}-300x300.jpg`} alt="" />
+      <p className='max-sm:text-sm sm:text-sm text-base text-gray-500 mt-2  text-center'>{category}</p>
+      <p className='max-sm:text-sm sm:text-sm text-base font-semibold my-2 text-center'>{productName}</p>
       <ul className='flex'>
         <li><FaRegStar /></li>
         <li><FaRegStar /></li>
@@ -18,7 +18,7 @@ function TrendProduct({category,productName,image,productPrice}) {
         <li><FaRegStar /></li>
         <li><FaRegStar /></li>
       </ul>
-    <p className='my-2 text-black text-sm'>${productPrice}</p>
+    <p className='my-2 text-black text-base font-semibold'>${productPrice}</p>
     </div>
     </>
   )

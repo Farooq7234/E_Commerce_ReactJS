@@ -13,7 +13,8 @@ import FeatureSection from './component/FeatureSection';
 import OfferSection from './component/OfferSection';
 import CustomerReview from './component/CustomerReview';
 import LogoContainer from './component/LogoContainer';
-
+import Footer from './component/Footer';
+import { FaReact } from "react-icons/fa";
 
 
 
@@ -53,6 +54,7 @@ function App() {
   // featured section data here
 
   const products = ['farm fresh fruits', 'fresh vegetables', 'fresh legume']
+  const productImg = ['th.bing.com/th/id/OIP.D-1bRjZ4nMhhkZZuVkKXbgAAAA?rs=1&pid=ImgDetMain','www.bing.com/images/blob?bcid=S8Z9vF0LQYkGjCt7lmuJ.7helLDF.....-I', 'www.bing.com/images/blob?bcid=S4oaeoM.A4kGjCt7lmuJ.7helLDF.....y8']
 
 
   // Customer Review Sections data 
@@ -73,27 +75,28 @@ function App() {
     <Service value1= {savings} value2={cost } value3={<FaMoneyBillAlt  className='text-3xl text-[#8bc34a]' />} />
     <Service value1={returns} value2={questions}  value3={<RiRecycleFill className='text-3xl text-[#8bc34a]' />}/>
     </div>
-      <h2 className='font-bold text-2xl py-10 text-center'>Trending Products</h2>
-    <div className='h-auto flex flex-row max-sm:flex-col justify-evenly flex-wrap items-center p-6'>
+      <h2 className='font-bold text-3xl mt-10 text-center'>Trending Products</h2>
+    <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:m-10 py-8'>
     <TrendProduct category={category[0]}  productName={productName[0]}    image={img[0]} productPrice = {productPrice['Assorted Coffee']} />
     <TrendProduct category={category[1]}  productName={productName[1]}   image={img[1]}  productPrice = {productPrice['Hand Sanitizer']} />
     <TrendProduct category={category[0]}  productName={productName[2]}   image={img[2]}  productPrice = {productPrice['Handpicked redchillies']} />
     <TrendProduct category={category[0]}  productName={productName[3]}   image={img[3]}  productPrice = {productPrice['Natural Extracted Edible Oil']} />
     </div>
     <div
-    className='w-full flex flex-row max-sm:flex-wrap sm:flex-wrap '>
-    <FeatureSection products= {products[0]}/>
-    <FeatureSection products= {products[1]}/>
-    <FeatureSection products= {products[2]}/>
+    className=' flex justify-around w-full py-6 max-sm:flex-wrap h-auto bg-gray-200'>
+    <FeatureSection products= {products[0]} productImg={productImg[0]}/>
+    <FeatureSection products= {products[1]} productImg={productImg[1]}/>
+    <FeatureSection products= {products[2]} productImg={productImg[2]}/>
     </div>
     <OfferSection/>
       <h2 className='mt-10 font-serif text-3xl text-center font-medium'>Customers Reviews</h2>
-    <div className='flex justify-around flex-wrap py-5 h-auto bg-white'>
+    <div className='flex justify-around max-sm:flex-wrap py-5  h-auto bg-white'>
     <CustomerReview custName={custName[0]} clients={clients[1]}/>
     <CustomerReview custName={custName[1]} clients={clients[0]} />
     <CustomerReview custName={custName[1]} clients={clients[0]}/>
     </div>
     <LogoContainer/>
+    <Footer/>
     </>
   )
 }
