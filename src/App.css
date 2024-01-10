@@ -1,0 +1,6 @@
+/* Add this CSS in your global styles or specific component styles */
+*:focus {
+  outline: 2px solid #8bc34a; /* Replace YourColor with the desired color value */
+  outline-offset: 2px; /* Adjust the outline offset as needed */
+}
+
