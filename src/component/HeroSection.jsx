@@ -4,8 +4,8 @@ import Btn from './Btn';
 function HeroSection() {
   const [text, setText] = useState('');
   const fullTexts = ['Join the Organic Movement!', 'Natural Products', 'Fresh Veggies'];
-  const typingSpeed = 50; // Adjust the typing speed as needed
-  const deletionSpeed = 50; // Adjust the deletion speed as needed
+  const typingSpeed = 50;
+  const deletionSpeed = 50;
 
   useEffect(() => {
     let isMounted = true;
@@ -15,13 +15,15 @@ function HeroSection() {
         for (let j = 0; isMounted && j < fullTexts.length; j++) {
           const fullText = fullTexts[j];
 
+          // Typing
           for (let i = 0; isMounted && i <= fullText.length; i++) {
             setText(fullText.substring(0, i));
             await new Promise((resolve) => setTimeout(resolve, typingSpeed));
           }
 
-          await new Promise((resolve) => setTimeout(resolve,1000)); // Pause before deletion
+          await new Promise((resolve) => setTimeout(resolve, 1000)); // Pause before deletion
 
+          // Deleting
           for (let i = fullText.length; isMounted && i >= 0; i--) {
             setText(fullText.substring(0, i));
             await new Promise((resolve) => setTimeout(resolve, deletionSpeed));
@@ -38,9 +40,8 @@ function HeroSection() {
     };
   }, []); // Run only once on component mount
 
-  
-      return (
-      <>
+  return (
+    <>
         <div className=' bg-gray-50 flex justify-between items-center max-sm:flex-col-reverse max-sm:px-2 p-10 overflow-hidden'>
           <img
             className='h-auto max-sm:mt-12 sm:w-1/3'
@@ -63,8 +64,7 @@ function HeroSection() {
           </div>
         </div>
       </>
-      );
-   
+  );
 }
 
 export default HeroSection;
