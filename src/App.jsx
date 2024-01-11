@@ -29,8 +29,8 @@ const PRODUCT_DATA = {
 
 const FEATURE_DATA = [
   { product: 'farm fresh fruits', img: 'th.bing.com/th/id/OIP.D-1bRjZ4nMhhkZZuVkKXbgAAAA?rs=1&pid=ImgDetMain' },
-  { product: 'Fresh Vegetables', img: 'www.bing.com/images/blob?bcid=S352Ju89hooGjCt7lmuJ.7helLDF.....64' },
-  { product: 'Organic Legume', img: 'www.bing.com/images/blob?bcid=SwKBkxq8uYoGjCt7lmuJ.7helLDF.....7Q' },
+  { product: 'Fresh Vegetables', img: 'th.bing.com/th/id/OIP._ODH2iTy29mQC-vajICn4QAAAA?pid=ImgDet&w=153&h=100&c=7' },
+  { product: 'Organic Legume', img: 'th.bing.com/th/id/OIP.x2WN12zQM3dJevMrSCDffQAAAA?pid=ImgDet&w=153&h=96&c=7' },
   // Add more feature data as needed
 ];
 
