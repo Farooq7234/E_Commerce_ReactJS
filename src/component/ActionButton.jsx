@@ -2,7 +2,7 @@ import React from 'react'
 import { FaShoppingCart } from "react-icons/fa";
 
 
-function Btn() {
+function ActionButton() {
   return (
     <>
     <div className='flex justify-center items-center'>
@@ -15,4 +15,4 @@ function Btn() {
   )
 }
 
-export default Btn
+export default ActionButton

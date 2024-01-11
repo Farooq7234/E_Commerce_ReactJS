@@ -22,15 +22,15 @@ const SERVICE_DATA = [
 
 const PRODUCT_DATA = {
   'Assorted Coffee': { category: 'Groceries', img: 'coffee-asorted', price: 35.00 },
-  'Hand Sanitizer': { category: 'Juice', img: 'sanitizer', price: 45.00 },
+  'Hand Sanitizer': { category: 'Juice', img: 'sanitizer', price: 15.00 },
   'Handpicked redchillies': { category: 'Groceries', img: 'red-chillies', price: 45.00 },
   'Natural Extracted Edible Oil': { category: 'Groceries', img: 'edible-oil', price: 95.00 },
 };
 
 const FEATURE_DATA = [
   { product: 'farm fresh fruits', img: 'th.bing.com/th/id/OIP.D-1bRjZ4nMhhkZZuVkKXbgAAAA?rs=1&pid=ImgDetMain' },
-  { product: 'Fresh Vegetables', img: 'th.bing.com/th/id/OIP.D-1bRjZ4nMhhkZZuVkKXbgAAAA?rs=1&pid=ImgDetMain' },
-  { product: 'Organic Legume', img: 'th.bing.com/th/id/OIP.D-1bRjZ4nMhhkZZuVkKXbgAAAA?rs=1&pid=ImgDetMain' },
+  { product: 'Fresh Vegetables', img: 'www.bing.com/images/blob?bcid=S352Ju89hooGjCt7lmuJ.7helLDF.....64' },
+  { product: 'Organic Legume', img: 'www.bing.com/images/blob?bcid=SwKBkxq8uYoGjCt7lmuJ.7helLDF.....7Q' },
   // Add more feature data as needed
 ];
 
@@ -57,7 +57,7 @@ function App() {
         ))}
       </div>
       <h2 className='font-bold text-3xl mt-10 text-center'>Trending Products</h2>
-      <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:m-10 py-8'>
+      <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:mx-10 py-8'>
         {Object.entries(PRODUCT_DATA).map(([productName, { category, img, price }]) => (
           <TrendProduct
             key={productName}

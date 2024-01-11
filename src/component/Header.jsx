@@ -4,6 +4,9 @@ import { FaUser } from "react-icons/fa";
 import { RiShoppingBasketFill } from "react-icons/ri";
 
 
+const LOGO_URL = 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg';
+
+
 const Header = ({ price, cartvalue }) => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
@@ -17,7 +20,7 @@ const Header = ({ price, cartvalue }) => {
         {/* left side of the header section */}
         <ul className='flex justify-center items-center'>
           <img
-            src='https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg'
+            src={LOGO_URL}
             className='sm:h-6 sm:w-20 h-12 m-3 mr-6'
             alt='Logo'
           />

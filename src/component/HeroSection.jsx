@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Btn from './Btn';
+import ActionButton from './ActionButton';
 
 function HeroSection() {
   const [text, setText] = useState('');
@@ -62,7 +62,7 @@ function HeroSection() {
           ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit. Lorem ipsum dolor sit
           amet.
         </p>
-        <Btn />
+        <ActionButton />
       </div>
     </div>
   </>
