@@ -56,7 +56,7 @@ function App() {
           <Service key={index} value1={value1} value2={value2} value3={icon} />
         ))}
       </div>
-      <h2 className='font-bold text-3xl mt-10 text-center'>Trending Products</h2>
+      <h2 className='font-bold text-3xl max-sm:text-xl mt-10 text-center font-serif'>Trending Products</h2>
       <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:mx-10 py-8'>
         {Object.entries(PRODUCT_DATA).map(([productName, { category, img, price }]) => (
           <TrendProduct

@@ -9,7 +9,7 @@ function FeatureSection({products,productImg}) {
     <p className='text-xs py-2 w-auto max-sm:w-auto'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, in! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti impedit delectus sed.</p>
     <div className='flex justify-around items-center w-full sm:flex-col'>
     <ActionButton/>
-    <img className='h-20 w-20 ' src={`https://${productImg}`} alt={`product: ${products}`} />
+    <img className='h-auto  w-1/4 sm:my-3 sm:h-14 sm:w-1/2' src={`https://${productImg}`} alt={`product: ${products}`} />
     </div>
     </div>
    </>
