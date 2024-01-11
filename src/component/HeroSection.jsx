@@ -1,30 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Btn from './Btn';
 
 function HeroSection() {
   const [text, setText] = useState('');
   const fullTexts = ['Join the Organic Movement!', 'Natural Products', 'Fresh Veggies'];
   const typingSpeed = 50;
+  const pauseBeforeDeletion = 1000;
   const deletionSpeed = 50;
 
-  const isMountedRef = useRef(true);
-
   useEffect(() => {
+    let isMounted = true;
+
     const typeEffect = async () => {
-      while (isMountedRef.current) {
-        for (let j = 0; isMountedRef.current && j < fullTexts.length; j++) {
+      while (isMounted) {
+        for (let j = 0; isMounted && j < fullTexts.length; j++) {
           const fullText = fullTexts[j];
 
           // Typing
-          for (let i = 0; isMountedRef.current && i <= fullText.length; i++) {
+          for (let i = 0; isMounted && i <= fullText.length; i++) {
             setText(fullText.substring(0, i));
             await new Promise((resolve) => setTimeout(resolve, typingSpeed));
           }
 
-          await new Promise((resolve) => setTimeout(resolve, 1000)); // Pause before deletion
+          // Pause before deletion
+          await new Promise((resolve) => setTimeout(resolve, pauseBeforeDeletion));
 
           // Deleting
-          for (let i = fullText.length; isMountedRef.current && i >= 0; i--) {
+          for (let i = fullText.length; isMounted && i >= 0; i--) {
             setText(fullText.substring(0, i));
             await new Promise((resolve) => setTimeout(resolve, deletionSpeed));
           }
@@ -36,7 +38,7 @@ function HeroSection() {
 
     return () => {
       // Cleanup to prevent memory leaks
-      isMountedRef.current = false;
+      isMounted = false;
     };
   }, []); // Run only once on component mount
 
