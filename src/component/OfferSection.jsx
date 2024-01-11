@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import Btn from './btn'
+import Btn from './Btn'
 
 function OfferSection() {
   const [discount,setDiscount] = useState(25)
