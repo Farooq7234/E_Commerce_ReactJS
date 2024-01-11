@@ -1,5 +1,5 @@
 import React from 'react'
-import Btn from './btn'
+import Btn from './Btn'
 
 function FeatureSection({products,productImg}) {
   return (
