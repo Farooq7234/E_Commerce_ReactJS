@@ -83,7 +83,7 @@ function App() {
         ))}
       </div>
       <h2 className='font-bold text-3xl max-sm:text-xl py-10 text-center font-serif dark:text-white dark:bg-black'>Trending Products</h2>
-      <div className='h-auto w-full flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:mx-10 py-8 dark:bg-black'>
+      <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:px-10 py-8 dark:bg-black'>
         {Object.entries(PRODUCT_DATA).map(([productName, { category, img, price }]) => (
           <TrendProduct
             key={productName}
