@@ -44,20 +44,20 @@ function HeroSection() {
 
   return (
     <>
-    <div className=' bg-gray-50 flex justify-between items-center max-sm:flex-col-reverse max-sm:px-2 p-10 overflow-hidden'>
+    <div className='dark:bg-black bg-gray-50 flex justify-between items-center max-sm:flex-col-reverse max-sm:px-2 p-10 overflow-hidden'>
       <img
         className='h-auto max-sm:mt-12 sm:w-1/3'
         src='https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/organic-products-hero.png'
         alt=''
       />
       <div className='w-auto  max-sm:flex-col max-sm:justify-center max-sm:items-center max-sm:w-62'>
-        <h2 className='font-semibold max-sm:text-xl  text-center font-sans'>
+        <h2 className='font-semibold max-sm:text-xl  text-center font-sans dark:text-white'>
           Best Quality Products
         </h2>
-        <h2 className='type-effect text-3xl  font-serif font-bold max-sm:text-xl text-center h-auto max-sm:h-12 max-sm:my-2'>
+        <h2 className='type-effect text-3xl  font-serif font-bold max-sm:text-xl text-center h-auto max-sm:h-12 max-sm:my-2 dark:text-white'>
           {text}
         </h2>
-        <p className='text-base text-center w-full  max-sm:text-sm'>
+        <p className='text-base text-center w-full  max-sm:text-sm dark:text-white'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
           ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit. Lorem ipsum dolor sit
           amet.

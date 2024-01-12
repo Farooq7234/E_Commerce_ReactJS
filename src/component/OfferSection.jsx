@@ -12,8 +12,8 @@ function OfferSection() {
         </div>
         <ActionButton />
       </div>
-      <div className='h-auto w-full bg-gray-200 py-3'>
-        <p className='text-2xl text-center font-serif max-sm:text-lg w-auto'>
+      <div className=' h-auto w-full bg-gray-200 py-3'>
+        <p className=' text-2xl text-center font-serif max-sm:text-lg w-auto'>
           Try It For Free. No Registration Needed.
         </p>
       </div>

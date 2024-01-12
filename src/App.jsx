@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './component/Header';
 import HeroSection from './component/HeroSection';
@@ -12,6 +12,8 @@ import OfferSection from './component/OfferSection';
 import CustomerReview from './component/CustomerReview';
 import LogoContainer from './component/LogoContainer';
 import Footer from './component/Footer';
+import ThemeBtn from './component/ThemeBtn';
+import { ThemeProvider } from './context/theme';
 
 const SERVICE_DATA = [
   { value1: 'Free Shipping', value2: 'Above $5 Only', icon: <FaTruck className='text-3xl text-[#8bc34a]' /> },
@@ -42,22 +44,46 @@ const CUSTOMER_REVIEW_DATA = [
 ];
 
 function App() {
+
+  const [themeMode, setThemeMode] = useState("light")
+
+  const lightTheme = () => {
+    setThemeMode("light")
+  }
+
+  const darkTheme = () => {
+    setThemeMode("dark")
+  }
+
+  // actual change in theme
+
+  useEffect(() => {
+    document.querySelector('html').classList.remove("light", "dark")
+    document.querySelector('html').classList.add(themeMode)
+  }, [themeMode])
+
   const [price, setPrice] = useState(0.00);
   const [cartValue, setCartValue] = useState(0);
 
   return (
     <>
+     <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
       <Router>
         <Header price={price} cartvalue={cartValue} setCartvalue={setCartValue} />
+        <div className="w-full  bg-gray-50 dark:bg-black ">
+              <div className="w-full flex justify-end py-4">
+                  <ThemeBtn />
+              </div>
+              </div>
       </Router>
       <HeroSection />
-      <div className='flex flex-row max-sm:flex-col'>
+      <div className='flex flex-row max-sm:flex-co'>
         {SERVICE_DATA.map(({ value1, value2, icon }, index) => (
           <Service key={index} value1={value1} value2={value2} value3={icon} />
         ))}
       </div>
-      <h2 className='font-bold text-3xl max-sm:text-xl mt-10 text-center font-serif'>Trending Products</h2>
-      <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:mx-10 py-8'>
+      <h2 className='font-bold text-3xl max-sm:text-xl py-10 text-center font-serif dark:text-white dark:bg-black'>Trending Products</h2>
+      <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:mx-10 py-8 dark:bg-black'>
         {Object.entries(PRODUCT_DATA).map(([productName, { category, img, price }]) => (
           <TrendProduct
             key={productName}
@@ -68,20 +94,21 @@ function App() {
           />
         ))}
       </div>
-      <div className='flex justify-around w-full py-6 max-sm:flex-wrap h-auto bg-gray-200'>
+      <div className='flex justify-around w-full py-6 max-sm:flex-wrap h-auto bg-gray-200 dark:bg-black '>
         {FEATURE_DATA.map(({ product, img }, index) => (
           <FeatureSection key={index} products={product} productImg={img} />
         ))}
       </div>
       <OfferSection />
-      <h2 className='mt-10 font-serif text-3xl text-center font-medium'>Customers Reviews</h2>
-      <div className='flex justify-around max-sm:flex-wrap py-5  h-auto bg-white'>
+      <h2 className='pt-10 font-serif text-3xl text-center font-medium dark:bg-black dark:text-white'>Customers Reviews</h2>
+      <div className='flex justify-around max-sm:flex-wrap py-5  h-auto bg-white dark:bg-black'>
         {CUSTOMER_REVIEW_DATA.map(({ custName, clients }, index) => (
           <CustomerReview key={index} custName={custName} clients={clients} />
         ))}
       </div>
       <LogoContainer />
       <Footer />
+      </ThemeProvider>
     </>
   );
 }
