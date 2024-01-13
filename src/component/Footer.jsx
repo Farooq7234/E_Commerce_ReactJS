@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 function Footer() {
   return (
     <>
-      <div className='h-auto w-full bg-black p-3 pt-7 border-t-2 border-t-teal-100'>
+      <div className='h-auto w-full bg-black p-3 pt-7 border-t-2 border-t-gray-50'>
         <h2 className='text-xl text-center font-serif font-semibold text-white'>Download Our Mobile App</h2>
         <div className='flex justify-evenly items-center py-2'>
           <img className='h-7 w-24 text-white' src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/play-store.png" alt="Google Play Store" />

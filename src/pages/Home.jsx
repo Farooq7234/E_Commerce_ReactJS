@@ -12,6 +12,8 @@ import LogoContainer from '../component/LogoContainer';
 import Footer from '../component/Footer';
 import ThemeBtn from '../component/ThemeBtn';
 import ProductCard from '../component/ProcuctCard';
+import GoToTop from '../component/GoToTop';
+
 
 
 const SERVICE_DATA = [
@@ -35,9 +37,9 @@ const BEST_PRODUCT = {
 };
 
 const FEATURE_DATA = [
-  { product: 'Fresh Vegetables', img: 'f980759f-30f3-40b5-aa40-2edf7f102fe6/lemon-removebg-preview.png' },
-  { product: 'Fresh and Green', img: 'fd15682c-58b4-49c1-b374-c8263534f7e4/veg-removebg-preview.png' },
-  { product: 'Organic Legume', img: 'a4711f76-1a65-427a-8e75-d7b3a46cfc50/legume-removebg-preview.png' },
+  { product: 'Fresh Vegetables', img: 'https://media.istockphoto.com/id/1603440845/photo/lemons-with-green-leaves-isolated-on-transparent-background.jpg?s=612x612&w=is&k=20&c=-zWyqKpGHJ97fkDQviOaBZ3xlMvgQy82wxy4FBT9Fwk=' },
+  { product: 'Fresh and Green', img: 'https://media.istockphoto.com/id/1603440845/photo/lemons-with-green-leaves-isolated-on-transparent-background.jpg?s=612x612&w=is&k=20&c=-zWyqKpGHJ97fkDQviOaBZ3xlMvgQy82wxy4FBT9Fwk=' },
+  { product: 'Organic Legume', img: 'https://media.istockphoto.com/id/1603440845/photo/lemons-with-green-leaves-isolated-on-transparent-background.jpg?s=612x612&w=is&k=20&c=-zWyqKpGHJ97fkDQviOaBZ3xlMvgQy82wxy4FBT9Fwk=' },
   // Add more feature data as needed
 ];
 
@@ -52,6 +54,9 @@ const CUSTOMER_REVIEW_DATA = [
 function Home() {
   
   const [themeMode, setThemeMode] = useState("light")
+
+  const [price, setPrice] = useState(0.00);
+  const [cartValue, setCartValue] = useState(0);
 
   const lightTheme = () => {
     setThemeMode("light")
@@ -68,8 +73,6 @@ function Home() {
     document.querySelector('html').classList.add(themeMode)
   }, [themeMode])
 
-  const [price, setPrice] = useState(0.00);
-  const [cartValue, setCartValue] = useState(0);
 
 
 
@@ -111,13 +114,13 @@ function Home() {
      <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:px-10 py-8 dark:bg-black'>
        {Object.entries(BEST_PRODUCT).map(([productName, { category, img, price }]) => (
          <ProductCard
-           key={productName}
-           category={category}
-           productName={productName}
-           image={img}
-           productPrice={price}
+         key={productName}
+         category={category}
+         productName={productName}
+         image={img}
+         productPrice={price}
          />
-       ))}
+         ))}
      </div>
      <h2 className='pt-10 font-serif text-3xl text-center font-medium dark:bg-black dark:text-white'>Customers Reviews</h2>
      <div className='flex justify-around max-sm:flex-wrap py-5  h-auto bg-white dark:bg-black'>
@@ -126,6 +129,7 @@ function Home() {
        ))}
      </div>
      <LogoContainer />
+     <GoToTop/>
      <Footer />
      </ThemeProvider>
    </>
