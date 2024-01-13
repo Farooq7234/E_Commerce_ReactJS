@@ -23,17 +23,26 @@ const Header = ({ price, cartvalue,themeMode }) => {
         <ul className='flex justify-center items-center'>
         <img
       src={LOGO_URL_DARK}
-      className='sm:h-6 sm:w-20 h-12 m-3 mr-6 dark:text-white'
+      className='h-12 m-3 mr-6 dark:text-white'
       alt='Logo'
     />
           <li className='dark:text-white sm:text-xs max-sm:text-xs mr-9 text-base max-sm:hidden cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
-            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/'
+             className={({isActive}) =>
+             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
+            >Home</NavLink>
           </li>
           <li className='dark:text-white sm:text-xs max-sm:text-xs mr-9 text-base max-sm:hidden cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
-            <NavLink to='/groceries'>Groceries</NavLink>
+            <NavLink to='/groceries'
+             className={({isActive}) =>
+             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
+            >Groceries</NavLink>
           </li>
           <li className='dark:text-white sm:text-xs max-sm:text-xs mr-9 text-base max-sm:hidden cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
-            <NavLink to='/juice'>Juice</NavLink>
+            <NavLink to='/juice'
+             className={({isActive}) =>
+             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
+            >Juice</NavLink>
           </li>
         </ul>
 
