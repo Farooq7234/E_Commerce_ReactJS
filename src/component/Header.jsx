@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaUser } from "react-icons/fa";
-import { RiShoppingBasketFill } from "react-icons/ri";
+import { RiShoppingBasketFill,FaUser } from '../icons/index'
 
 const LOGO_URL_DARK = 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg';
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart } from '../icons/index'
 
 
 function ActionButton() {
