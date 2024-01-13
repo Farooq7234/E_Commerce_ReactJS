@@ -29,19 +29,19 @@ const Header = ({ price, cartvalue,themeMode }) => {
           <li className='dark:text-white sm:text-xs max-sm:text-xs mr-9 text-base max-sm:hidden cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
             <NavLink to='/'
              className={({isActive}) =>
-             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
+             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700  dark:text-white dark:hover:text-[#8bc34a]"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
             >Home</NavLink>
           </li>
           <li className='dark:text-white sm:text-xs max-sm:text-xs mr-9 text-base max-sm:hidden cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
             <NavLink to='/groceries'
              className={({isActive}) =>
-             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
+             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700 dark:text-white dark:hover:text-[#8bc34a]"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
             >Groceries</NavLink>
           </li>
           <li className='dark:text-white sm:text-xs max-sm:text-xs mr-9 text-base max-sm:hidden cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
             <NavLink to='/juice'
              className={({isActive}) =>
-             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
+             `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-[#8bc34a]  text-sm font-medium" : "text-gray-700 dark:text-white dark:hover:text-[#8bc34a]"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}
             >Juice</NavLink>
           </li>
         </ul>
