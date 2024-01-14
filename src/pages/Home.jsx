@@ -1,16 +1,11 @@
 import React from 'react'
-import { useState,useEffect } from 'react';
-import { ThemeProvider } from '../context/theme';
 import {FaMoneyBillAlt,FaTruck,PiCertificateFill,RiRecycleFill}  from '../icons/index'
-import Header from '../component/Header'
 import HeroSection from '../component/HeroSection';
 import Service from '../component/Service';
 import FeatureSection from '../component/FeatureSection';
 import OfferSection from '../component/OfferSection';
 import ReviewCard from '../component/ReviewCard';
 import LogoContainer from '../component/LogoContainer';
-import Footer from '../component/Footer';
-import ThemeBtn from '../component/ThemeBtn';
 import ProductCard from '../component/ProcuctCard';
 import GoToTop from '../component/GoToTop';
 
@@ -53,38 +48,9 @@ const CUSTOMER_REVIEW_DATA = [
 
 function Home() {
   
-  const [themeMode, setThemeMode] = useState("light")
-
-
-
-  const lightTheme = () => {
-    setThemeMode("light")
-  }
-
-  const darkTheme = () => {
-    setThemeMode("dark")
-  }
-
-  // actual change in theme
-
-  useEffect(() => {
-    document.querySelector('html').classList.remove("light", "dark")
-    document.querySelector('html').classList.add(themeMode)
-  }, [themeMode])
-
-
-
 
   return (
     <>
-    <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
-
-       <Header/>
-       <div className="w-full  bg-gray-50 dark:bg-black ">
-             <div className="w-full flex justify-end py-4">
-                 <ThemeBtn />
-             </div>
-             </div>
      <HeroSection />
      <div className='flex flex-row max-sm:flex-col'>
        {SERVICE_DATA.map(({ value1, value2, icon }, index) => (
@@ -129,8 +95,6 @@ function Home() {
      </div>
      <LogoContainer />
      <GoToTop/>
-     <Footer />
-     </ThemeProvider>
    </>
  );
   

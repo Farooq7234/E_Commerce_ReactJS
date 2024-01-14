@@ -4,10 +4,9 @@ import { RiShoppingBasketFill,FaUser } from '../icons/index'
 
 const LOGO_URL_DARK = 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg';
 
-const LOGO_URL_LIGHT = 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/organic-store-white-logo.png'
-
 
 const Header = () => {
+  
   const [price, setPrice] = useState(0.00);
   const [cartValue, setCartValue] = useState(0);
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -20,8 +19,12 @@ const Header = () => {
 
   return (
     <>
+        {/* Header Container */}
+
       <div className='dark:bg-black  bg-white h-20 flex justify-between items-center shadow-md'>
+
         {/* left side of the header section */}
+
         <ul className='flex justify-center items-center'>
         <img
       src={LOGO_URL_DARK}
@@ -49,10 +52,11 @@ const Header = () => {
         </ul>
 
         {/* right section of the header elements */}
+
         <ul className='flex justify-center items-center '>
           
+          {/* Sidebar when responsive triggered */}
 
-          {/* Sidebar */}
           {sidebarVisible && (
             <div className='fixed top-0 left-0 h-full max-sm:w-62 w-64 bg-gray-100 dark:bg-black'>
               {/* sidebar content  */}
@@ -84,7 +88,7 @@ const Header = () => {
             <NavLink to='/contact'>Contact</NavLink>
           </li>
           <li className='sm:text-xs max-sm:text-xs mr-8 max-sm:mr-4 text-base cursor-pointer font-extrabold text-[#8bc34a] font-sans'>
-            <NavLink to='/price'>${price.toFixed(2)}</NavLink>
+            <NavLink to='/price'>${price}</NavLink>
           </li>
           <li className='sm:text-base max-sm:text-sm  mr-8 max-sm:mr-4 text-xl cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/basket' className='flex'>

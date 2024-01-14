@@ -44,12 +44,18 @@ function HeroSection() {
 
   return (
     <>
+
+    {/* Right side of Hero Section */}
+
     <div className='dark:bg-black bg-gray-50 flex justify-between items-center max-sm:flex-col-reverse max-sm:px-2 p-10 overflow-hidden'>
       <img
         className='h-auto max-sm:mt-12 sm:w-1/3'
         src='https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/organic-products-hero.png'
         alt=''
       />
+
+      {/*Left side of Hero section */}
+
       <div className='w-auto  max-sm:flex-col max-sm:justify-center max-sm:items-center max-sm:w-62'>
         <h2 className='font-semibold max-sm:text-xl  text-center font-sans dark:text-white'>
           Best Quality Products
