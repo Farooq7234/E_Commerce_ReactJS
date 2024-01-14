@@ -55,8 +55,7 @@ function Home() {
   
   const [themeMode, setThemeMode] = useState("light")
 
-  const [price, setPrice] = useState(0.00);
-  const [cartValue, setCartValue] = useState(0);
+
 
   const lightTheme = () => {
     setThemeMode("light")
@@ -80,7 +79,7 @@ function Home() {
     <>
     <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
 
-       <Header price={price} cartvalue={cartValue} setCartvalue={setCartValue} />
+       <Header/>
        <div className="w-full  bg-gray-50 dark:bg-black ">
              <div className="w-full flex justify-end py-4">
                  <ThemeBtn />

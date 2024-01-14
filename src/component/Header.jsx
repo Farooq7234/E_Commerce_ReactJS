@@ -7,7 +7,9 @@ const LOGO_URL_DARK = 'https://websitedemos.net/organic-shop-02/wp-content/uploa
 const LOGO_URL_LIGHT = 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/organic-store-white-logo.png'
 
 
-const Header = ({ price, cartvalue,themeMode }) => {
+const Header = () => {
+  const [price, setPrice] = useState(0.00);
+  const [cartValue, setCartValue] = useState(0);
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
   const toggleSidebar = () => {
@@ -87,7 +89,7 @@ const Header = ({ price, cartvalue,themeMode }) => {
           <li className='sm:text-base max-sm:text-sm  mr-8 max-sm:mr-4 text-xl cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/basket' className='flex'>
             <RiShoppingBasketFill className='text-xl '/>
-              <sup className='bg-[#8bc34a] px-2 py-1  rounded-full text-white text-xs font-semibold'>{cartvalue}</sup>
+              <sup className='bg-[#8bc34a] px-2 py-1  rounded-full text-white text-xs font-semibold'>{cartValue}</sup>
             </NavLink>
           </li>
           <svg
