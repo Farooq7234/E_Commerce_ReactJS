@@ -1,4 +1,4 @@
-import Home from './pages/home';
+import Home from './pages/Home';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 function App() {
   return (
