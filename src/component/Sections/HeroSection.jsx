@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ActionButton from './ActionButton';
+import ActionButton from '../ActionButton';
 
 function HeroSection() {
   const [text, setText] = useState('');

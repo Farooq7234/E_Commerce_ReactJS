@@ -1,14 +1,13 @@
 import React from 'react'
-import {FaMoneyBillAlt,FaTruck,PiCertificateFill,RiRecycleFill}  from '../icons/index'
-import HeroSection from '../component/HeroSection';
-import Service from '../component/Service';
-import FeatureSection from '../component/FeatureSection';
-import OfferSection from '../component/OfferSection';
+import {FaMoneyBillAlt,FaTruck,PiCertificateFill,RiRecycleFill}  from '../icons/icon'
+import HeroSection from '../component/Sections/HeroSection';
+import Service from '../component/Sections/ServiceSection';
+import FeatureSection from '../component/Sections/FeatureSection';
+import OfferSection from '../component/Sections/OfferSection';
 import ReviewCard from '../component/ReviewCard';
-import LogoContainer from '../component/LogoContainer';
+import LogoSection from '../component/Sections/LogoSection';
 import ProductCard from '../component/ProcuctCard';
 import GoToTop from '../component/GoToTop';
-
 
 
 const SERVICE_DATA = [
@@ -32,9 +31,9 @@ const BEST_PRODUCT = {
 };
 
 const FEATURE_DATA = [
-  { product: 'Fresh Vegetables', img: 'https://media.istockphoto.com/id/1603440845/photo/lemons-with-green-leaves-isolated-on-transparent-background.jpg?s=612x612&w=is&k=20&c=-zWyqKpGHJ97fkDQviOaBZ3xlMvgQy82wxy4FBT9Fwk=' },
-  { product: 'Fresh and Green', img: 'https://media.istockphoto.com/id/1603440845/photo/lemons-with-green-leaves-isolated-on-transparent-background.jpg?s=612x612&w=is&k=20&c=-zWyqKpGHJ97fkDQviOaBZ3xlMvgQy82wxy4FBT9Fwk=' },
-  { product: 'Organic Legume', img: 'https://media.istockphoto.com/id/1603440845/photo/lemons-with-green-leaves-isolated-on-transparent-background.jpg?s=612x612&w=is&k=20&c=-zWyqKpGHJ97fkDQviOaBZ3xlMvgQy82wxy4FBT9Fwk=' },
+  { product: 'Fresh Vegetables', },
+  { product: 'Fresh and Green',  },
+  { product: 'Organic Legume', },
   // Add more feature data as needed
 ];
 
@@ -46,8 +45,11 @@ const CUSTOMER_REVIEW_DATA = [
 ];
 
 
-function Home() {
-  
+function Home({themeMode}) {
+
+const logo =(themeMode == 'dark') ? true : false
+console.log(logo);
+console.log(themeMode)
 
   return (
     <>
@@ -71,7 +73,7 @@ function Home() {
      </div>
      <div className='flex justify-around w-full py-6 max-sm:flex-wrap h-auto bg-gray-200 dark:bg-black '>
        {FEATURE_DATA.map(({ product, img }, index) => (
-         <FeatureSection key={index} products={product} productImg={img} />
+         <FeatureSection key={index} products={product}  />
        ))}
      </div>
      <OfferSection />
@@ -93,7 +95,7 @@ function Home() {
          <ReviewCard key={index} custName={custName} clients={clients} />
        ))}
      </div>
-     <LogoContainer />
+     <LogoSection />
      <GoToTop/>
    </>
  );

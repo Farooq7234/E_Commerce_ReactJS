@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ActionButton from './ActionButton'; 
+import ActionButton from '../ActionButton'; 
 
 function OfferSection() {
   const [discount, setDiscount] = useState(25);
