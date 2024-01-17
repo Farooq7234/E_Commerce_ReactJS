@@ -9,6 +9,37 @@
 }
 
 
-.logo{
-  filter: invert(1);
+
+.card {
+  margin: 100px 100px;
+  width: 35vw; /* Adjust the width as needed */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-container {
+  display: flex;
+}
+
+.animated-image {
+  margin-right: 10px; /* Adjust the margin between images as needed */
+  animation: slideAnimation 10s linear infinite;
+}
+
+.animated-image.active {
+  opacity: 1;
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  50%{
+    transform: translateX(-100%);
+  }
+
+  100%{
+    transform: translateX(-200%);
+  }
+
 }

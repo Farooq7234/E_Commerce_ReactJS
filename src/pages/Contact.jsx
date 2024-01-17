@@ -1,10 +1,8 @@
 import React from 'react'
 import Banner from '../component/Banner'
-import CardList from '../component/CardList';
 import { IoIosMail } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
-import ContactCard from '../component/ContactCard';
 
 
 const ContactMsg = "Get in Touch"
@@ -22,7 +20,6 @@ function Contact() {
   return (
     <>
     <Banner ContactValue = {ContactMsg}/>
-    <CardList data={data}/>
     </>
   )
 }

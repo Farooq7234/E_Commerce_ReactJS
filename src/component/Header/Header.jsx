@@ -26,7 +26,7 @@ const Header = ({image}) => {
         {/* left side of the header section */}
 
         <ul className='flex justify-between items-center w-1/3'>
-          <img src={image} className='h-12 m-3 dark:text-white' alt='Logo'/>
+          <img src={image} className='h-12 max-sm:h-8 m-3 dark:text-white' alt='Logo'/>
 
           <li className='dark:text-white sm:text-xs max-sm:text-xs  text-base max-sm:hidden cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
 
@@ -87,7 +87,7 @@ const Header = ({image}) => {
             </div>
           )}
 
-        <ul className='flex justify-around items-center w-1/3 '>
+        <ul className='flex justify-around items-center w-1/2 '>
 
           <li className='sm:text-xs max-sm:text-xs max-sm:hidden  text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans  dark:text-white'>
             <NavLink to='/about'>About</NavLink>
@@ -98,18 +98,18 @@ const Header = ({image}) => {
           </li>
 
           <li className='sm:text-xs max-sm:text-xs text-base cursor-pointer font-extrabold text-[#8bc34a] font-sans'>
-            <NavLink to='/price'>${price}</NavLink>
+            <NavLink to='/price'>${price.toFixed(2)}</NavLink>
           </li>
 
-          <li className='sm:text-base max-sm:text-sm text-xl cursor-pointer text-[#8bc34a] font-sans'>
+          <li className='cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/basket' className='flex'>
-            <RiShoppingBasketFill className='text-xl '/>
-              <sup className='bg-[#8bc34a] px-2 py-1  rounded-full text-white text-xs font-semibold'>{cartValue}</sup>
+            <RiShoppingBasketFill className='text-lg'/>
+              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-black text-xs font-semibold'>{cartValue}</sup>
             </NavLink>
           </li>
 
           <svg
-            className='dark:text-white sm:hidden max-sm:visible  max-sm:h-9 max-sm:w-9  max-sm:bg-[#8bc34a] p-3 rounded cursor-pointer text-black'
+            className='dark:text-white sm:hidden max-sm:visible  max-sm:h-7 max-sm:w-9 text-white max-sm:bg-[#8bc34a]  p-1 rounded cursor-pointer'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 24 24'
             fill='currentColor'

@@ -31,9 +31,9 @@ const BEST_PRODUCT = {
 };
 
 const FEATURE_DATA = [
-  { product: 'Fresh Vegetables', },
-  { product: 'Fresh and Green',  },
-  { product: 'Organic Legume', },
+  { product: 'Fresh Vegetables', img:"https://cdn.pixabay.com/photo/2016/03/23/04/44/fruits-and-vegetables-1274079_1280.png" },
+  { product: 'Fresh and Green',  img:"https://cdn.pixabay.com/photo/2016/02/23/17/44/apple-1218166_1280.png" },
+  { product: 'Organic Legume',  img:"https://cdn.pixabay.com/photo/2018/04/17/23/04/grilled-vegetables-3329075_1280.png"},
   // Add more feature data as needed
 ];
 
@@ -73,7 +73,7 @@ console.log(themeMode)
      </div>
      <div className='flex justify-around w-full py-6 max-sm:flex-wrap h-auto bg-gray-200 dark:bg-black '>
        {FEATURE_DATA.map(({ product, img }, index) => (
-         <FeatureSection key={index} products={product}  />
+         <FeatureSection key={index} products={product} productImg={img}  />
        ))}
      </div>
      <OfferSection />
