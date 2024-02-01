@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Home from './pages/Home'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, Switch } from 'react-router-dom'
 import './index.css'
 import Layout from './Layout'
 import Contact from './pages/Contact'
@@ -13,11 +13,13 @@ import Juice from './pages/Juice'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
+<Switch>
       <Route path='' element={<Home />} />
       <Route path='/groceries' element={<Groceries />} />
       <Route path='/juice' element={<Juice />} />
       <Route path='/contact' element={<Contact/>} />
       <Route path='/about' element={<About/>} />
+</Switch>
       </Route>
   )
 )
