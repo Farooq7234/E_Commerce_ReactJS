@@ -16,7 +16,7 @@ const LOGO_URL_DARK = 'https://websitedemos.net/organic-shop-02/wp-content/uploa
 const LOGO_URL_WHITE = 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/organic-store-white-logo.png';
 
 const logoSrc = (themeMode) === "light" ? LOGO_URL_DARK : LOGO_URL_WHITE;
-const logo ='logo'
+// const logo ='logo'
 
   const lightTheme = () => {
     setThemeMode("light")
@@ -37,7 +37,7 @@ const logo ='logo'
 
   return (
     <>
- <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
+ <ThemeProvider value={{ themeMode, lightTheme, darkTheme }} >
     <Header image={logoSrc}/>
     <ThemeBtn />
     <Outlet />

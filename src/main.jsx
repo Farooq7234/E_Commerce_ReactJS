@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import Groceries from './pages/Groceries'
 import Juice from './pages/Juice'
+import Github, { githubInfoLoader } from './pages/Github'
 
 
 const router = createBrowserRouter(
@@ -18,6 +19,11 @@ const router = createBrowserRouter(
       <Route path='/juice' element={<Juice />} />
       <Route path='/contact' element={<Contact/>} />
       <Route path='/about' element={<About/>} />
+      <Route 
+      loader={githubInfoLoader}
+      path='github' 
+      element={<Github />}
+       />
       </Route>
   )
 )

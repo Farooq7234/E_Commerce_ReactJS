@@ -60,7 +60,7 @@ function HeroSection() {
         <h2 className='font-semibold max-sm:text-xl  text-center font-sans dark:text-white'>
           Best Quality Products
         </h2>
-        <h2 className='type-effect text-3xl  font-serif font-bold max-sm:text-xl text-center h-auto max-sm:h-12 max-sm:my-2 dark:text-white'>
+        <h2 className='type-effect text-3xl  font-serif font-bold max-sm:text-xl text-center  h-12 max-sm:h-8 max-sm:my-2 dark:text-white'>
           {text}
         </h2>
         <p className='text-base text-center w-full  max-sm:text-sm dark:text-white'>
