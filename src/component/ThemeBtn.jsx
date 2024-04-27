@@ -15,7 +15,7 @@ export default function ThemeBtn() {
 
   return (<>
        <div className="flex items-center justify-end bg-gray-50  dark:bg-black py-3">
-      <span className="mt-1 mr-2 text-xs font-medium text-gray-900 dark:text-white">Toggle Theme</span>
+      <span className="mt-1 mr-2 text-base font-medium text-gray-900 dark:text-white">Toggle Theme</span>
       <label className="relative inline-flex items-center cursor-pointer mr-4">
         <input
           type="checkbox"

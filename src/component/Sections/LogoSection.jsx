@@ -11,11 +11,11 @@ const logos = [
 
 function LogoContainer() {
   return (
-    <div className='h-auto w-auto flex justify-center items-center flex-wrap  dark:dark:bg-black'>
-      <h2 className='text-base font-semibold max-sm:text-sm w-1/2 text-center dark:text-white '>Featured Brands:</h2>
-      <div  className='flex max-sm:flex-row justify-center items-center pb-5'>
+    <div className='flex justify-around items-center flex-wrap pt-10  dark:dark:bg-black'>
+      <h2 className='font-semibold  text-3xl md:text-2xl text-center dark:text-white '>Featured Brands:</h2>
+      <div  className='flex flex-wrap justify-around items-center '>
         {logos.map((logo, index) => (
-          <img key={index} className='w-1/6 max-sm:w-14 dark:filter dark:invert' src={logo} alt={`Logo ${index + 1}`} />
+          <img key={index} className='w-52 dark:filter dark:invert' src={logo} alt={`Logo ${index + 1}`} />
         ))}
       </div>
     </div>

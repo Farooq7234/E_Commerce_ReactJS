@@ -6,20 +6,20 @@ function ProductCard({ category, productName, image, productPrice }) {
 
   return (
     <>
-      <div className='dark:dark:bg-[#1F1E1E] dark:text-white mt-5 h-auto mx-4 max-sm:mx-0 bg-white hover:bg-slate-50 hover:cursor-pointer flex flex-col justify-center items-center rounded-2xl shadow-2xl max-sm:w-auto  border-black '>
+      <div className='dark:dark:bg-[#1F1E1E] dark:text-white bg-white flex flex-col justify-center items-center rounded-2xl shadow-lg border-2 border-gray-100 dark:border-gray-900 gap-2 pb-2 '>
         <img
-          className=' h-auto max w-full rounded-t-2xl'
+          className=' rounded-t-2xl'
           src={`https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/${image}-300x300.jpg`}
           alt={`Product: ${productName}`}
         />
-        <p className='max-sm:text-sm sm:text-xs text-base text-gray-500 mt-2 text-center'>{category}</p>
-        <p className='max-sm:text-sm sm:text-xs text-base font-semibold my-2 text-center'>{productName}</p>
+        <p className='text-base text-gray-500  text-center'>{category}</p>
+        <p className='text-base font-semibold  text-center cursor-pointer'>{productName}</p>
         <ul className='flex'>
           {starIcons.map((star, index) => (
             <li key={index}>{star}</li>
           ))}
         </ul>
-        <p className='my-2 text-black text-base font-semibold dark:text-white'>${productPrice}</p>
+        <p className=' text-black text-base font-semibold dark:text-white'>${productPrice}</p>
       </div>
     </>
   );

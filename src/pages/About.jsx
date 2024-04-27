@@ -47,48 +47,45 @@ function About() {
   return (
     <>
       <Banner ContactValue={AboutMsg} />
-      <div className='flex justify-around items-center max-sm:flex-col-reverse w-full py-10 bg-white dark:bg-[#1d1d1d] max-sm:flex-wrap px-10 gap-8'>
-        <img
-          src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2020/01/banner-01-768x528.jpg"
-          className='rounded shadow-md w-1/2 max-sm:w-auto h-56 max-sm:h-62'
-          alt="Grapes image"
-        />
-        <div className='flex flex-col  gap-2 w-1/2 items-center flex-wrap sm:w-auto max-sm:w-full '>
-          <h2 className='font-bold text-2xl dark:text-white  selection:bg-[#8bc34a]'>
+      <div className='flex justify-around items-center flex-wrap-reverse px-5 lg:px-0 gap-5 lg:gap-0 bg-white dark:bg-black py-5'>
+        <div className='lg:w-[500px] lg:h-[400px] md:w-[80%] place-content-center flex flex-col gap-5'>
+          <h2 className='font-bold text-4xl dark:text-white  selection:bg-[#8bc34a]'>
             We Are Your Favourite Store.
           </h2>
-          <p className='text-xs dark:text-white   selection:bg-[#8bc34a]'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque soluta
-            quisquam beatae, ex quia omnis necessitatibus nesciunt eos totam nostrum,
-            voluptatem possimus temporibus porro non excepturi vitae? Non, suscipit
-            facilis. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatem neque porro corrupti dolorem nesciunt quidem sapiente.
-            Consequatur consequuntur enim autem inventore quo facilis sequi non quod!
-            Obcaecati possimus magnam officiis.
+          <p className='text-base dark:text-white text-[#333333]  selection:bg-[#8bc34a]'>
+          Tuas quisquam quo gravida proident harum, aptent ligula anim consequuntur, ultrices mauris, nunc voluptates lobortis, varius, potenti placeat! Fuga omnis. Cubilia congue. Recusandae. Vero penatibus quasi! Nostra tenetur dignissimos ultrices natus distinctio ultrices consequuntur numqu
+          </p>
+          <p className='text-base dark:text-white  text-[#333333] selection:bg-[#8bc34a]'>
+          Officiis fuga harum porro et? Similique rhoncus atque! Netus blanditiis provident nunc posuere. Rem sequi, commodo, lorem tellus elit, hic sem tenetur anim amet quas, malesuada proident platea corrupti expedita.
           </p>
         </div>
+        <img
+          src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2020/01/banner-01-768x528.jpg"
+          className='rounded md:w-auto lg:w-[580px] lg:h-[400px]'
+          alt="Grapes image"
+        />
       </div>
-      <div className=' flex justify-around items-center bg-[#001524] w-full font-semibold text-white max-sm:flex-col section-work-data'>
-        <div className='text-center text-xs py-3'>
-          <p>The Numbers Speak For Themselves!</p>
+      <div className=' flex justify-around items-center bg-[#001524] w-full py-10 font-semibold text-white max-sm:flex-col section-work-data'>
+        <div className='text-center py-3'>
+          <p className='text-base font-bold'>The Numbers Speak For Themselves!</p>
         </div>
         <div className='text-center py-3'>
           <p className='text-center text-3xl counter-numbers' data-number={'5000'}>
             0
           </p>
-          <p className='text-xs'>Curated products</p>
+          <p className='text-base'>Curated products</p>
         </div>
         <div className='text-center py-3'>
           <p className='text-3xl counter-numbers' data-number={'800'}>
             0
           </p>
-          <p className='text-xs'>Curated products</p>
+          <p className='text-base'>Curated products</p>
         </div>
         <div className='text-center py-3'>
           <p className='text-center text-3xl counter-numbers' data-number={'400'}>
             0
           </p>
-          <p className='text-xs'>product categories</p>
+          <p className='text-base'>product categories</p>
         </div>
       </div>
       <div className='flex justify-around items-center dark:bg-black py-5 flex-wrap px-5'>

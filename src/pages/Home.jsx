@@ -60,7 +60,7 @@ console.log(themeMode)
        ))}
      </div>
      <h2 className='font-bold text-3xl max-sm:text-xl py-10 text-center font-serif dark:text-white dark:bg-black'>Trending Products</h2>
-     <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:px-10 py-8 dark:bg-black'>
+     <div className='flex flex-wrap justify-around items-center py-10 gap-10 lg:gap-0   dark:bg-black'>
        {Object.entries(TREND_PRODUCT).map(([productName, { category, img, price }]) => (
          <ProductCard
            key={productName}
@@ -71,14 +71,14 @@ console.log(themeMode)
          />
        ))}
      </div>
-     <div className='flex justify-around w-full py-6 max-sm:flex-wrap h-auto bg-gray-200 dark:bg-black '>
+     <div className='flex justify-around  py-6 max-sm:flex-wrap bg-gray-200 dark:bg-black '>
        {FEATURE_DATA.map(({ product, img }, index) => (
          <FeatureSection key={index} products={product} productImg={img}  />
        ))}
      </div>
      <OfferSection />
      <h2 className='font-bold text-3xl max-sm:text-xl py-10 text-center font-serif dark:text-white dark:bg-black'>Best Selling Products</h2>
-     <div className='h-auto w-auto flex flex-row max-sm:flex-col justify-evenly max-sm:justify-center max-sm:flex-wrap items-center max-sm:px-10 py-8 dark:bg-black'>
+     <div className='flex flex-wrap justify-around items-center py-10 gap-10 lg:gap-0  dark:bg-black'>
        {Object.entries(BEST_PRODUCT).map(([productName, { category, img, price }]) => (
          <ProductCard
          key={productName}
@@ -89,8 +89,8 @@ console.log(themeMode)
          />
          ))}
      </div>
-     <h2 className='pt-10 font-serif text-3xl text-center font-medium dark:bg-black dark:text-white'>Customers Reviews</h2>
-     <div className='flex justify-around max-sm:flex-wrap py-5  h-auto bg-white dark:bg-black'>
+     <h2 className='pt-10 font-serif text-3xl text-center font-medium dark:bg-black dark:text-white text-[#8bc34a]'>Customers Reviews</h2>
+     <div className='flex justify-around items-center flex-wrap  bg-white dark:bg-black'>
        {CUSTOMER_REVIEW_DATA.map(({ custName, clients }, index) => (
          <ReviewCard key={index} custName={custName} clients={clients} />
        ))}

@@ -8,8 +8,8 @@ function ActionButton() {
     <div className='flex justify-center items-center'>
 
     <button
-    className='bg-[#6a9739] hover:bg-[#8bc34a] uppercase pr-3 pl-3 pt-2 pb-2  text-sm text-white rounded mt-3 w-auto mx-auto flex  items-center'
-    ><FaShoppingCart className='mr-2'/> Shop Now</button>
+    className='bg-[#6a9739] hover:bg-[#8bc34a] uppercase w-40 h-10 flex justify-center items-center text-base gap-2 text-white rounded'
+    ><FaShoppingCart/> Shop Now</button>
     </div>
     </>
   )
