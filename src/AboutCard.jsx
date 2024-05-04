@@ -23,7 +23,6 @@ function AboutCard() {
       </ul> 
       </div>
      <ActionButton/>
-
       </div>     
  
     </>
