@@ -6,14 +6,14 @@ function OfferSection() {
 
   return (
     <>
-      <div className='max-sm:h-auto h-20 w-full bg-black flex justify-around items-center max-sm:flex-col max-sm:py-4'>
-        <div className='max-sm:text-sm text-white text-2xl font-semibold animate-pulse font-serif'>
+      <div className=' bg-black flex justify-around items-center py-6 flex-wrap gap-5'>
+        <div className='text-white text-center text-lg sm:text-2xl font-semibold animate-pulse font-serif'>
           Get {discount}% Off On Your First Purchase!
         </div>
         <ActionButton />
       </div>
-      <div className=' h-auto w-full bg-gray-200 py-3'>
-        <p className=' text-2xl text-center font-serif max-sm:text-lg w-auto'>
+      <div className='bg-gray-200 py-6'>
+        <p className='text-base sm:text-2xl text-center font-serif'>
           Try It For Free. No Registration Needed.
         </p>
       </div>

@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Home from './pages/Home'
+import Home from './component/Home/Hero.jsx'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import './index.css'
 import Layout from './Layout'
-import Contact from './pages/Contact'
-import About from './pages/About'
-import Groceries from './pages/Groceries'
-import Juice from './pages/Juice'
-import Github, { githubInfoLoader } from './pages/Github'
+import Contact from './component/Contact/Contact.jsx'
+import About from './component/About/About.jsx'
+import Groceries from './component/Groceries/Groceries.jsx'
+import Juice from './component/Juice/Juice.jsx'
+import Github, { githubInfoLoader } from './component/Github/Github.jsx'
 
 
 const router = createBrowserRouter(

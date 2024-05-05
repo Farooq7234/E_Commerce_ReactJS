@@ -1,8 +1,5 @@
 import React from 'react'
-import { FaTruck } from "react-icons/fa6";
-import { PiCertificateFill } from "react-icons/pi";
-import { FaMoneyBillAlt } from "react-icons/fa";
-import { RiRecycleFill } from "react-icons/ri";
+
 
 
 

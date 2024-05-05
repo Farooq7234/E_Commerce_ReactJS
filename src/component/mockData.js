@@ -56,4 +56,44 @@ const products =[
 ]
 
 
-export {products}
+const customerReviews= [
+    {
+        custName: "Mila Kunis",
+        custImage: "",
+        clientId: "client01",
+        review:"I highly recommend organic store for your next shopping!!"
+    },
+    {
+        custName:"Loki",
+        custImage:"",
+        clientId:"client02",
+        review:"The organic store is excellent website having the best user experience as well as the service they provide"
+    },
+    {
+        custName:"Alex",
+        custImage:"",
+        clientId:"client01",
+        review:"The organic store is fantastic!"
+    },
+]
+
+const logos =[
+    {
+        logo:"https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-1.svg",
+    },
+    {
+        logo:"https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-2.svg",
+    },
+    {
+        logo:"https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-2.svg",
+    },
+    {
+        logo:"https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-5.svg",
+    },
+    {
+        logo:"https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-1.svg",
+    }
+]
+
+
+export {products, customerReviews, logos}

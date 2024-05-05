@@ -1,8 +1,9 @@
 import React from 'react'
 import { IoIosCheckbox } from "react-icons/io";
-import ActionButton from './component/ActionButton'
+import ActionButton from '../ActionButton'
 
 function AboutCard() {
+  
   return (
     <>
     <div className=' bg-white shadow-lg rounded w-1/2 max-sm:w-auto py-3 px-4 dark:bg-[#333232] dark:text-white'>

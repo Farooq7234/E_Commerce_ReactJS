@@ -1,5 +1,5 @@
 import React from 'react'
-import Banner from '../component/Banner'
+import Banner from '../Banner'
 import { IoIosMail } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";

@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductCard from '../component/ProcuctCard.jsx';
+import ProductCard from '../ProcuctCard.jsx';
 
 
 function Groceries() {

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import Banner from '../component/Banner';
-import '../index.css'
+import Banner from '../Banner';
 import ProductSlider from '../ProductSlider';
-import AboutCard from '../AboutCard';
+import AboutCard from './AboutCard';
 
 function About() {
   const AboutMsg = "About Us";
