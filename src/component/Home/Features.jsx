@@ -1,7 +1,8 @@
 import React from 'react'
 import ActionButton from '../ActionButton'
+import { FeaturesData } from '../mockData'
 
-function FeatureSection({products,productImg}) {
+function FeatureSection() {
   return (
    <>
     <div className=' w-[400px] dark:bg-[#333] flex flex-col justify-center  items-center gap-3  rounded-md shadow-md  p-5'>

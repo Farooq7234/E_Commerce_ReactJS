@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Home from './component/Home/Hero.jsx'
+import Home from './component/Home/Home.jsx'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import './index.css'
 import Layout from './Layout'
@@ -14,7 +14,7 @@ import Github, { githubInfoLoader } from './component/Github/Github.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
-      <Route path='' element={<Home />} />
+      {/* <Route path='' element={<Home />} /> */}
       <Route path='/groceries' element={<Groceries />} />
       <Route path='/juice' element={<Juice />} />
       <Route path='/contact' element={<Contact/>} />

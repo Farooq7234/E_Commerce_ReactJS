@@ -6,6 +6,7 @@ function OfferSection() {
 
   return (
     <>
+    <div>
       <div className=' bg-black flex justify-around items-center py-6 flex-wrap gap-5'>
         <div className='text-white text-center text-lg sm:text-2xl font-semibold animate-pulse font-serif'>
           Get {discount}% Off On Your First Purchase!
@@ -16,6 +17,7 @@ function OfferSection() {
         <p className='text-base sm:text-2xl text-center font-serif'>
           Try It For Free. No Registration Needed.
         </p>
+      </div>
       </div>
     </>
   );

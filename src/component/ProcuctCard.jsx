@@ -23,6 +23,12 @@ function ProductCard() {
               <p className='text-base text-gray-800 font-normal dark:text-white py-2'>${product.price}</p>
             </div>
           ))}
+
+        {
+          products.map((product,index)=>{
+            
+          })
+        }
       </div>
     </>
   );

@@ -9,10 +9,10 @@ function ReviewCard() {
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-5'>
           {
             customerReviews.map((customer) =>
-              <div className=' bg-white w-[300px]  h-72 dark:bg-[#333333]  rounded-md shadow-md flex justify-center gap-5 items-center flex-col border-2 border-gray-100 '>
+              <div className=' bg-white w-[350px]  h-72 dark:bg-[#333333]  rounded-md shadow-md flex justify-center gap-5 items-center flex-col border-2 border-gray-100 '>
                 <p className='w-[95%] text-base text-center'>{customer.review}</p>
                 <div className='flex justify-center items-center gap-3'>
-                  <img className='h-12 w-12 rounded-full ' src={customer.custImage} alt="Customer_Image" />
+                  <img className='w-14 h-14 rounded-full ' src={customer.custImage} alt="Customer_Image" />
                   <p className='text-lg'>{customer.custName}</p>
                 </div>
               </div>
