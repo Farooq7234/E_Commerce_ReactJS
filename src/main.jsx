@@ -4,7 +4,7 @@ import Home from './component/Home/Home.jsx'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import './index.css'
 import Layout from './Layout'
-import Contact from './component/Contact/Contact.jsx'
+
 import About from './component/About/About.jsx'
 import Groceries from './component/Groceries/Groceries.jsx'
 import Juice from './component/Juice/Juice.jsx'
