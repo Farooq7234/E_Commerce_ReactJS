@@ -47,7 +47,7 @@ function Hero() {
 
     {/* Right side of Hero Section */}
 
-    <div className='dark:bg-black bg-slate-50 flex justify-around items-center max-sm:flex-col-reverse p-10 overflow-hidden'>
+    <div className='dark:bg-black flex justify-around items-center max-sm:flex-col-reverse p-10 overflow-hidden'>
       <img
         className='w-full sm:w-[300px] lg:w-[600px] lg:h-[500px] py-5'
         src='https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/organic-products-hero.png'

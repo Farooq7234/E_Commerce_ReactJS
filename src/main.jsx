@@ -14,16 +14,16 @@ import Github, { githubInfoLoader } from './component/Github/Github.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
-      {/* <Route path='' element={<Home />} /> */}
+      <Route path='' element={<Home />} />
       <Route path='/groceries' element={<Groceries />} />
       <Route path='/juice' element={<Juice />} />
-      <Route path='/contact' element={<Contact/>} />
-      <Route path='/about' element={<About/>} />
       <Route 
       loader={githubInfoLoader}
       path='github' 
       element={<Github />}
        />
+      <Route path='/about' element={<About/>} />
+      
       </Route>
   )
 )

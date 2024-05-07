@@ -46,7 +46,8 @@ function About() {
   return (
     <>
       <Banner ContactValue={AboutMsg} />
-      <div className='flex justify-around items-center flex-wrap-reverse px-5 lg:px-0 gap-5 lg:gap-0 bg-white dark:bg-black py-5'>
+      <hr />
+      <div className='flex justify-around items-center flex-wrap-reverse px-5 lg:px-0 gap-5 lg:gap-0 bg-[#f8f6f3] dark:bg-black py-5'>
         <div className='lg:w-[500px] lg:h-[400px] md:w-[80%] place-content-center flex flex-col gap-5'>
           <h2 className='font-bold text-4xl dark:text-white  selection:bg-[#8bc34a]'>
             We Are Your Favourite Store.

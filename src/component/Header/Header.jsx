@@ -80,9 +80,6 @@ const Header = ({ image }) => {
                 <NavLink to='/about' className="px-20 py-3 ">About</NavLink>
               </li>
               <li className='w-full py-2 text-lg text-center hover:bg-[#8bc34a] dark:text-white'>
-                <NavLink to='/contact' className="px-20 py-3">Contact</NavLink>
-              </li>
-              <li className='w-full py-2 text-lg text-center hover:bg-[#8bc34a] dark:text-white'>
                 <NavLink to='/github' className="px-20 py-3 ">Github</NavLink>
               </li>
 
@@ -97,7 +94,7 @@ const Header = ({ image }) => {
           </li>
 
           <li className='text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans dark:text-white max-sm:hidden'>
-            <NavLink to='/contact'>Contact</NavLink>
+            <NavLink to='/github'>Github</NavLink>
           </li>
 
 
