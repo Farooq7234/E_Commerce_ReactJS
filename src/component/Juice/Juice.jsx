@@ -5,37 +5,40 @@ import Search from '../Search.jsx';
 
 function Juice() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const handleSearch = () => {
-    const filteredProducts = products.filter(product =>
-      product.productName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredProducts(filteredProducts);
+  const handleSearch = (searchTerm) => {
+    setSearchTerm(searchTerm.toLowerCase());
   };
 
-  // Initially, show all products if no search term is entered
-  const productsToDisplay = searchTerm ? filteredProducts : products.filter(item => item.category === 'Juice');
-
-  
+  const filteredProducts = products.filter(item =>
+    searchTerm === "" ? (item.category==="Juice") : item.productName.toLowerCase().includes(searchTerm)
+  );
 
   return (
     <>
-      <div className='flex flex-col justify-center items-center gap-10 py-5 dark:bg-black bg-[#f8f6f3]'>
+      <div className='flex flex-col justify-center items-center gap-10 py-10 dark:bg-black bg-[#f8f6f3] '>
         <div className='flex flex-wrap gap-10 justify-around items-center w-full'>
           <p className='text-4xl font-medium text-[#8bc34a] font-serif'>Juice</p>
           <Search onSearch={handleSearch} />
         </div>
-        <div className='grid place-items-center gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 '>
-          {productsToDisplay.map((juice, index) => (
-            <ProductCard
-              productImage={juice.productImage}
-              category={juice.category}
-              productName={juice.productName}
-              price={juice.price}
-              key={index}
-            />
-          ))}
+        <div className='grid place-items-center gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  '>
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((juice, index) => (
+              <ProductCard
+                productImage={juice.productImage}
+                category={juice.category}
+                productName={juice.productName}
+                price={juice.price}
+                key={index}
+              />
+            ))
+          ) : (
+           
+            <div className="flex justify-center items-center col-span-full">
+            <p className="text-gray-600 text-3xl">No products found.</p>
+          </div>
+         
+          )}
         </div>
       </div>
     </>
