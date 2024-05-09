@@ -10,9 +10,14 @@ function Juice() {
     setSearchTerm(searchTerm.toLowerCase());
   };
 
-  const filteredProducts = products.filter(item =>
-    searchTerm === "" ? (item.category==="Juice") : item.productName.toLowerCase().includes(searchTerm)
-  );
+  const filteredProducts = products.filter(item => {
+    if (searchTerm === "") {
+      return item.category === "Juice";
+    } else {
+      return item.category === "Juice" && item.productName.toLowerCase().includes(searchTerm);
+    }
+  });
+  
 
   return (
     <>
