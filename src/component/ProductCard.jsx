@@ -14,13 +14,12 @@ function ProductCard({ productImage, productName, price, category }) {
         <p className='text-lg font-bold font-serif dark:text-white'>{productName}</p>
         <ul className='flex'>
           {starIcons.map((star, index) => (
-            <li className='dark:text-orange-400' key={index}>{star}</li>
+            <li className='text-orange-400' key={index}>{star}</li>
           ))}
         </ul>
         <p className='text-base text-gray-800 font-normal dark:text-white py-2'>${price}</p>
         <Link to={`/products/${productName}`} className='bg-black rounded-md text-white p-3 mb-5'>View Details</Link>
         {console.log(products.productName)}
-
       </div>
     </>
   );

@@ -65,30 +65,30 @@ function About() {
           alt="Grapes image"
         />
       </div>
-      <div className=' flex justify-around items-center bg-[#001524] w-full py-10 font-semibold text-white max-sm:flex-col section-work-data'>
-        <div className='text-center py-3'>
+      <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-[#001524]  py-10 font-semibold text-white  section-work-data'>
+        <div className='text-center'>
           <p className='text-base font-bold'>The Numbers Speak For Themselves!</p>
         </div>
-        <div className='text-center py-3'>
+        <div className='text-center'>
           <p className='text-center text-3xl counter-numbers' data-number={'5000'}>
             0
           </p>
           <p className='text-base'>Curated products</p>
         </div>
-        <div className='text-center py-3'>
+        <div className='text-center'>
           <p className='text-3xl counter-numbers' data-number={'800'}>
             0
           </p>
           <p className='text-base'>Curated products</p>
         </div>
-        <div className='text-center py-3'>
+        <div className='text-center'>
           <p className='text-center text-3xl counter-numbers' data-number={'400'}>
             0
           </p>
           <p className='text-base'>product categories</p>
         </div>
       </div>
-      <div className='flex justify-around items-center dark:bg-black py-5 flex-wrap px-5'>
+      <div className='flex justify-around items-center dark:bg-black py-5 flex-wrap'>
      <ProductSlider/>
      <AboutCard/>
       </div>
