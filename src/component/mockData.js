@@ -41,7 +41,7 @@ const products = [
         productName: "Sanitizer",
         price: 15
     },
-    { 
+    {
         popularity: "trending products",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/red-chillies-300x300.jpg',
         category: "Groceries",
@@ -121,35 +121,35 @@ const products = [
 
 const serviceData = [
     {
-        value1:"Free shipping",
-        value2:"Above $5 Only"
+        value1: "Free shipping",
+        value2: "Above $5 Only"
     },
     {
-        value1:"Certified Organic",
-        value2:"100% Guarantee"
+        value1: "Certified Organic",
+        value2: "100% Guarantee"
     },
     {
-        value1:"Huge Savings",
-        value2:"At Lowest Price"
+        value1: "Huge Savings",
+        value2: "At Lowest Price"
     },
     {
-        value1:"Easy Return",
-        value2:"No Question Asked"
+        value1: "Easy Return",
+        value2: "No Question Asked"
     },
 ]
 
 const featuresData = [{
     title: "Farm Fresh Fruits",
-    content:"Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
+    content: "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
     featuredImage: "https://cdn.pixabay.com/photo/2016/03/23/04/44/fruits-and-vegetables-1274079_1280.png"
 }, {
     title: "Fresh Vegetables",
-    content:"Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
-    featuredImage:"https://cdn.pixabay.com/photo/2016/02/23/17/44/apple-1218166_1280.png"
+    content: "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
+    featuredImage: "https://cdn.pixabay.com/photo/2016/02/23/17/44/apple-1218166_1280.png"
 }, {
-    title:"Organic Legume",
-    content:"Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
-    featuredImage:"https://cdn.pixabay.com/photo/2018/04/17/23/04/grilled-vegetables-3329075_1280.png"
+    title: "Organic Legume",
+    content: "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
+    featuredImage: "https://cdn.pixabay.com/photo/2018/04/17/23/04/grilled-vegetables-3329075_1280.png"
 }]
 
 

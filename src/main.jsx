@@ -9,6 +9,7 @@ import About from './component/About/About.jsx'
 import Groceries from './component/Groceries/Groceries.jsx'
 import Juice from './component/Juice/Juice.jsx'
 import Github, { githubInfoLoader } from './component/Github/Github.jsx'
+import ProductPage from './component/ProductPage.jsx'
 
 
 const router = createBrowserRouter(
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
       element={<Github />}
        />
       <Route path='/about' element={<About/>} />
-      
+      <Route path='/products/:productDetails' Component={ProductPage} />
       </Route>
   )
 )
