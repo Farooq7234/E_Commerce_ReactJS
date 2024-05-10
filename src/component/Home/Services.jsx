@@ -1,6 +1,6 @@
 import React from 'react'
 import { serviceData } from '.././mockData.js'
-import icons from '../icons.js'
+// import icons from '../icons.js'
 
 
 function Service() {
@@ -15,11 +15,11 @@ function Service() {
             {data.value1}
             <h2 className='text-sm font-semibold text-center max-sm:text-2xl'>{data.value2}</h2>
             <div>
-            {
+            {/* {
               icons.map((Icon,index)=>
                 <Icon key={index} />
               )
-            }
+            } */}
             </div>
           </div>
         </div>
