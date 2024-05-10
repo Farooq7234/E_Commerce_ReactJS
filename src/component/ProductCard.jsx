@@ -8,7 +8,7 @@ function ProductCard({ productImage, productName, price, category }) {
 
   return (
     <>
-      <div className='shadow-lg flex flex-col justify-center items-center gap-2 rounded-md  dark:bg-[#333333] w-[300px]'>
+      <div className='shadow-lg flex flex-col justify-center items-center gap-1 rounded-md  dark:bg-[#333333] w-[300px]'>
         <img className='rounded-t-md h-[250px] w-[300px]' src={productImage} alt="" />
         <p className='capitalize text-gray-400 text-base'>{category}</p>
         <p className='text-lg font-bold font-serif dark:text-white'>{productName}</p>
@@ -17,9 +17,9 @@ function ProductCard({ productImage, productName, price, category }) {
             <li className='text-orange-400' key={index}>{star}</li>
           ))}
         </ul>
-        <p className='text-base text-gray-800 font-normal dark:text-white py-2'>${price}</p>
+        <p className='text-lg text-gray-800 font-bold dark:text-white py-2'>${price}</p>
         <Link to={`/products/${productName}`} className='bg-black rounded-md text-white p-3 mb-5'>View Details</Link>
-        {console.log(products.productName)}
+        
       </div>
     </>
   );

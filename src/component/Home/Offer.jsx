@@ -14,7 +14,7 @@ function OfferSection() {
         <ActionButton />
       </div>
       <div className='bg-gray-200 py-6'>
-        <p className='text-base sm:text-2xl text-center font-serif'>
+        <p className='text-base sm:text-2xl text-center font-serif dark:text-black'>
           Try It For Free. No Registration Needed.
         </p>
       </div>

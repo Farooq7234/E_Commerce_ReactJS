@@ -162,13 +162,13 @@ const customerReviews = [
     },
     {
         custName: "Loki",
-        custImage: "",
+        custImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         clientId: "client02",
         review: "The organic store is excellent website having the best user experience as well as the service they provide"
     },
     {
         custName: "Alex",
-        custImage: "",
+        custImage: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTR8fG1vZGVsfGVufDB8fDB8fHww",
         clientId: "client01",
         review: "The organic store is fantastic!"
     },

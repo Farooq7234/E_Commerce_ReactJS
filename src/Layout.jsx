@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom'
 import Header from './component/Header/Header'
 import Footer from './component/Footer/Footer'
 import ThemeBtn from './component/ThemeBtn'
+import ScrollToTop from './component/ScrollToTop.jsx'
 import './index.css'
 
 function Layout() {
@@ -41,6 +42,7 @@ const logoSrc = (themeMode) === "light" ? LOGO_URL_DARK : LOGO_URL_WHITE;
     <Header image={logoSrc}/>
     <ThemeBtn />
     <Outlet />
+    <ScrollToTop/>
     <Footer/>
     </ThemeProvider>
     </>

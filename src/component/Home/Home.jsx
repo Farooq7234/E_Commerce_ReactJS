@@ -7,7 +7,7 @@ import Offer from './Offer.jsx';
 import ReviewCard from './ReviewCard.jsx';
 import Logos from './Logos.jsx';
 import ProductCard from '../ProductCard.jsx';
-import ScrollToTop from './ScrollToTop.jsx';
+import ScrollToTop from '../ScrollToTop.jsx';
 
 
 //  const SERVICE_DATA = [
@@ -80,8 +80,7 @@ function Home({ themeMode }) {
         <ReviewCard />
         {/* BRAND LOGOS SECTION*/}
         <Logos />
-        {/* SCROLL TO TOP*/}
-        <ScrollToTop />
+      
       </div>
 
     </>

@@ -3,7 +3,7 @@ import { IoIosCheckbox } from "react-icons/io";
 import ActionButton from '../ActionButton'
 
 function AboutCard() {
-  const tickBoxes = Array.fill(<IoIosCheckbox/>)
+  const tickBoxes = Array(5).fill(<IoIosCheckbox/>)
   
   return (
     <>
