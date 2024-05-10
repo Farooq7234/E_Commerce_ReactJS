@@ -13,10 +13,10 @@ function ProductCard({ productImage, productName, price, category }) {
         <p className='text-lg font-bold font-serif dark:text-white'>{productName}</p>
         <ul className='flex'>
           {starIcons.map((star, index) => (
-            <li className='dark:text-orange-400' key={index}>{star}</li>
+            <li className='text-orange-400' key={index}>{star}</li>
           ))}
         </ul>
-        <p className='text-base text-gray-800 font-normal dark:text-white py-2'>${price}</p>
+        <p className='text-base text-gray-800 font-bold dark:text-white py-2'>$ {price}</p>
       </div>
     </>
   );
