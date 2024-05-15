@@ -10,6 +10,7 @@ import Groceries from './component/Groceries/Groceries.jsx'
 import Juice from './component/Juice/Juice.jsx'
 import Github, { githubInfoLoader } from './component/Github/Github.jsx'
 import ProductPage from './component/ProductPage.jsx'
+import NotFoundPage from './component/NotFoundPage/NotFoundPage.jsx'
 
 
 const router = createBrowserRouter(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
        />
       <Route path='/about' element={<About/>} />
       <Route path='/products/:productDetails' Component={ProductPage} />
+      <Route path='*' element={<NotFoundPage />} />
       </Route>
   )
 )
