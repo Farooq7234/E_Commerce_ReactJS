@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ProductCard from '../ProductCard';
+import ProductCard from '../ProductCard.jsx';
 import { products } from '../mockData';
 import Search from "../Search.jsx"
 

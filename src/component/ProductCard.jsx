@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaRegStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { products } from './mockData';
+
 
 function ProductCard({ productImage, productName, price, category }) {
   const starIcons = Array(5).fill(<FaRegStar />);
