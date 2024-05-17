@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa';
@@ -9,7 +9,13 @@ import { useSelector } from 'react-redux';
 const Header = ({ image }) => {
   const {cartItems} = useSelector((state)=> state.cart)
   const [price, setPrice] = useState(0.00);
-  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(false); 
+
+
+  useEffect(()=>{
+    setPrice(cartItems.reduce((acc, item) => acc + item.price, 0))
+  })
+  
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);

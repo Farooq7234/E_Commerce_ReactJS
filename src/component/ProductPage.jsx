@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function ProductPage() {
-    const notify = () => toast("Item is added successfully");
+    const notify = () => toast("Item Added");
     const dispatch = useDispatch()
     const { productDetails } = useParams()
 
