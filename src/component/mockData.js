@@ -1,5 +1,6 @@
 const products = [
     {
+        id: `product_${Date.now()}_1`,
         popularity: "best selling",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/coffee-asorted-300x300.jpg',
         category: "Groceries",
@@ -7,6 +8,7 @@ const products = [
         price: 90
     },
     {
+        id: `product_${Date.now()}_2`,
         popularity: "best selling",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/cashew-butter-500-300x300.jpg',
         category: "Groceries",
@@ -14,6 +16,7 @@ const products = [
         price: 20
     },
     {
+        id: `product_${Date.now()}_3`,
         popularity: "best selling",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/diabetic-cookies-300x300.jpg',
         category: "Groceries",
@@ -21,6 +24,7 @@ const products = [
         price: 50
     },
     {
+        id: `product_${Date.now()}_4`,
         popularity: "best selling",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/organic-honey-300x300.jpg',
         category: "Groceries",
@@ -28,6 +32,7 @@ const products = [
         price: 90
     },
     {
+        id: `product_${Date.now()}_5`,
         popularity: "trending products",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/edible-oil-300x300.jpg',
         category: "Groceries",
@@ -35,6 +40,7 @@ const products = [
         price: 80
     },
     {
+        id: `product_${Date.now()}_6`,
         popularity: "trending products",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/sanitizer-300x300.jpg',
         category: "Groceries",
@@ -42,6 +48,7 @@ const products = [
         price: 15
     },
     {
+        id: `product_${Date.now()}_7`,
         popularity: "trending products",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/red-chillies-300x300.jpg',
         category: "Groceries",
@@ -49,6 +56,7 @@ const products = [
         price: 56
     },
     {
+        id: `product_${Date.now()}_8`,
         popularity: "trending products",
         productImage: 'https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/face-wash-300x300.jpg',
         category: "Groceries",
@@ -56,67 +64,77 @@ const products = [
         price: 10
     },
     {
+        id: `product_${Date.now()}_9`,
         productImage: 'https://images.unsplash.com/photo-1626120032630-b51c96a544f5?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
         productName: "Apple juice",
         price: 90
     },
     {
+        id: `product_${Date.now()}_10`,
         productImage: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
         productName: "Orange juice",
         price: 45
     },
     {
+        id: `product_${Date.now()}_11`,
         productImage: 'https://images.unsplash.com/photo-1473115209096-e0375dd6b3b3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
-        productName: "Cocunut juice",
+        productName: "Coconut juice",
         price: 80
     },
     {
+        id: `product_${Date.now()}_12`,
         productImage: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
         productName: "Strawberry juice",
         price: 25
     },
     {
+        id: `product_${Date.now()}_13`,
         productImage: 'https://images.unsplash.com/photo-1603028769268-94e389e60414?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
         productName: "Pomegranate juice",
         price: 100
     },
     {
+        id: `product_${Date.now()}_14`,
         productImage: 'https://images.unsplash.com/photo-1567587407679-8187b3b972aa?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
-        productName: "Water melon juice",
+        productName: "Watermelon juice",
         price: 35
     },
     {
+        id: `product_${Date.now()}_15`,
         productImage: 'https://images.unsplash.com/photo-1619898804188-e7bad4bd2127?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
         productName: "Mango juice",
         price: 10
     },
     {
+        id: `product_${Date.now()}_16`,
         productImage: 'https://images.unsplash.com/photo-1525904097878-94fb15835963?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
         productName: "Pineapple juice",
         price: 65
     },
     {
+        id: `product_${Date.now()}_17`,
         productImage: 'https://images.unsplash.com/photo-1473348229220-66f5e48021f3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
         productName: "Kiwi juice",
         price: 95
     },
     {
+        id: `product_${Date.now()}_18`,
         productImage: 'https://images.unsplash.com/photo-1699294899842-c59b12cc0249?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         category: "Juice",
         productName: "Muskmelon juice",
         price: 70
     },
+];
 
-]
 
 
 const serviceData = [
