@@ -2,20 +2,18 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa';
+import { useSelector,useDispatch } from 'react-redux';
 
 
 
 const Header = ({ image }) => {
-
+  const {cartItems} = useSelector((state)=> state.cart)
   const [price, setPrice] = useState(0.00);
-  const [cartValue, setCartValue] = useState(0);
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
-
-
 
   return (
     <>
@@ -104,8 +102,8 @@ const Header = ({ image }) => {
 
           <li className='cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/basket' className='flex'>
-              <RiShoppingBasketFill className='text-lg' />
-              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-black text-xs font-semibold'>{cartValue}</sup>
+              <RiShoppingBasketFill className='text-2xl' />
+              <sup className='bg-[#8bc34a] p-1 rounded-full text-white text-xs font-semibold animate-bounce'>{cartItems.length}</sup>
             </NavLink>
           </li>
         
@@ -119,7 +117,7 @@ const Header = ({ image }) => {
             <path d='M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z'></path>
           </svg>
 
-          <li className='text-base max-sm:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
+          <li className='text-xl max-sm:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
             <NavLink to='/user'><FaUser /></NavLink>
           </li>
         </ul>

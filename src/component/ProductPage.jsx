@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { products } from './mockData.js'
 import { useParams } from 'react-router-dom'
+import { add } from '../redux/slice/cartSlice.js'
+import { useDispatch } from 'react-redux'
 
 
 function ProductPage() {
-
+    
+    const dispatch = useDispatch()
     const { productDetails } = useParams()
 
     const product = products.find(product => product.productName === productDetails)
@@ -13,8 +16,10 @@ function ProductPage() {
         return <div>Product Not found!</div>
     }
 
-   const handleAdtoCart = () =>{
-    console.log(product)
+   const handleAddtoCart = () =>{
+    
+    dispatch(add(product))
+    
    }
     return (
         <>
@@ -35,7 +40,7 @@ function ProductPage() {
                     <button 
                     className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md'
                     type='submint' 
-                    onClick={handleAdtoCart}
+                    onClick={handleAddtoCart}
                     >Add to Cart</button>
                 </div>
             </div>
