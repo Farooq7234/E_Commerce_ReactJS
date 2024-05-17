@@ -13,6 +13,7 @@ import Github, { githubInfoLoader } from './component/Github/Github.jsx'
 import ProductPage from './component/ProductPage.jsx'
 import NotFoundPage from './component/NotFoundPage/NotFoundPage.jsx'
 import Cart from './component/Cart/Cart.jsx'
+import { Toaster } from 'react-hot-toast'
 
 
 const router = createBrowserRouter(
@@ -38,6 +39,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
     <RouterProvider router={router} />
+    <Toaster/>
     </Provider>
   </React.StrictMode>,
 )

@@ -3,12 +3,11 @@ import { products } from './mockData.js'
 import { useParams } from 'react-router-dom'
 import { add } from '../redux/slice/cartSlice.js'
 import { useDispatch } from 'react-redux'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {toast} from 'react-hot-toast'
 
 
 function ProductPage() {
-    const notify = () => toast("Item Added");
+
     const dispatch = useDispatch()
     const { productDetails } = useParams()
 
@@ -20,23 +19,11 @@ function ProductPage() {
 
     const handleAddtoCart = () => {
         dispatch(add(product))
-        notify()
+        toast.success("Item added")
     }
     return (
         <>
-            <ToastContainer
-                    position="top-center"
-                    autoClose={1500}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                    transition:Bounce
-/> 
+            
             <div className='flex justify-around items-center gap-5 py-10 md:h-[80vh] flex-wrap bg-[#f8f6f3] dark:bg-black dark:text-white'>
              
                 <img
@@ -53,7 +40,7 @@ function ProductPage() {
                     </div>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quia, voluptas id quis, consectetur molestias culpa, numquam vel officia similique corporis sit laudantium. Omnis in totam nobis alias explicabo molestias asperiores? Magni, aliquid molestiae.!</p>
                     <button
-                        className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md'
+                        className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md w-[50%]'
                         type='submint'
                         onClick={handleAddtoCart}
                     >Add to Cart</button>
