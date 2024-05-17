@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 
@@ -101,9 +101,9 @@ const Header = ({ image }) => {
           </li>
 
           <li className='cursor-pointer text-[#8bc34a] font-sans'>
-            <NavLink to='/basket' className='flex'>
+            <NavLink to='/cart' className='flex'>
               <RiShoppingBasketFill className='text-2xl' />
-              <sup className='bg-[#8bc34a] p-1 rounded-full text-white text-xs font-semibold animate-bounce'>{cartItems.length}</sup>
+              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-white text-xs font-semibold animate-bounce'>{cartItems.length}</sup>
             </NavLink>
           </li>
         

@@ -12,6 +12,7 @@ import Juice from './component/Juice/Juice.jsx'
 import Github, { githubInfoLoader } from './component/Github/Github.jsx'
 import ProductPage from './component/ProductPage.jsx'
 import NotFoundPage from './component/NotFoundPage/NotFoundPage.jsx'
+import Cart from './component/Cart/Cart.jsx'
 
 
 const router = createBrowserRouter(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path='' element={<Home />} />
       <Route path='/groceries' element={<Groceries />} />
       <Route path='/juice' element={<Juice />} />
+      <Route path='/cart' element={<Cart/>}/>
       <Route 
       loader={githubInfoLoader}
       path='github' 
