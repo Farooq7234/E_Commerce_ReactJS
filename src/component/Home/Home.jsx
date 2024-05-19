@@ -15,12 +15,12 @@ function Home() {
       <div className='dark:text-white dark:bg-black bg-[#f8f6f3] flex flex-col gap-10 '>
         {/* HERO SECTION */}
         <Hero />
-        <hr />
+        <hr className='opacity-15' />
         {/* SERVICE SECTION */}
         <Services />
         {/* TRENDING PRODUCTS SECTION */}
         <div className='py-5 flex flex-col justify-center items-center  gap-7'>
-          <h2 className='font-bold sm:text-3xl text-lg text-center font-serif'>Trending Products</h2>
+          <h2 className='font-bold text-2xl sm:text-3xl text-center font-serif'>Trending Products</h2>
           <div className='grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols- xl:grid-cols-4 gap-10'>
             {
               products
@@ -44,7 +44,7 @@ function Home() {
         <Offer />
         {/* BEST SELLING PRODUCTS SECTION */}
         <div className='py-5 flex flex-col justify-center items-center gap-7'>
-          <h2 className='font-bold text-lg sm:text-3xl  text-center font-serif '>Best Selling Products</h2>
+          <h2 className='font-bold text-2xl sm:text-3xl  text-center font-serif '>Best Selling Products</h2>
           <div className='grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols- xl:grid-cols-4 gap-10'>
             {
               products

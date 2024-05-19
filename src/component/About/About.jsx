@@ -65,7 +65,7 @@ function About() {
           alt="Grapes image"
         />
       </div>
-      <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-[#001524]  py-10 font-semibold text-white  section-work-data'>
+      <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-[#001524] gap-5  py-10 font-semibold text-white  section-work-data'>
         <div className='text-center'>
           <p className='text-base font-bold'>The Numbers Speak For Themselves!</p>
         </div>

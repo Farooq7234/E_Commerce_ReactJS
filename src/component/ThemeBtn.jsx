@@ -1,6 +1,6 @@
 import React from 'react'
 import useTheme from '../context/theme'
-
+import toast from 'react-hot-toast';
 export default function ThemeBtn() {
   const { themeMode, lightTheme, darkTheme } = useTheme();
 
@@ -8,14 +8,16 @@ export default function ThemeBtn() {
     const darkModeStatus = e.currentTarget.checked;
     if (darkModeStatus) {
       darkTheme();
+      toast.success("Dark Mode")
     } else {
       lightTheme();
+      toast.success("Light Mode")
     }
   };
 
   return (<>
        <div className="flex items-center justify-end bg-[#f8f6f3] dark:bg-black py-3">
-      <span className="mt-1 mr-2 text-base font-medium text-gray-900 dark:text-white">Toggle Theme</span>
+      <span className="mt-1 mr-2 text-sm font-medium sm:text-base text-gray-900 dark:text-white">{themeMode === "dark" ?"Dark Mode" : "Light Mode" }</span>
       <label className="relative inline-flex items-center cursor-pointer mr-4">
         <input
           type="checkbox"

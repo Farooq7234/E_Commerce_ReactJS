@@ -102,7 +102,7 @@ const Header = ({ image }) => {
           </li>
 
 
-          <li className='text-base cursor-pointer font-extrabold text-[#8bc34a] font-sans'>
+          <li className='text-base cursor-pointer font-bold text-[#8bc34a] font-sans'>
             <NavLink to='/price'>${price.toFixed(2)}</NavLink>
           </li>
 
@@ -114,7 +114,7 @@ const Header = ({ image }) => {
           </li>
         
 
-          <svg className='dark:text-white sm:hidden max-sm:visible w-10 h-8  text-white max-sm:bg-[#8bc34a]  p-1 rounded cursor-pointer'
+          <svg className='dark:text-white sm:hidden max-sm:visible w-8 h-7  text-white max-sm:bg-[#8bc34a]  p-1 rounded cursor-pointer'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 24 24'
             fill='currentColor'
