@@ -47,7 +47,7 @@ function Hero() {
 
     {/* Right side of Hero Section */}
 
-    <div className='dark:bg-black flex justify-around items-center max-sm:flex-col-reverse p-10 overflow-hidden'>
+    <div className='dark:bg-black flex justify-around items-center max-sm:flex-col-reverse p-5 sm:p-10 overflow-hidden'>
       <img
         className='w-full sm:w-[300px] lg:w-[600px] lg:h-[500px] py-5'
         src='https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/organic-products-hero.png'
@@ -56,14 +56,14 @@ function Hero() {
 
       {/*Left side of Hero section */}
 
-      <div className='sm:w-[600px]  flex flex-col gap-5 justify-center items-center dark:text-white'>
+      <div className=' sm:w-[600px]  flex flex-col gap-5 justify-center items-center dark:text-white'>
         <h2 className='font-semibold text-xl font-sans text-center '>
           Best Quality Products
         </h2>
         <h2 className='h-8 type-effect text-center text-2xl sm:text-3xl  font-serif font-bold '>
           {text}
         </h2>
-        <p className='text-base text-center'>
+        <p className='text-sm sm:text-base text-center'>
          The fresh organic products which is loved by the thousands of happy and healthy customer. join the organic movement now!
         </p>
         <ActionButton />

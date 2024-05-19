@@ -16,7 +16,7 @@ function Service() {
 
     
     <>
-    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  place-items-center bg-black py-10'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  place-items-center bg-black'>
       {serviceData.map((data, index) =>
         <div className='h-40   flex justify-around items-center ' key={index}>
           <div className='text-xl flex flex-col justify-center items-center w-[300px] lg:w-[250px] bg-[#333333] text-white rounded h-32  '>

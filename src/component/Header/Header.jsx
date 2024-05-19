@@ -29,8 +29,8 @@ const Header = ({ image }) => {
 
         {/* left side of the header section */}
 
-        <ul className='flex justify-between items-center w-1/2 lg:w-1/3 '>
-          <img src={image} className='w-[100px] sm:w-[150px] sm:h-[70px]  dark:text-white' alt='Logo' />
+        <ul className='flex justify-between items-center w-1/2 md:w-1/3 '>
+          <img src={image} className='w-[100px] sm:w-[110px] sm:h-[50px]  dark:text-white' alt='Logo' />
 
           <li className='dark:text-white text-base  cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
 
@@ -91,7 +91,7 @@ const Header = ({ image }) => {
           </div>
         )}
 
-        <ul className='flex justify-around items-center w-1/2 md:w-1/3 '>
+        <ul className='flex justify-around items-center w-[60%] md:w-1/3 '>
 
           <li className='text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans  dark:text-white max-sm:hidden'>
             <NavLink to='/about'>About</NavLink>
