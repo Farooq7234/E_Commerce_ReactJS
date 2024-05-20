@@ -7,8 +7,8 @@ function Cart() {
   const { cartItems } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
 
-  const removeItem = (id) => {
-    dispatch(remove(id))
+  const removeItem = (uniqueId) => {
+    dispatch(remove(uniqueId))
     toast.error("Item removed")
 
   }
@@ -18,13 +18,13 @@ function Cart() {
       {cartItems.length == 0 ?
         (
 
-          <div className='h-[60vh] flex flex-col gap-5 justify-center items-center bg-[#f8f6f3] dark:bg-black dark:text-white'>
+          <div className='h-[80vh] flex flex-col gap-5 justify-center items-center bg-[#f8f6f3] dark:bg-black dark:text-white'>
             <p className='font-bold text-xl'>Cart is empty</p>
             <Link to={'/'} className='py-2 px-4 bg-green-600 text-white rounded-md'>Go back</Link>
           </div>
         ) : (
 
-          <div className='flex flex-col gap-5 justify-center items-center bg-[#f8f6f3] dark:bg-black dark:text-white py-10 min-h-[50vh]'>
+          <div className='flex flex-col gap-5 justify-center items-center bg-[#f8f6f3] dark:bg-black dark:text-white py-10 min-h-[80vh]'>
             {
               cartItems.map((item, index) =>
                 <div className='w-[95%] sm:w-[600px] bg-white dark:bg-[#333] h-32 flex justify-around flex-wrap items-center px-5 rounded-md shadow-lg'
@@ -42,7 +42,7 @@ function Cart() {
                   </div>
                   <div>
                     <button
-                      onClick={() => removeItem(item.id)}
+                      onClick={() => removeItem(item.uniqueId)}
                       className='bg-red-500 p-2 sm:py-2 sm:px-5 rounded-md text-white'
                     >Remove</button>
                   </div>

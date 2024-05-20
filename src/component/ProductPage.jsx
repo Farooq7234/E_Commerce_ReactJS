@@ -1,7 +1,7 @@
 import React from 'react'
 import { products } from './mockData.js'
 import { useParams } from 'react-router-dom'
-import { add } from '../redux/slice/cartSlice.js'
+import { add,increment,decrement } from '../redux/slice/cartSlice.js'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-hot-toast'
 
@@ -21,10 +21,18 @@ function ProductPage() {
         dispatch(add(product))
         toast.success("Item added")
     }
+
+    const incrementItem = (uniqueId) =>{
+        dispatch(increment(uniqueId))
+    }
+
+    const decrementItem = (uniqueId) =>{
+        dispatch(decrement(uniqueId))
+    }
     return (
         <>
 
-            <div className='flex justify-around items-center gap-5  md:h-[80vh] flex-wrap bg-[#f8f6f3] dark:bg-black dark:text-white'>
+            <div className='flex justify-around items-center gap-5 min-h-[80vh] flex-wrap bg-[#f8f6f3] dark:bg-black dark:text-white py-5'>
                 <img
                     src={product.productImage}
                     alt={product.productName}
@@ -39,6 +47,19 @@ function ProductPage() {
                     </div>
                     <p className='text-base'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quia, voluptas id quis, consectetur molestias culpa,</p>
                     <p className='text-base'> Omnis in totam nobis alias explicabo molestias asperiores? Magni, aliquid molestiae.!</p>
+                    <button 
+                    onClick={()=> decrementItem(item.uniqueId)}
+                    className='bg-red-500 p-3 text-white'>
+                        -
+                    </button>
+                    <span className='mx-3'>
+                        {item.quantity}
+                    </span>
+                    <button 
+                    onClick={()=> incrementItem(item.uniqueId)}
+                    className='bg-red-500 p-3 text-white'>
+                        +
+                    </button>
                     <button
                         className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md w-[50%]'
                         type='submint'
