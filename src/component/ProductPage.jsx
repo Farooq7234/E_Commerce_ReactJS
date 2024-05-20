@@ -2,12 +2,12 @@ import React from 'react'
 import { products } from './mockData.js'
 import { useParams } from 'react-router-dom'
 import { add,increment,decrement } from '../redux/slice/cartSlice.js'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-hot-toast'
 
 
 function ProductPage() {
-
+    const {cartItems} = useSelector((state)=>state.cart)
     const dispatch = useDispatch()
     const { productDetails } = useParams()
 
@@ -48,15 +48,15 @@ function ProductPage() {
                     <p className='text-base'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quia, voluptas id quis, consectetur molestias culpa,</p>
                     <p className='text-base'> Omnis in totam nobis alias explicabo molestias asperiores? Magni, aliquid molestiae.!</p>
                     <button 
-                    onClick={()=> decrementItem(item.uniqueId)}
+                    onClick={()=> decrementItem(product.uniqueId)}
                     className='bg-red-500 p-3 text-white'>
                         -
                     </button>
-                    <span className='mx-3'>
-                        {item.quantity}
+                    <span className='mx-3 text-black'>
+                       
                     </span>
                     <button 
-                    onClick={()=> incrementItem(item.uniqueId)}
+                    onClick={()=> incrementItem(product.uniqueId)}
                     className='bg-red-500 p-3 text-white'>
                         +
                     </button>
