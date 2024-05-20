@@ -1,13 +1,14 @@
 import React from 'react'
 import { products } from './mockData.js'
 import { useParams } from 'react-router-dom'
-import { add,increment,decrement } from '../redux/slice/cartSlice.js'
+import { add } from '../redux/slice/cartSlice.js'
 import { useDispatch, useSelector } from 'react-redux'
+import { increment, decrement } from '../redux/slice/productSlice.js'
 import { toast } from 'react-hot-toast'
 
 
 function ProductPage() {
-    const {cartItems} = useSelector((state)=>state.cart)
+    const { count } = useSelector((state) => state.product)
     const dispatch = useDispatch()
     const { productDetails } = useParams()
 
@@ -22,13 +23,8 @@ function ProductPage() {
         toast.success("Item added")
     }
 
-    const incrementItem = (uniqueId) =>{
-        dispatch(increment(uniqueId))
-    }
+    console.log(count)
 
-    const decrementItem = (uniqueId) =>{
-        dispatch(decrement(uniqueId))
-    }
     return (
         <>
 
@@ -47,19 +43,24 @@ function ProductPage() {
                     </div>
                     <p className='text-base'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quia, voluptas id quis, consectetur molestias culpa,</p>
                     <p className='text-base'> Omnis in totam nobis alias explicabo molestias asperiores? Magni, aliquid molestiae.!</p>
-                    <button 
-                    onClick={()=> decrementItem(product.uniqueId)}
-                    className='bg-red-500 p-3 text-white'>
+                    <div className='flex justify-start gap-5 items-center'>
+                    <button
+                        onClick={() => dispatch(decrement(count))}
+                        className='bg-[#6a9739] hover:bg-[#89c549]  px-5 rounded-md text-2xl font-bold text-white'>
                         -
                     </button>
-                    <span className='mx-3 text-black'>
-                       
+                    <span className=' text-black text-xl font-bold'>
+                        {count} 
                     </span>
-                    <button 
-                    onClick={()=> incrementItem(product.uniqueId)}
-                    className='bg-red-500 p-3 text-white'>
+                    <button
+                        onClick={() => dispatch(increment(count))}
+                        className='bg-[#6a9739] hover:bg-[#89c549] px-5 rounded-md text-2xl font-bold text-white'>
                         +
                     </button>
+                    {
+                        count > 9 ? <p className='text-red-500 text-sm'>(Max count reached)</p> : null
+                    }
+                    </div>
                     <button
                         className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md w-[50%]'
                         type='submint'

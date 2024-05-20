@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../../redux/slice/cartSlice';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+
+
 function Cart() {
   const { cartItems } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
