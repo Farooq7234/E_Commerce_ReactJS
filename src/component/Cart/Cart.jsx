@@ -1,62 +1,48 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { remove } from '../../redux/slice/cartSlice';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { remove } from '../../redux/slice/cartSlice.js';
 import toast from 'react-hot-toast';
 
-
 function Cart() {
-  const { cartItems } = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
+    const cartItems = useSelector(state => state.cart.cartItems);
+    const dispatch = useDispatch();
 
-  const removeItem = (uniqueId) => {
-    dispatch(remove(uniqueId))
-    toast.error("Item removed")
+    const handleRemove = (uniqueId) => {
+        dispatch(remove(uniqueId));
+        toast.error('item is removed')
+    };
 
-  }
-
-  return (
-    <>
-      {cartItems.length == 0 ?
-        (
-
-          <div className='h-[80vh] flex flex-col gap-5 justify-center items-center bg-[#f8f6f3] dark:bg-black dark:text-white'>
-            <p className='font-bold text-xl'>Cart is empty</p>
-            <Link to={'/'} className='py-2 px-4 bg-green-600 text-white rounded-md'>Go back</Link>
-          </div>
-        ) : (
-
-          <div className='flex flex-col gap-5 justify-center items-center bg-[#f8f6f3] dark:bg-black dark:text-white py-10 min-h-[80vh]'>
-            {
-              cartItems.map((item, index) =>
-                <div className='w-[95%] sm:w-[600px] bg-white dark:bg-[#333] h-32 flex justify-around flex-wrap items-center px-5 rounded-md shadow-lg'
-                  key={index}
-                >
-                  <div>
-                    <img
-                      src={item.productImage}
-                      className='h-[50px] w-[50px] sm:w-[150px] sm:h-24  rounded-sm'
-                      alt="" />
-                  </div>
-                  <div>
-                    <p className='text-base sm:text-2xl font-medium'>{item.productName}</p>
-                    <p className='text-lg sm:text-lg font-bold '>${item.price}</p>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => removeItem(item.uniqueId)}
-                      className='bg-red-500 p-2 sm:py-2 sm:px-5 rounded-md text-white'
-                    >Remove</button>
-                  </div>
+    return (
+        <div className="min-h-[80vh] flex flex-col justify-start items-center dark:text-white bg-[#f8f6f3] dark:bg-[#000]">
+            <h1 className="text-3xl font-bold my-5 ">Your Cart</h1>
+            {cartItems.length === 0 ? (
+                <p className='text-[#333] text-4xl'>Your cart is empty</p>
+            ) : (
+                <div className="w-full max-w-2xl dark:text-white px-5 sm:px-0">
+                    {cartItems.map(item => (
+                        <div key={item.uniqueId} className="flex justify-between items-center border-b py-2">
+                            <div className="flex items-center gap-4">
+                                <img src={item.productImage} alt={item.productName} className="w-16 h-16 rounded" />
+                                <div>
+                                    <h2 className="text-sm sm:text-xl font-bold">{item.productName}</h2>
+                                    <p className="text-gray-600  text-base sm:text-xl">Quantity: {item.quantity}</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <p className="font-bold text-sm sm:text-xl">${item.price * item.quantity}</p>
+                                <button
+                                    className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 sm:px-4 sm:py-2 rounded"
+                                    onClick={() => handleRemove(item.uniqueId)}
+                                >
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-              )
-            }
-          </div>
-        )
-
-      }
-    </>
-  )
+            )}
+        </div>
+    );
 }
 
-export default Cart
+export default Cart;

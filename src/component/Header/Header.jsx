@@ -9,12 +9,17 @@ import { useSelector } from 'react-redux';
 const Header = ({ image }) => {
   const {cartItems} = useSelector((state)=> state.cart)
   const [price, setPrice] = useState(0.00);
+  const [totalQuantity,setTotalQuantity] = useState(0)
   const [sidebarVisible, setSidebarVisible] = useState(false); 
 
 
-  useEffect(()=>{
-    setPrice(cartItems.reduce((acc, item) => acc + item.price, 0))
-  })
+  useEffect(() => {
+    const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const totalQty = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+    setPrice(totalPrice);
+    setTotalQuantity(totalQty);
+  }, [cartItems]);
   
 
   const toggleSidebar = () => {
@@ -23,11 +28,11 @@ const Header = ({ image }) => {
 
   return (
     <>
-      {/* Header Container */}
+      {/* HEADER CONTAINER */}
 
       <div className=' dark:bg-black  bg-white h-20 flex justify-between items-center shadow-md px-3'>
 
-        {/* left side of the header section */}
+        {/* LEFT SECTION OF HEADER */}
 
         <ul className='flex justify-between items-center w-1/2 md:w-1/3 '>
           <img src={image} className='w-[100px] sm:w-[110px] sm:h-[50px]  dark:text-white' alt='Logo' />
@@ -61,14 +66,14 @@ const Header = ({ image }) => {
 
         </ul>
 
-        {/* right section of the header elements */}
+        {/* RIGHT SECTION OF HEADER  */}
 
 
-        {/* Sidebar when responsive triggered */}
+        {/* SIDEBAR TRIGGERED ON MOBILE*/}
 
         {sidebarVisible && (
           <div className='fixed top-0 left-0 h-full  w-auto z-10 bg-gray-100 dark:bg-black sm:hidden'>
-            {/* sidebar content  */}
+            {/* SIDEBAR CONTENT*/}
 
             <ul className='flex justify-between flex-col items-center h-1/2 pt-5' onClick={toggleSidebar}>
               <li className='w-full  text-lg text-center hover:bg-[#8bc34a]'>
@@ -109,7 +114,7 @@ const Header = ({ image }) => {
           <li className='cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/cart' className='flex'>
               <RiShoppingBasketFill className='text-2xl' />
-              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-white text-xs font-semibold animate-bounce'>{cartItems.length}</sup>
+              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-white text-xs font-semibold animate-bounce'>{totalQuantity}</sup>
             </NavLink>
           </li>
         

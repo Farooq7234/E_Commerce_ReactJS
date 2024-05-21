@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { products } from './mockData.js'
 import { useParams } from 'react-router-dom'
 import { add } from '../redux/slice/cartSlice.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { increment, decrement } from '../redux/slice/productSlice.js'
+import { increment, decrement, resetCount } from '../redux/slice/productSlice.js'
 import { toast } from 'react-hot-toast'
 
 
@@ -19,11 +19,26 @@ function ProductPage() {
     }
 
     const handleAddtoCart = () => {
-        dispatch(add(product))
-        toast.success("Item added")
+       if (count > 0) {
+        dispatch(add({...product, quantity: count}))
+        toast.success(`${count} item(s) added to cart`);
+       }else {
+        toast.error('Please select a quantity before adding to cart');
+    }
     }
 
-    console.log(count)
+  const handleIncrement = ()=>{
+    dispatch(increment())
+  }
+  const handleDecrement = ()=>{
+    dispatch(decrement())
+  }
+
+  useEffect(() => {
+   dispatch(resetCount())
+  }, [productDetails, dispatch])
+  
+   
 
     return (
         <>
@@ -45,20 +60,20 @@ function ProductPage() {
                     <p className='text-base'> Omnis in totam nobis alias explicabo molestias asperiores? Magni, aliquid molestiae.!</p>
                     <div className='flex justify-start gap-5 items-center'>
                     <button
-                        onClick={() => dispatch(decrement(count))}
-                        className='bg-[#6a9739] hover:bg-[#89c549]  px-5 rounded-md text-2xl font-bold text-white'>
+                        onClick={handleDecrement}
+                        className='bg-[#6a9739] hover:bg-[#89c549]  h-10 w-10 rounded-full text-2xl font-bold text-white'>
                         -
                     </button>
-                    <span className=' text-black text-xl font-bold'>
+                    <span className=' text-black dark:text-white text-xl font-bold'>
                         {count} 
                     </span>
                     <button
-                        onClick={() => dispatch(increment(count))}
-                        className='bg-[#6a9739] hover:bg-[#89c549] px-5 rounded-md text-2xl font-bold text-white'>
+                        onClick={handleIncrement}
+                        className='bg-[#6a9739] hover:bg-[#89c549]  h-10 w-10 rounded-full text-2xl font-bold text-white'>
                         +
                     </button>
                     {
-                        count > 9 ? <p className='text-red-500 text-sm'>(Max count reached)</p> : null
+                        count > 9 ? <p className='text-red-500 text-base font-bold'>(Max count reached)</p> : null
                     }
                     </div>
                     <button

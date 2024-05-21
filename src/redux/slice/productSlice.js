@@ -17,10 +17,14 @@ export const productSlice = createSlice({
             if(state.count > 0 ){
                 state.count -= 1
             }
+        },
+
+        resetCount: (state)=>{
+            state.count = 0
         }
     }
 });
 
-export const {increment,decrement} = productSlice.actions;
+export const {increment,decrement, resetCount} = productSlice.actions;
 export default productSlice.reducer;
 
