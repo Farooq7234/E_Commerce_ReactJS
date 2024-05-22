@@ -1,8 +1,8 @@
 import React from 'react'
+import './index.css'
 import ReactDOM from 'react-dom/client'
 import Home from './component/Home/Home.jsx'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import './index.css'
 import Layout from './Layout'
 import { store } from './redux/store/store.js'
 import { Provider } from 'react-redux'
@@ -14,6 +14,8 @@ import ProductPage from './component/ProductPage.jsx'
 import NotFoundPage from './component/NotFoundPage/NotFoundPage.jsx'
 import Cart from './component/Cart/Cart.jsx'
 import { Toaster } from 'react-hot-toast'
+import Login from './component/Login.jsx'
+import Signup from './component/SignUp.jsx'
 
 
 const router = createBrowserRouter(
@@ -31,6 +33,8 @@ const router = createBrowserRouter(
       <Route path='/about' element={<About/>} />
       <Route path='/products/:productDetails' Component={ProductPage} />
       <Route path='*' element={<NotFoundPage />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/signup' element={<Signup />} />
       </Route>
   )
 )

@@ -99,7 +99,7 @@ const Header = ({ image }) => {
         <ul className='flex justify-around items-center w-[60%] md:w-1/3 '>
 
           <li className='text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans  dark:text-white max-sm:hidden'>
-            <NavLink to='/about'>About</NavLink>
+            <NavLink to='/signup'>Signup</NavLink>
           </li>
 
           <li className='text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans dark:text-white max-sm:hidden'>
