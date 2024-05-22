@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
-import { FaUser } from 'react-icons/fa';
+
 import { useSelector } from 'react-redux';
+import LogoutBtn from './LogoutBtn';
 
 
 
 const Header = ({ image }) => {
-  const {cartItems} = useSelector((state)=> state.cart)
+  const authStatus = useSelector((state)=> state.auth.status)
+  const { cartItems } = useSelector((state) => state.cart)
   const [price, setPrice] = useState(0.00);
-  const [totalQuantity,setTotalQuantity] = useState(0)
-  const [sidebarVisible, setSidebarVisible] = useState(false); 
+  const [totalQuantity, setTotalQuantity] = useState(0)
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [userDropdown, setUserDropdown] = useState(false)
 
 
   useEffect(() => {
@@ -20,11 +23,15 @@ const Header = ({ image }) => {
     setPrice(totalPrice);
     setTotalQuantity(totalQty);
   }, [cartItems]);
-  
+
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
+
+  const handleUserDropdown = () => {
+    setUserDropdown(!userDropdown)
+  }
 
   return (
     <>
@@ -77,7 +84,7 @@ const Header = ({ image }) => {
 
             <ul className='flex justify-between flex-col items-center h-1/2 pt-5' onClick={toggleSidebar}>
               <li className='w-full  text-lg text-center hover:bg-[#8bc34a]'>
-                <NavLink to='/user'  className="px-20  "><FaUser className='m-auto dark:text-white' /></NavLink>
+                <NavLink to='/user' className="px-20  "><FaUser className='m-auto dark:text-white' /></NavLink>
               </li>
               <li className='w-full py-2 text-lg text-center hover:bg-[#8bc34a] dark:text-white'>
                 <NavLink to='/' className="px-20 py-3 ">Home</NavLink>
@@ -99,16 +106,16 @@ const Header = ({ image }) => {
         <ul className='flex justify-around items-center w-[60%] md:w-1/3 '>
 
           <li className='text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans  dark:text-white max-sm:hidden'>
-            <NavLink to='/signup'>Signup</NavLink>
+            <NavLink to='/about'>About</NavLink>
           </li>
 
           <li className='text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans dark:text-white max-sm:hidden'>
-            <NavLink to='/github'>Github</NavLink>
+            <NavLink to='/github'>Github </NavLink>
           </li>
 
 
           <li className='text-base cursor-pointer font-bold text-[#8bc34a] font-sans'>
-            <NavLink to='/price'>${price.toFixed(2)}</NavLink>
+            <NavLink>${price.toFixed(2)}</NavLink>
           </li>
 
           <li className='cursor-pointer text-[#8bc34a] font-sans'>
@@ -117,7 +124,7 @@ const Header = ({ image }) => {
               <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-white text-xs font-semibold animate-bounce'>{totalQuantity}</sup>
             </NavLink>
           </li>
-        
+
 
           <svg className='dark:text-white sm:hidden max-sm:visible w-8 h-7  text-white max-sm:bg-[#8bc34a]  p-1 rounded cursor-pointer'
             xmlns='http://www.w3.org/2000/svg'
@@ -129,10 +136,23 @@ const Header = ({ image }) => {
           </svg>
 
           <li className='text-xl max-sm:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
-            <NavLink to='/user'><FaUser /></NavLink>
+          {!authStatus && (
+             <NavLink to={'/login'}
+             className={`px-4 py-2 text-white text-lg font-medium bg-[#8bc34a] rounded-full`}
+             onClick={handleUserDropdown}
+             >Login</NavLink>
+           )
+           }
+            {authStatus && (
+              <li
+              onClick={handleUserDropdown}
+              ><LogoutBtn/></li>
+            )
+            }
           </li>
         </ul>
       </div>
+
     </>
   );
 };

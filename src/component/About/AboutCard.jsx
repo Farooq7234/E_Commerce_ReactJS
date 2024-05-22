@@ -20,7 +20,7 @@ function AboutCard() {
             {
               tickBoxes.map((tickBox, index) =>
 
-                <li className='flex justify-start items-center gap-4'> {tickBox} Fresh fruits</li>
+                <li className='flex justify-start items-center gap-4' key={index}> {tickBox} Fresh fruits</li>
               )
             }
             {/* <li className='flex justify-start items-center gap-1 mt-2'><IoIosCheckbox className='text-green-500'/> Fresh vegetables</li>
