@@ -34,7 +34,7 @@ function Signup() {
 
     return (
         <>
-            <div className="flex items-center justify-center  dark:bg-black dark:text-white bg-[#f8f6f3] py-5">
+            <div className="flex items-center justify-center  dark:bg-black dark:text-white bg-[#f8f6f3] min-h-[80vh]">
                 <div className={`mx-auto w-full max-w-lg flex flex-col gap-2 bg-white dark:bg-[#333] rounded-xl p-10 border border-black/10`}>
                     <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
 

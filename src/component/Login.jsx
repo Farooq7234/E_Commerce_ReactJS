@@ -32,7 +32,7 @@ function Login() {
     return (
         <>
             <div
-                className='flex items-center justify-center w-full dark:bg-black dark:text-white bg-[#f8f6f3] shadow-lg py-5'
+                className='flex items-center justify-center w-full dark:bg-black dark:text-white bg-[#f8f6f3] shadow-lg min-h-[80vh]'
             >
                 <div className={`mx-auto w-full max-w-lg dark:bg-[#333] bg-white border-2 border-gray-200 rounded-xl p-10`}>
                     <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>

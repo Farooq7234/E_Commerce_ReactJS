@@ -15,7 +15,7 @@ import NotFoundPage from './component/NotFoundPage/NotFoundPage.jsx'
 import Cart from './component/Cart/Cart.jsx'
 import { Toaster } from 'react-hot-toast'
 import Login from './component/Login.jsx'
-import Signup from './component/SignUp.jsx'
+import Signup from './component/Signup.jsx'
 
 
 const router = createBrowserRouter(

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
-
+import { FaUser } from 'react-icons/fa6';
 import { useSelector } from 'react-redux';
 import LogoutBtn from './LogoutBtn';
 
