@@ -15,7 +15,7 @@ function LogoutBtn() {
 
     return (
         <button
-            className='px-4 py-2 bg-red-400 text-base text-white rounded-full'
+            className='px-4 py-2 bg-red-500 text-base text-white rounded-full'
             onClick={logoutHandler}
         >Logout</button>
     )
