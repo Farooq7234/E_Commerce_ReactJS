@@ -2,6 +2,8 @@ import conf from '../conf/conf.js'
 import { Client, ID, Databases, Storage } from 'appwrite'
 
 
+
+
 export class DataService {
     client = new Client();
     databases;
@@ -17,7 +19,7 @@ export class DataService {
 
     async saveCartItems({ userId, cartItems }) {
         try {
-            const response = await this.databases.createDocument(conf.ppwriteDatabaseId,
+            const response = await this.databases.createDocument(conf.appwriteDatabaseId,
                 {
                     userId: userId,
                     cartItems: cartItems

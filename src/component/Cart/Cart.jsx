@@ -2,6 +2,11 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { remove } from '../../redux/slice/cartSlice.js';
 import toast from 'react-hot-toast';
+import TotalCalculator from '../TotalCalculator.jsx';
+import Button from '../Button.jsx'
+import { Link } from 'react-router-dom';
+
+
 
 function Cart() {
     const cartItems = useSelector(state => state.cart.cartItems);
@@ -12,13 +17,26 @@ function Cart() {
         toast.error('item is removed')
     };
 
+    const handleProceedClick = ()=>{
+        toast.error("Feature not yet ready :)")
+    }
+
+
     return (
-        <div className="min-h-[80vh] flex flex-col justify-start items-center dark:text-white bg-[#f8f6f3] dark:bg-[#000]">
-            <h1 className="text-3xl font-bold my-5 ">Your Cart</h1>
+        <>
+         <div className="py-4 min-h-[80vh] flex flex-col  justify-around items-center dark:text-white bg-[#f8f6f3] dark:bg-[#000]">
             {cartItems.length === 0 ? (
-                <p className='text-[#333] text-4xl'>Your cart is empty</p>
+            
+               <div className='flex flex-col items-center gap-10'>
+                 <p className='text-[#333] dark:text-white text-4xl'>Your cart is currently empty.</p>
+           <Link 
+           to={'/groceries'} 
+           className="p-2 bg-[#6a9739] hover:bg-[#8bc34a] rounded-md text-white"
+           >RETURN TO SHOP</Link>
+               </div>
             ) : (
-                <div className="w-full max-w-2xl dark:text-white px-5 sm:px-0">
+                <div className='flex justify-around items-start gap-5 flex-wrap w-full'>
+                    <div className="w-[500px]  dark:text-white px-5 sm:px-0">
                     {cartItems.map(item => (
                         <div key={item.uniqueId} className="flex justify-between items-center border-b py-2">
                             <div className="flex items-center gap-4">
@@ -40,8 +58,26 @@ function Cart() {
                         </div>
                     ))}
                 </div>
+                <div className='flex flex-col justify-around h-[250px] w-[90%] sm:w-[400px] bg-[#f8f6f3] dark:bg-[#333] border border-[#737373] shadow-md rounded-sm p-2'>
+                <p className='text-2xl p-3 '>Cart Totals</p>
+               <div className='flex flex-col gap-2'>
+               <p className='text-xl flex justify-around'>Total :  <TotalCalculator/></p>
+               <hr />
+               </div>
+              
+
+               <Button
+                onClick={handleProceedClick}
+               className='text-base sm:text-xl uppercase'
+               >PROCEED TO CHECKOUT</Button>
+
+            </div>
+                </div>
             )}
+            
         </div>
+        </>
+       
     );
 }
 

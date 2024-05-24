@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa6';
 import { useSelector } from 'react-redux';
 import LogoutBtn from './LogoutBtn';
+import TotalCalculator from '../TotalCalculator';
 
 
 
@@ -14,7 +15,7 @@ const Header = ({ image }) => {
   const [totalQuantity, setTotalQuantity] = useState(0)
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false)
-
+  const navigate= useNavigate()
 
   useEffect(() => {
     const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
@@ -25,6 +26,7 @@ const Header = ({ image }) => {
   }, [cartItems]);
 
 
+
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
@@ -33,6 +35,10 @@ const Header = ({ image }) => {
     setUserDropdown(!userDropdown)
   }
 
+  const handleLogoClick = () =>{
+    navigate('/')
+    console.log("i");
+  }
   return (
     <>
       {/* HEADER CONTAINER */}
@@ -41,15 +47,17 @@ const Header = ({ image }) => {
 
         {/* LEFT SECTION OF HEADER */}
 
-        <ul className='flex justify-between items-center w-1/2 md:w-1/3 '>
-          <img src={image} className='w-[100px] sm:w-[110px] sm:h-[50px]  dark:text-white' alt='Logo' />
+        <ul className='flex justify-between items-center w-[60%] md:w-[40%] '>
+          <img src={image} className='w-[100px] sm:w-[110px] sm:h-[50px]  dark:text-white cursor-pointer' alt='Logo'
+          onClick={handleLogoClick}
+          />
 
           <li className='dark:text-white text-base  cursor-pointer font-normal text-black hover:text-[#8bc34a] font-sans'>
 
-            <NavLink to='/'
+            <NavLink to='/everything'
               className={({ isActive }) =>
                 `duration-200 max-sm:hidden ${isActive ? "text-[#8bc34a] " : "text-gray-700  dark:text-white dark:hover:text-[#8bc34a]"}  lg:hover:bg-transparent lg:border-0 hover:text-[#8bc34a] lg:p-0`}>
-              Home
+              Everthing
             </NavLink>
 
           </li>
@@ -103,7 +111,7 @@ const Header = ({ image }) => {
           </div>
         )}
 
-        <ul className='flex justify-around items-center w-[60%] md:w-1/3 '>
+        <ul className='flex justify-around items-center w-[60%] md:w-[40%] '>
 
           <li className='text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans  dark:text-white max-sm:hidden'>
             <NavLink to='/about'>About</NavLink>
@@ -114,9 +122,9 @@ const Header = ({ image }) => {
           </li>
 
 
-          <li className='text-base cursor-pointer font-bold text-[#8bc34a] font-sans'>
-            <NavLink>${price.toFixed(2)}</NavLink>
-          </li>
+         <div>
+          <TotalCalculator/>
+         </div>
 
           <li className='cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/cart' className='flex'>
