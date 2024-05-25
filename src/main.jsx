@@ -22,6 +22,7 @@ import Everthing from './component/Everthing/Everything.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
+      <Route path='/' element={ <Home/>}/>
       <Route path='/everything' element={<Everthing />} />
       <Route path='/groceries' element={<Groceries />} />
       <Route path='/juice' element={<Juice />} />

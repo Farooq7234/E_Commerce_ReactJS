@@ -8,7 +8,9 @@ import { Link } from 'react-router-dom';
 
 
 
+
 function Cart() {
+   
     const cartItems = useSelector(state => state.cart.cartItems);
     const dispatch = useDispatch();
 
@@ -30,7 +32,7 @@ function Cart() {
                <div className='flex flex-col items-center gap-10'>
                  <p className='text-[#333] dark:text-white text-4xl'>Your cart is currently empty.</p>
            <Link 
-           to={'/groceries'} 
+           to={'/everything'} 
            className="p-2 bg-[#6a9739] hover:bg-[#8bc34a] rounded-md text-white"
            >RETURN TO SHOP</Link>
                </div>
@@ -58,7 +60,7 @@ function Cart() {
                         </div>
                     ))}
                 </div>
-                <div className='flex flex-col justify-around h-[250px] w-[90%] sm:w-[400px] bg-[#f8f6f3] dark:bg-[#333] border border-[#737373] shadow-md rounded-sm p-2'>
+                <div className='flex flex-col justify-around  h-[250px] w-[90%] sm:w-[400px] bg-[#f8f6f3] dark:bg-[#333] border border-[#dbdbdb] shadow-md rounded-sm p-2'>
                 <p className='text-2xl p-3 '>Cart Totals</p>
                <div className='flex flex-col gap-2'>
                <p className='text-xl flex justify-around'>Total :  <TotalCalculator/></p>
@@ -68,7 +70,7 @@ function Cart() {
 
                <Button
                 onClick={handleProceedClick}
-               className='text-base sm:text-xl uppercase'
+               className='text-base sm:text-lg uppercase w-[70%]'
                >PROCEED TO CHECKOUT</Button>
 
             </div>
