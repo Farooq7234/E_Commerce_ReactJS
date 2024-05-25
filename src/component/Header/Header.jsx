@@ -9,7 +9,7 @@ import TotalCalculator from '../TotalCalculator';
 
 
 const Header = ({ image }) => {
-  const authStatus = useSelector((state) => state.auth.status)
+  const authStatus = useSelector((state)=> state.auth.status)
   const { cartItems } = useSelector((state) => state.cart)
   const [price, setPrice] = useState(0.00);
   const [totalQuantity, setTotalQuantity] = useState(0)
@@ -144,18 +144,20 @@ const Header = ({ image }) => {
           </svg>
 
           <li className='text-xl max-sm:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
-            {!authStatus ? (
-              <NavLink to={'/login'}
-                className={`px-4 py-2 text-white text-lg font-medium bg-[#8bc34a] rounded-full`}
-                onClick={handleUserDropdown}
-              >Login</NavLink>
-            ) : (
-              <div onClick={handleUserDropdown}>
-                <LogoutBtn />
-              </div>
-            )}
+          {!authStatus && (
+             <NavLink to={'/login'}
+             className={`px-4 py-2 text-white text-lg font-medium bg-[#8bc34a] rounded-full`}
+             onClick={handleUserDropdown}
+             >Login</NavLink>
+           )
+           }
+            {authStatus && (
+              <li
+              onClick={handleUserDropdown}
+              ><LogoutBtn/></li>
+            )
+            }
           </li>
-
         </ul>
       </div>
 
