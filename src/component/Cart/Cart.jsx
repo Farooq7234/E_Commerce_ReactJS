@@ -26,7 +26,7 @@ function Cart() {
 
     return (
         <>
-         <div className="py-4 min-h-[80vh] flex flex-col  justify-around items-center dark:text-white bg-[#f8f6f3] dark:bg-[#000]">
+         <div className="py-4 min-h-[100vh] flex flex-col  justify-around items-center dark:text-white bg-[#f8f6f3] dark:bg-[#000]">
             {cartItems.length === 0 ? (
             
                <div className='flex flex-col items-center gap-10'>

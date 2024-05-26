@@ -16,7 +16,7 @@ export default function ThemeBtn() {
   };
 
   return (<>
-       <div className="flex items-center justify-end bg-[#f8f6f3] dark:bg-black py-3">
+       <div className="relative top-24 flex items-center justify-end bg-[#f8f6f3] dark:bg-black  ">
       <span className="mt-1 mr-2 text-sm font-medium sm:text-base text-gray-900 dark:text-white">{themeMode === "dark" ?"Dark Mode" : "Light Mode" }</span>
       <label className="relative inline-flex items-center cursor-pointer mr-4">
         <input

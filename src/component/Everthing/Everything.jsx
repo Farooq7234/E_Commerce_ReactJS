@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ProductCard from '../ProductCard.jsx';
 import { products } from '../mockData';
 import Search from '../Search.jsx';
+import ThemeBtn from '../../component/ThemeBtn.jsx'
 
 function Everthing() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,7 +31,8 @@ function Everthing() {
 
   return (
     <>
-      <div className='flex flex-col justify-center items-center gap-10 py-10 bg-[#f8f6f3] dark:bg-black'>
+        <ThemeBtn/>
+      <div className='flex flex-col justify-center items-center gap-10  py-10 bg-[#f8f6f3] dark:bg-black pt-28'>
         <div className='flex flex-wrap gap-10 justify-around items-center w-full'>
           <p className='text-4xl font-medium text-[#8bc34a] font-serif'>Shop</p>
           <Search onSearch={handleSearch} />

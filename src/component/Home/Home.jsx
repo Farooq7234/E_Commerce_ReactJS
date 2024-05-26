@@ -12,7 +12,7 @@ import ProductCard from '../ProductCard.jsx';
 function Home() {
   return (
     <>
-      <div className='dark:text-white dark:bg-black bg-[#f8f6f3] flex flex-col gap-10 '>
+      <div className='dark:text-white dark:bg-black bg-[#f8f6f3] flex flex-col gap-10'>
         {/* HERO SECTION */}
         <Hero />
         <hr className='opacity-15' />

@@ -40,7 +40,6 @@ const logoSrc = (themeMode) === "light" ? LOGO_URL_DARK : LOGO_URL_WHITE;
     <>
  <ThemeProvider value={{ themeMode, lightTheme, darkTheme }} >
     <Header image={logoSrc}/>
-    <ThemeBtn />
     <Outlet />
     <ScrollToTop/>
     <Footer/>

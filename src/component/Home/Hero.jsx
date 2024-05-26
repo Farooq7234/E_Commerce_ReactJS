@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ActionButton from '../ActionButton';
-
+import ThemeBtn from '../ThemeBtn'
 function Hero() {
   const [text, setText] = useState('');
   const fullTexts = ['Organic Store', 'Natural Products', 'Fresh Veggies'];
@@ -46,10 +46,10 @@ function Hero() {
     <>
 
     {/* Right side of Hero Section */}
-
-    <div className='dark:bg-black flex justify-around items-center max-sm:flex-col-reverse p-5 sm:p-10 overflow-hidden'>
+    <ThemeBtn/>
+    <div className='dark:bg-black flex justify-around items-center flex-wrap-reverse overflow-hidden pt-24'>
       <img
-        className='w-full sm:w-[300px] lg:w-[600px] lg:h-[500px] py-5'
+        className='w-[300px] sm:w-[300px] lg:w-[600px] lg:h-[500px] py-5'
         src='https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/organic-products-hero.png'
         alt=''
       />

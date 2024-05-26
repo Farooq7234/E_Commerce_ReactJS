@@ -43,7 +43,7 @@ function ProductPage() {
     return (
         <>
 
-            <div className='flex justify-around items-center gap-5 min-h-[80vh] flex-wrap bg-[#f8f6f3] dark:bg-black dark:text-white py-5'>
+            <div className='flex justify-around items-center gap-5 min-h-[90vh] flex-wrap bg-[#f8f6f3] dark:bg-black dark:text-white pt-24'>
                 <img
                     src={product.productImage}
                     alt={product.productName}

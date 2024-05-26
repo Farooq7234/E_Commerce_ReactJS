@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Banner from '../Banner';
 import ProductSlider from '../ProductSlider';
 import AboutCard from './AboutCard';
+import ThemeBtn from '../ThemeBtn';
 
 function About() {
   const AboutMsg = "About Us";
@@ -45,6 +46,7 @@ function About() {
 
   return (
     <>
+    <ThemeBtn/>
       <Banner ContactValue={AboutMsg} />
       <hr />
       <div className='flex justify-around items-center flex-wrap-reverse px-5 lg:px-0 gap-5 lg:gap-0 bg-[#f8f6f3] dark:bg-black py-5'>
