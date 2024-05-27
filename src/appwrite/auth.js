@@ -10,7 +10,6 @@ export class AuthService {
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId)
         this.account = new Account(this.client)
-        console.log(this.account)
     }
 
     async createAccount({ email, password, name }) {

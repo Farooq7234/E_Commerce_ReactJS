@@ -8,6 +8,7 @@ import { toast } from 'react-hot-toast'
 
 
 function ProductPage() {
+    const authStatus = useSelector((state)=> state.auth.status)
     const { count } = useSelector((state) => state.product)
     const dispatch = useDispatch()
     const { productDetails } = useParams()
@@ -19,26 +20,29 @@ function ProductPage() {
     }
 
     const handleAddtoCart = () => {
-       if (count > 0) {
-        dispatch(add({...product, quantity: count}))
-        toast.success(`${count} item(s) added to cart`);
-       }else {
-        toast.error('Please select a quantity before adding to cart');
-    }
+        if (count > 0) {
+            dispatch(add({ ...product, quantity: count ,}))
+            toast.success(`${count} item(s) added to cart`);
+        } else {
+            toast.error('Please select a quantity before adding to cart');
+        }
     }
 
-  const handleIncrement = ()=>{
-    dispatch(increment())
-  }
-  const handleDecrement = ()=>{
-    dispatch(decrement())
-  }
+    const handleIncrement = () => {
+        dispatch(increment())
+    }
+    const handleDecrement = () => {
+        dispatch(decrement())
+    }
 
-  useEffect(() => {
-   dispatch(resetCount())
-  }, [productDetails, dispatch])
-  
-   
+    useEffect(() => {
+        dispatch(resetCount())
+    }, [productDetails, dispatch])
+
+
+    const LoginAlert = ()=>{
+        toast.error("Login to add to cart")
+    }
 
     return (
         <>
@@ -59,27 +63,27 @@ function ProductPage() {
                     <p className='text-base'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quia, voluptas id quis, consectetur molestias culpa,</p>
                     <p className='text-base'> Omnis in totam nobis alias explicabo molestias asperiores? Magni, aliquid molestiae.!</p>
                     <div className='flex justify-start gap-5 items-center'>
-                    <button
-                        onClick={handleDecrement}
-                        className='bg-[#6a9739] hover:bg-[#89c549]  h-10 w-10 rounded-full text-2xl font-bold text-white'>
-                        -
-                    </button>
-                    <span className=' text-black dark:text-white text-xl font-bold'>
-                        {count} 
-                    </span>
-                    <button
-                        onClick={handleIncrement}
-                        className='bg-[#6a9739] hover:bg-[#89c549]  h-10 w-10 rounded-full text-2xl font-bold text-white'>
-                        +
-                    </button>
-                    {
-                        count > 9 ? <p className='text-red-500 text-base font-bold'>(Max count reached)</p> : null
-                    }
+                        <button
+                            onClick={handleDecrement}
+                            className='bg-[#6a9739] hover:bg-[#89c549]  h-10 w-10 rounded-full text-2xl font-bold text-white'>
+                            -
+                        </button>
+                        <span className=' text-black dark:text-white text-xl font-bold'>
+                            {count}
+                        </span>
+                        <button
+                            onClick={handleIncrement}
+                            className='bg-[#6a9739] hover:bg-[#89c549]  h-10 w-10 rounded-full text-2xl font-bold text-white'>
+                            +
+                        </button>
+                        {
+                            count > 9 ? <p className='text-red-500 text-base font-bold'>(Max count reached)</p> : null
+                        }
                     </div>
                     <button
                         className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md w-[50%]'
                         type='submint'
-                        onClick={handleAddtoCart}
+                        onClick={authStatus === false ? LoginAlert : handleAddtoCart}
                     >Add to Cart</button>
                 </div>
             </div>
