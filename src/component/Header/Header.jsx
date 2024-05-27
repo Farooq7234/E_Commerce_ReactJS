@@ -130,11 +130,10 @@ const Header = ({ image }) => {
             }
           </li>
         </ul>
-          {/* SIDEBAR TRIGGERED ON MOBILE*/}
+        {/* SIDEBAR TRIGGERED ON MOBILE*/}
         {sidebarVisible && (
           <div className='fixed top-0 left-0 h-full  w-auto z-10 bg-gray-100 dark:bg-black sm:hidden'>
             {/* SIDEBAR CONTENT*/}
-
             <ul className='flex justify-between flex-col items-center h-1/2 pt-5' onClick={toggleSidebar}>
               <li className='w-full  text-lg text-center hover:bg-[#8bc34a]'>
                 <NavLink to='/user' className="px-20  "><FaUser className='m-auto dark:text-white' /></NavLink>

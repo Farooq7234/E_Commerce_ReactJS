@@ -5,6 +5,8 @@ import { add } from '../redux/slice/cartSlice.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { increment, decrement, resetCount } from '../redux/slice/productSlice.js'
 import { toast } from 'react-hot-toast'
+import authService from '../appwrite/auth.js'
+import { setUserId } from '../redux/slice/cartSlice.js'
 
 
 function ProductPage() {
@@ -19,14 +21,29 @@ function ProductPage() {
         return <div className="h-[80vh] flex justify-center items-center">Product Not found!</div>
     }
 
-    const handleAddtoCart = () => {
-        if (count > 0) {
-            dispatch(add({ ...product, quantity: count ,}))
-            toast.success(`${count} item(s) added to cart`);
-        } else {
-            toast.error('Please select a quantity before adding to cart');
+    const getCurrentUser = async () => {
+        try {
+            const response = await authService.getCurrentUser()
+            return response
+        } catch (error) {
+            console.log(`error fetching the user ${error}`)
         }
     }
+
+    const handleAddtoCart = async () => {
+        const user = await getCurrentUser();
+        if (user && user.$id) {
+            dispatch(setUserId(user.$id));
+            if (count > 0) {
+                dispatch(add({ ...product, quantity: count }));
+                toast.success(`${count} item(s) added to cart`);
+            } else {
+                toast.error('Please select a quantity before adding to cart');
+            }
+        } else {
+            LoginAlert();
+        }
+    };
 
     const handleIncrement = () => {
         dispatch(increment())

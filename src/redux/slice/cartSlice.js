@@ -3,36 +3,38 @@ import { v4 as uuidv4 } from 'uuid';
 
 const loadFromLocalStorage = () => {
     try {
-        const serializedState = localStorage.getItem('cartItems');
+        const serializedState = localStorage.getItem('cartState');
         if (serializedState === null) {
-            return [];
+            return { cartItems: [], userId: null };
         }
         return JSON.parse(serializedState);
     } catch (err) {
         console.error("Could not load state from localStorage", err);
-        return [];
+        return { cartItems: [], userId: null };
     }
 };
 
 const saveToLocalStorage = (state) => {
     try {
         const serializedState = JSON.stringify(state);
-        localStorage.setItem('cartItems', serializedState);
+        localStorage.setItem('cartState', serializedState);
     } catch (err) {
         console.error("Could not save state to localStorage", err);
     }
 };
 
-const initialState = {
-    cartItems: loadFromLocalStorage(),
-};
+const initialState = loadFromLocalStorage();
 
 export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
+        setUserId: (state, action) => {
+            state.userId = action.payload;
+            saveToLocalStorage(state);
+        },
         add: (state, action) => {
-            const newItem = { ...action.payload, uniqueId: uuidv4() };
+            const newItem = { ...action.payload, uniqueId: uuidv4(), userId: state.userId };
             const existingItem = state.cartItems.find(item => item.productName === newItem.productName);
 
             if (existingItem) {
@@ -41,14 +43,18 @@ export const cartSlice = createSlice({
                 state.cartItems.push(newItem);
             }
 
-            saveToLocalStorage(state.cartItems);
+            saveToLocalStorage(state);
         },
         remove: (state, action) => {
             state.cartItems = state.cartItems.filter(item => item.uniqueId !== action.payload);
-            saveToLocalStorage(state.cartItems);
+            saveToLocalStorage(state);
+        },
+        clearCart: (state) => {
+            state.cartItems = [];
+            saveToLocalStorage(state);
         },
     },
 });
 
-export const { add, remove } = cartSlice.actions;
+export const { add, remove, setUserId, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
