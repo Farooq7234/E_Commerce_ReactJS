@@ -12,16 +12,13 @@ export class cartService {
         this.databases = new Databases(this.client);
     }
 
-    async saveCartItems({ userId, cartItems }) {
+    async saveCartItems(cartItem) {
         try {
             const response = await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 ID.unique(),
-                {
-                    userId: userId,
-                    cartItems: cartItems
-                }
+                cartItem
             );
             console.log('Cart data saved:', response);
             return response;
@@ -66,5 +63,5 @@ export class cartService {
     }
 }
 
-const service = new cartService()
-export default service
+const cartservice = new cartService()
+export default cartservice

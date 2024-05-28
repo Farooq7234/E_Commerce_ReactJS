@@ -5,23 +5,58 @@ import toast from 'react-hot-toast';
 import TotalCalculator from '../TotalCalculator.jsx';
 import Button from '../Button.jsx'
 import { Link } from 'react-router-dom';
+import cartservice, { cartService } from '../../appwrite/config.js';
+import authService from '../../appwrite/auth.js';
 
 
 function Cart() {
-    const cartItems = useSelector(state => state.cart.cartItems);
+    const cartItems = useSelector((state) => state.cart.cartItems);
+    const [userId, setUserId] = useState(null);
     const dispatch = useDispatch();
+
+    const getCurrentUser = async () => {
+        try {
+            const user = await authService.getCurrentUser();
+            setUserId(user.$id); 
+        } catch (error) {
+            console.log(`Error retrieving the user id: ${error}`);
+        }
+    };
 
     const handleRemove = (uniqueId) => {
         dispatch(remove(uniqueId));
-        toast.error('item is removed')
+        toast.error('Item is removed');
     };
 
     const handleProceedClick = () => {
-        toast.error("Feature not yet ready :)")
-    }
+        toast.error('Feature not yet ready :)');
+    };
+
+    useEffect(() => {
+        const saveCartItems = async () => {
+            try {
+                for (const item of cartItems) {
+                    const cartItemWithUser = { ...item, userId };
+                    await cartservice.saveCartItems(cartItemWithUser);
+                }
+                console.log('All cart items have been synced');
+            } catch (error) {
+                console.error('Error syncing cart items:', error);
+            }
+        };
+
+        if (userId) {
+            saveCartItems();
+        }
+    }, [cartItems, userId]);
+
+    useEffect(() => {
+        getCurrentUser();
+    }, []);
+
 
     console.log(cartItems);
-
+    console.log(userId)
 
     return (
         <>

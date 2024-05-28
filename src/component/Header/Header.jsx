@@ -123,9 +123,9 @@ const Header = ({ image }) => {
             )
             }
             {authStatus && (
-              <li
+              <div
                 onClick={handleUserDropdown}
-              ><LogoutBtn /></li>
+              ><LogoutBtn /></div>
             )
             }
           </li>
