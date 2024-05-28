@@ -23,20 +23,17 @@ function Cart() {
         }
     };
 
-    const handleRemove = (uniqueId) => {
-        dispatch(remove(uniqueId));
+    const handleRemove = (id) => {
+        dispatch(remove(id));
         toast.error('Item is removed');
     };
 
-    const handleProceedClick = () => {
-        toast.error('Feature not yet ready :)');
-    };
-
+    
     useEffect(() => {
         const saveCartItems = async () => {
             try {
                 for (const item of cartItems) {
-                    const cartItemWithUser = { ...item, userId };
+                    const cartItemWithUser = { item, userId };
                     await cartservice.saveCartItems(cartItemWithUser);
                 }
                 console.log('All cart items have been synced');
@@ -49,10 +46,15 @@ function Cart() {
             saveCartItems();
         }
     }, [cartItems, userId]);
-
+    
     useEffect(() => {
         getCurrentUser();
     }, []);
+    
+    
+    const handleProceedClick = () => {
+        toast.error('Feature not yet ready :)');
+    };
 
 
     console.log(cartItems);
@@ -74,7 +76,7 @@ function Cart() {
                     <div className='flex justify-around items-start gap-5 flex-wrap w-full'>
                         <div className="w-[500px]  dark:text-white px-5 sm:px-0">
                             {cartItems.map(item => (
-                                <div key={item.uniqueId} className="flex justify-between items-center border-b py-2">
+                                <div key={item.id} className="flex justify-between items-center border-b py-2">
                                     <div className="flex items-center gap-4">
                                         <img src={item.productImage} alt={item.productName} className="w-16 h-16 rounded" />
                                         <div>
@@ -86,7 +88,7 @@ function Cart() {
                                         <p className="font-bold text-sm sm:text-xl">${item.price * item.quantity}</p>
                                         <button
                                             className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 sm:px-4 sm:py-2 rounded"
-                                            onClick={() => handleRemove(item.uniqueId)}
+                                            onClick={() => handleRemove(item.id)}
                                         >
                                             Remove
                                         </button>

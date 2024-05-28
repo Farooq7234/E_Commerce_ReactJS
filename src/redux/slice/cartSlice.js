@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from 'uuid';
 
 const loadFromLocalStorage = () => {
     try {
@@ -34,7 +33,7 @@ export const cartSlice = createSlice({
             saveToLocalStorage(state);
         },
         add: (state, action) => {
-            const newItem = { ...action.payload, uniqueId: uuidv4(), userId: state.userId };
+            const newItem = { ...action.payload, userId: state.userId };
             const existingItem = state.cartItems.find(item => item.productName === newItem.productName);
 
             if (existingItem) {
@@ -46,7 +45,7 @@ export const cartSlice = createSlice({
             saveToLocalStorage(state);
         },
         remove: (state, action) => {
-            state.cartItems = state.cartItems.filter(item => item.uniqueId !== action.payload);
+            state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
             saveToLocalStorage(state);
         },
         clearCart: (state) => {
