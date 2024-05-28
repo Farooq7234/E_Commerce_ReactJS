@@ -1,7 +1,7 @@
 import conf from '../conf/conf.js';
 import { Client, ID, Databases } from 'appwrite';
 
-export class DataService {
+export class cartService {
     client = new Client();
     databases;
 
@@ -65,3 +65,6 @@ export class DataService {
         }
     }
 }
+
+const service = new cartService()
+export default service
