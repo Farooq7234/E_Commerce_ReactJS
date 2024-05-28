@@ -13,7 +13,6 @@ function About() {
     const workSectionObserve = (entries) => {
       const [entry] = entries;
       if (!entry.isIntersecting) return;
-      console.log(entries);
 
     const counterNum = document.querySelectorAll(".counter-numbers");
     const speed = 200;

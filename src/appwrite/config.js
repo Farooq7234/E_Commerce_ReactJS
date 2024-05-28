@@ -12,15 +12,14 @@ export class cartService {
         this.databases = new Databases(this.client);
     }
 
-    async saveCartItems(cartItem) {
+    async saveCartItems(item) {
         try {
             const response = await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 ID.unique(),
-                cartItem
+                item
             );
-            console.log('Cart data saved:', response);
             return response;
         } catch (error) {
             console.error('Error saving cart data:', error);

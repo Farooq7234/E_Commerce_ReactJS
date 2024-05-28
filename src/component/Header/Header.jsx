@@ -8,8 +8,6 @@ import TotalCalculator from '../TotalCalculator';
 import { loadAuthState } from '../../redux/slice/authSlice';
 
 
-
-
 const Header = ({ image }) => {
   const { cartItems } = useSelector((state) => state.cart)
   const authStatus = useSelector(state => state.auth.status)
@@ -50,7 +48,6 @@ const Header = ({ image }) => {
     navigate('/')
   }
 
-  console.log(authStatus)
   return (
     <>
       {/* HEADER CONTAINER */}

@@ -1,64 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+
 import { remove } from '../../redux/slice/cartSlice.js';
 import toast from 'react-hot-toast';
 import TotalCalculator from '../TotalCalculator.jsx';
 import Button from '../Button.jsx'
 import { Link } from 'react-router-dom';
-import cartservice, { cartService } from '../../appwrite/config.js';
-import authService from '../../appwrite/auth.js';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 function Cart() {
-    const cartItems = useSelector((state) => state.cart.cartItems);
-    const [userId, setUserId] = useState(null);
-    const dispatch = useDispatch();
-
-    const getCurrentUser = async () => {
-        try {
-            const user = await authService.getCurrentUser();
-            setUserId(user.$id); 
-        } catch (error) {
-            console.log(`Error retrieving the user id: ${error}`);
-        }
-    };
-
+    const dispatch = useDispatch()
+    const cartItems = useSelector(state=> state.cart.cartItems)
     const handleRemove = (id) => {
         dispatch(remove(id));
         toast.error('Item is removed');
     };
 
-    
-    useEffect(() => {
-        const saveCartItems = async () => {
-            try {
-                for (const item of cartItems) {
-                    const cartItemWithUser = { item, userId };
-                    await cartservice.saveCartItems(cartItemWithUser);
-                }
-                console.log('All cart items have been synced');
-            } catch (error) {
-                console.error('Error syncing cart items:', error);
-            }
-        };
 
-        if (userId) {
-            saveCartItems();
-        }
-    }, [cartItems, userId]);
-    
-    useEffect(() => {
-        getCurrentUser();
-    }, []);
-    
-    
     const handleProceedClick = () => {
         toast.error('Feature not yet ready :)');
     };
-
-
-    console.log(cartItems);
-    console.log(userId)
 
     return (
         <>
