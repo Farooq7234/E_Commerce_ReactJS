@@ -20,8 +20,11 @@ export class cartService {
                 ID.unique(),
                 item
             );
+            console.log(response)
             return response;
-        } catch (error) {
+        } 
+        
+        catch (error) {
             console.error('Error saving cart data:', error);
             throw error;
         }
@@ -60,7 +63,27 @@ export class cartService {
             throw error;
         }
     }
+
+
+
+    async deleteCartItems(documentId, cartItems) {
+        try {
+            const response = await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                documentId,
+                {cartItems:cartItems}
+            )
+
+            console("Cart Data is deleted", response)
+            return response
+        } catch (error) {
+            console.log(`Error deleting the cart ${error}` )
+        }
+    }
 }
+
+
 
 const cartservice = new cartService()
 export default cartservice
