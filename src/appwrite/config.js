@@ -1,5 +1,5 @@
 import conf from '../conf/conf.js';
-import { Client, ID, Databases } from 'appwrite';
+import { Client, ID, Databases ,Query  } from 'appwrite';
 
 export class cartService {
     client = new Client();
@@ -12,17 +12,19 @@ export class cartService {
         this.databases = new Databases(this.client);
     }
 
-    async saveCartItems(cartItem) {
+    async saveCartItems(item) {
         try {
             const response = await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 ID.unique(),
-                cartItem
+                item
             );
-            console.log('Cart data saved:', response);
+            console.log(response)
             return response;
-        } catch (error) {
+        } 
+        
+        catch (error) {
             console.error('Error saving cart data:', error);
             throw error;
         }
@@ -33,10 +35,10 @@ export class cartService {
             const response = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                [`equal("userId", "${userId}")`]
+                [Query.equal('userId', userId)]
             );
             if (response.documents.length > 0) {
-                return response.documents[0];
+                return response.documents;
             } else {
                 return null;
             }
@@ -61,7 +63,27 @@ export class cartService {
             throw error;
         }
     }
+
+
+
+    async deleteCartItems(documentId, cartItems) {
+        try {
+            const response = await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                documentId,
+                {cartItems:cartItems}
+            )
+
+            console("Cart Data is deleted", response)
+            return response
+        } catch (error) {
+            console.log(`Error deleting the cart ${error}` )
+        }
+    }
 }
+
+
 
 const cartservice = new cartService()
 export default cartservice

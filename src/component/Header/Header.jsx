@@ -2,28 +2,63 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa6';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LogoutBtn from './LogoutBtn';
 import TotalCalculator from '../TotalCalculator';
-
+import { loadAuthState } from '../../redux/slice/authSlice';
 
 
 const Header = ({ image }) => {
-  const authStatus = useSelector((state) => state.auth.status)
   const { cartItems } = useSelector((state) => state.cart)
+  const authStatus = useSelector(state => state.auth.status)
   const [price, setPrice] = useState(0.00);
   const [totalQuantity, setTotalQuantity] = useState(0)
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const totalQty = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    const totalPrice = cartItems.reduce((acc, item) => {
+        const itemPrice = parseFloat(item.price) || 0;
+        const itemQuantity = parseInt(item.quantity, 10) || 0;
+        return acc + (itemPrice * itemQuantity);
+    }, 0);
+    
+    const totalQty = cartItems.reduce((acc, item) => {
+        const itemQuantity = parseInt(item.quantity, 10) || 0;
+        return acc + itemQuantity;
+    }, 0);
 
     setPrice(totalPrice);
     setTotalQuantity(totalQty);
-  }, [cartItems]);
+}, [cartItems]);
+
+  const getCurrentUser = async () => {
+    try {
+        const response = await authService.getCurrentUser();
+        if (response && response.$id) {
+            dispatch(loadAuthState(true));
+        }
+        return response;
+    } catch (error) {
+        console.log(`error fetching the user ${error}`);
+        return null;
+    }
+};
+
+
+
+useEffect(() => {
+  getCurrentUser()
+}, [])
+
+  useEffect(() => {
+    const saveAuthStatus = localStorage.getItem('authStatus')
+    if (saveAuthStatus) {
+      dispatch(loadAuthState(JSON.parse(saveAuthStatus)));
+    }
+  }, [dispatch])
 
 
 
@@ -38,6 +73,8 @@ const Header = ({ image }) => {
   const handleLogoClick = () => {
     navigate('/')
   }
+
+  console.log(authStatus)
   return (
     <>
       {/* HEADER CONTAINER */}
@@ -115,18 +152,21 @@ const Header = ({ image }) => {
           </svg>
 
           <li className='text-xl max-md:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
-            {!authStatus && (
-              <NavLink to={'/login'}
-                className={`px-4 py-2 text-white text-lg font-medium bg-[#8bc34a] rounded-full`}
-                onClick={handleUserDropdown}
-              >Login</NavLink>
-            )
-            }
-            {authStatus && (
+            {authStatus ? (
+
               <div
                 onClick={handleUserDropdown}
               ><LogoutBtn /></div>
-            )
+
+            ) :
+
+              (
+
+                <NavLink to={'/login'}
+                  className={`px-4 py-2 text-white text-lg font-medium bg-[#8bc34a] rounded-full`}
+                  onClick={handleUserDropdown}
+                >Login</NavLink>
+              )
             }
           </li>
         </ul>
