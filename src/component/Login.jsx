@@ -8,6 +8,7 @@ import Input from './Input.jsx'
 import Button from './Button.jsx'
 import toast from 'react-hot-toast'
 import cartservice from '../appwrite/config.js'
+import { add } from '../redux/slice/cartSlice.js'
 
 function Login() {
     const navigate = useNavigate()

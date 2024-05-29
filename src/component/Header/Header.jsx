@@ -125,7 +125,7 @@ const Header = ({ image }) => {
           </svg>
 
           <li className='text-xl max-md:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
-            {authStatus ? (
+            {true ? (
 
               <div
                 onClick={handleUserDropdown}
