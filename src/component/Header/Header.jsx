@@ -19,13 +19,39 @@ const Header = ({ image }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const totalQty = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    const totalPrice = cartItems.reduce((acc, item) => {
+        const itemPrice = parseFloat(item.price) || 0;
+        const itemQuantity = parseInt(item.quantity, 10) || 0;
+        return acc + (itemPrice * itemQuantity);
+    }, 0);
+    
+    const totalQty = cartItems.reduce((acc, item) => {
+        const itemQuantity = parseInt(item.quantity, 10) || 0;
+        return acc + itemQuantity;
+    }, 0);
 
     setPrice(totalPrice);
     setTotalQuantity(totalQty);
-  }, [cartItems]);
+}, [cartItems]);
 
+  const getCurrentUser = async () => {
+    try {
+        const response = await authService.getCurrentUser();
+        if (response && response.$id) {
+            dispatch(loadAuthState(true));
+        }
+        return response;
+    } catch (error) {
+        console.log(`error fetching the user ${error}`);
+        return null;
+    }
+};
+
+
+
+useEffect(() => {
+  getCurrentUser()
+}, [])
 
   useEffect(() => {
     const saveAuthStatus = localStorage.getItem('authStatus')
@@ -48,6 +74,7 @@ const Header = ({ image }) => {
     navigate('/')
   }
 
+  console.log(authStatus)
   return (
     <>
       {/* HEADER CONTAINER */}
@@ -125,7 +152,7 @@ const Header = ({ image }) => {
           </svg>
 
           <li className='text-xl max-md:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
-            {true ? (
+            {authStatus ? (
 
               <div
                 onClick={handleUserDropdown}

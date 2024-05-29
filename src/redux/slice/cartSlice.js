@@ -1,28 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const loadFromLocalStorage = () => {
-    try {
-        const serializedState = localStorage.getItem('cartState');
-        if (serializedState === null) {
-            return { cartItems: [], userId: null };
-        }
-        return JSON.parse(serializedState);
-    } catch (err) {
-        console.error("Could not load state from localStorage", err);
-        return { cartItems: [], userId: null };
-    }
+const initialState = {
+    cartItems: [],
+    userId: null,
 };
-
-const saveToLocalStorage = (state) => {
-    try {
-        const serializedState = JSON.stringify(state);
-        localStorage.setItem('cartState', serializedState);
-    } catch (err) {
-        console.error("Could not save state to localStorage", err);
-    }
-};
-
-const initialState = loadFromLocalStorage();
 
 export const cartSlice = createSlice({
     name: 'cart',
@@ -30,7 +11,6 @@ export const cartSlice = createSlice({
     reducers: {
         setUserId: (state, action) => {
             state.userId = action.payload;
-            saveToLocalStorage(state);
         },
         add: (state, action) => {
             const newItem = { ...action.payload, userId: state.userId };
@@ -41,16 +21,12 @@ export const cartSlice = createSlice({
             } else {
                 state.cartItems.push(newItem);
             }
-
-            saveToLocalStorage(state);
         },
         remove: (state, action) => {
             state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
-            saveToLocalStorage(state);
         },
         clearCart: (state) => {
             state.cartItems = [];
-            saveToLocalStorage(state);
         },
     },
 });

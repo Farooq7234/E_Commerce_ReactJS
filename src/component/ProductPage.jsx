@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { products } from './mockData.js';
 import { useParams } from 'react-router-dom';
-import { add } from '../redux/slice/cartSlice.js';
+import { add, setUserId } from '../redux/slice/cartSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, resetCount } from '../redux/slice/productSlice.js';
 import { toast } from 'react-hot-toast';
@@ -10,10 +10,9 @@ import authService from '../appwrite/auth.js';
 
 function ProductPage() {
     const authStatus = useSelector((state) => state.auth.status);
-    const [userId, setUserId] = useState(null);
-    const dispatch = useDispatch();
     const { count } = useSelector((state) => state.product);
     const { productDetails } = useParams();
+    const dispatch = useDispatch();
 
     const product = products.find(product => product.productName === productDetails);
 
@@ -25,7 +24,7 @@ function ProductPage() {
         try {
             const response = await authService.getCurrentUser();
             if (response && response.$id) {
-                setUserId(response.$id);
+                dispatch(setUserId(response.$id))
             }
             return response;
         } catch (error) {
@@ -43,7 +42,6 @@ function ProductPage() {
                 try {
                     await cartservice.saveCartItems(cartItem);
                     toast.success(`${count} item(s) added to cart and synced to the cloud`);
-                    dispatch(resetCount())
                 } catch (error) {
                     console.error('Error syncing cart item:', error);
                     toast.error('Failed to sync cart item to the cloud');

@@ -38,7 +38,7 @@ export class cartService {
                 [Query.equal('userId', userId)]
             );
             if (response.documents.length > 0) {
-                return response.documents[0];
+                return response.documents;
             } else {
                 return null;
             }

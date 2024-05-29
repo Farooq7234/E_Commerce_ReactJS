@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { login as authLogin } from '../redux/slice/authSlice.js'
+import { login as authLogin, loadAuthState } from '../redux/slice/authSlice.js'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import authService from '../appwrite/auth.js'
@@ -8,7 +8,7 @@ import Input from './Input.jsx'
 import Button from './Button.jsx'
 import toast from 'react-hot-toast'
 import cartservice from '../appwrite/config.js'
-import { add } from '../redux/slice/cartSlice.js'
+import { add, setUserId } from '../redux/slice/cartSlice.js'
 
 function Login() {
     const navigate = useNavigate()
@@ -24,12 +24,12 @@ function Login() {
                 const userData = await authService.getCurrentUser();
                 if (userData) {
                     dispatch(authLogin(userData));
+                    dispatch(setUserId(userData.$id))
                     try {
                         const response = await cartservice.getCartItems(userData.$id);
                         dispatch(add(response));
                         navigate("/");
                         toast.success("Login successful");
-                        console.log(response)
                     } catch (error) {
                         console.error('Error fetching cart items:', error);
                         toast.error('Failed to fetch cart items');
