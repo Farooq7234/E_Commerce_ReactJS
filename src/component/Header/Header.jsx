@@ -9,49 +9,49 @@ import { loadAuthState } from '../../redux/slice/authSlice';
 
 
 const Header = ({ image }) => {
-  const { cartItems } = useSelector((state) => state.cart)
-  const authStatus = useSelector(state => state.auth.status)
+  const { cartItems } = useSelector((state) => state.cart);
+  const authStatus = useSelector(state => state.auth.status);
   const [price, setPrice] = useState(0.00);
-  const [totalQuantity, setTotalQuantity] = useState(0)
+  const [totalQuantity, setTotalQuantity] = useState(0);
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [userDropdown, setUserDropdown] = useState(false)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const [userDropdown, setUserDropdown] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const totalPrice = cartItems.reduce((acc, item) => {
-        const itemPrice = parseFloat(item.price) || 0;
-        const itemQuantity = parseInt(item.quantity, 10) || 0;
-        return acc + (itemPrice * itemQuantity);
+      const itemPrice = parseFloat(item.price) || 0;
+      const itemQuantity = parseInt(item.quantity, 10) || 0;
+      return acc + (itemPrice * itemQuantity);
     }, 0);
-    
+
     const totalQty = cartItems.reduce((acc, item) => {
-        const itemQuantity = parseInt(item.quantity, 10) || 0;
-        return acc + itemQuantity;
+      const itemQuantity = parseInt(item.quantity, 10) || 0;
+      return acc + itemQuantity;
     }, 0);
 
     setPrice(totalPrice);
     setTotalQuantity(totalQty);
-}, [cartItems]);
+  }, [cartItems]);
 
   const getCurrentUser = async () => {
     try {
-        const response = await authService.getCurrentUser();
-        if (response && response.$id) {
-            dispatch(loadAuthState(true));
-        }
-        return response;
+      const response = await authService.getCurrentUser();
+      if (response && response.$id) {
+        dispatch(loadAuthState(true));
+      }
+      return response;
     } catch (error) {
-        console.log(`error fetching the user ${error}`);
-        return null;
+      console.log(`error fetching the user ${error}`);
+      return null;
     }
-};
+  };
 
 
 
-useEffect(() => {
-  getCurrentUser()
-}, [])
+  useEffect(() => {
+    getCurrentUser()
+  }, [])
 
   useEffect(() => {
     const saveAuthStatus = localStorage.getItem('authStatus')
@@ -152,7 +152,7 @@ useEffect(() => {
           </svg>
 
           <li className='text-xl max-md:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
-            {authStatus ? (
+            {authStatus || undefined ? (
 
               <div
                 onClick={handleUserDropdown}
