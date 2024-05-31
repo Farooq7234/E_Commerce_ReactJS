@@ -1,64 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa6';
-import { useDispatch, useSelector } from 'react-redux';
 import LogoutBtn from './LogoutBtn';
-import TotalCalculator from '../TotalCalculator';
-import { loadAuthState } from '../../redux/slice/authSlice';
-
 
 const Header = ({ image }) => {
-  const { cartItems } = useSelector((state) => state.cart);
-  const authStatus = useSelector(state => state.auth.status);
   const [price, setPrice] = useState(0.00);
-  const [totalQuantity, setTotalQuantity] = useState(0);
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [userDropdown, setUserDropdown] = useState(false);
+  const [sidebarVisible, setSidebarVisible]= useState(false)
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const totalPrice = cartItems.reduce((acc, item) => {
-      const itemPrice = parseFloat(item.price) || 0;
-      const itemQuantity = parseInt(item.quantity, 10) || 0;
-      return acc + (itemPrice * itemQuantity);
-    }, 0);
-
-    const totalQty = cartItems.reduce((acc, item) => {
-      const itemQuantity = parseInt(item.quantity, 10) || 0;
-      return acc + itemQuantity;
-    }, 0);
-
-    setPrice(totalPrice);
-    setTotalQuantity(totalQty);
-  }, [cartItems]);
-
-  const getCurrentUser = async () => {
-    try {
-      const response = await authService.getCurrentUser();
-      if (response && response.$id) {
-        dispatch(loadAuthState(true));
-      }
-      return response;
-    } catch (error) {
-      console.log(`error fetching the user ${error}`);
-      return null;
-    }
-  };
-
-
-
-  useEffect(() => {
-    getCurrentUser()
-  }, [])
-
-  useEffect(() => {
-    const saveAuthStatus = localStorage.getItem('authStatus')
-    if (saveAuthStatus) {
-      dispatch(loadAuthState(JSON.parse(saveAuthStatus)));
-    }
-  }, [dispatch])
 
 
 
@@ -66,15 +15,11 @@ const Header = ({ image }) => {
     setSidebarVisible(!sidebarVisible);
   };
 
-  const handleUserDropdown = () => {
-    setUserDropdown(!userDropdown)
-  }
+
 
   const handleLogoClick = () => {
     navigate('/')
   }
-
-  console.log(authStatus)
   return (
     <>
       {/* HEADER CONTAINER */}
@@ -129,15 +74,10 @@ const Header = ({ image }) => {
             <NavLink to='/github'>Github </NavLink>
           </li>
 
-
-          <div>
-            <TotalCalculator />
-          </div>
-
           <li className='cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/cart' className='flex'>
               <RiShoppingBasketFill className='text-2xl' />
-              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-white text-xs font-semibold animate-bounce'>{totalQuantity}</sup>
+              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-white text-xs font-semibold animate-bounce'>0</sup>
             </NavLink>
           </li>
 
@@ -150,25 +90,8 @@ const Header = ({ image }) => {
           >
             <path d='M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z'></path>
           </svg>
+          <LogoutBtn/>
 
-          <li className='text-xl max-md:hidden cursor-pointer font-extrabold text-black font-sans dark:text-white'>
-            {authStatus || undefined ? (
-
-              <div
-                onClick={handleUserDropdown}
-              ><LogoutBtn /></div>
-
-            ) :
-
-              (
-
-                <NavLink to={'/login'}
-                  className={`px-4 py-2 text-white text-lg font-medium bg-[#8bc34a] rounded-full`}
-                  onClick={handleUserDropdown}
-                >Login</NavLink>
-              )
-            }
-          </li>
         </ul>
         {/* SIDEBAR TRIGGERED ON MOBILE*/}
         {sidebarVisible && (
@@ -193,6 +116,8 @@ const Header = ({ image }) => {
               <li className='w-full py-2 text-lg text-center hover:bg-[#8bc34a] dark:text-white'>
                 <NavLink to='/github' className="px-20 py-3 ">Github</NavLink>
               </li>
+           
+         
 
             </ul>
           </div>

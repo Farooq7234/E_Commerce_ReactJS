@@ -8,7 +8,7 @@ function ProductCard({ productImage, productName, price, category }) {
 
   return (
     <>
-      <div className='shadow-lg flex flex-col justify-center items-center rounded-md gap-1 dark:bg-[#333333] w-[250px] sm:w-[300px]'>
+      <div className='shadow-lg flex flex-col justify-center items-center rounded-md gap-1 dark:bg-[#333333] w-[250px] sm:w-[290px]'>
         <img className='rounded-t-md h-[200px] sm:h-[250px] w-[250px] sm:w-[300px]' src={productImage} alt="" />
         <p className='capitalize text-gray-400 text-base'>{category}</p>
         <p className='text-lg font-bold font-serif dark:text-white'>{productName}</p>
