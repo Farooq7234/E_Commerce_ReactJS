@@ -32,16 +32,11 @@ export class cartService {
 
     async getCartItems(userId) {
         try {
-            const response = await this.databases.listDocuments(
+             await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 [Query.equal('userId', userId)]
             );
-            if (response.documents.length > 0) {
-                return response.documents;
-            } else {
-                return null;
-            }
         } catch (error) {
             console.error('Error retrieving cart data:', error);
             throw error;

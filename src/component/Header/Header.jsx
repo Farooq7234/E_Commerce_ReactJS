@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa6';
 import LogoutBtn from './LogoutBtn';
+import { useSelector } from 'react-redux';
 
 const Header = ({ image }) => {
+  const authStatus = useSelector(state=> state.auth.status)
+  const cartItems = useSelector((state)=>state.cart.cartItems)
   const [price, setPrice] = useState(0.00);
   const [sidebarVisible, setSidebarVisible]= useState(false)
   const navigate = useNavigate();
@@ -20,6 +23,8 @@ const Header = ({ image }) => {
   const handleLogoClick = () => {
     navigate('/')
   }
+  console.log(authStatus)
+  console.log(cartItems)
   return (
     <>
       {/* HEADER CONTAINER */}
@@ -90,7 +95,8 @@ const Header = ({ image }) => {
           >
             <path d='M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z'></path>
           </svg>
-          <LogoutBtn/>
+         <LogoutBtn/> 
+          <Link to={'/login'}>Login</Link>
 
         </ul>
         {/* SIDEBAR TRIGGERED ON MOBILE*/}

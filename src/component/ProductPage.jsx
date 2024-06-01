@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { products } from './mockData.js';
 import { useParams } from 'react-router-dom';
-import { add, setUserId } from '../redux/slice/cartSlice.js';
+import cartSlice, { add, setUserId } from '../redux/slice/cartSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, resetCount } from '../redux/slice/productSlice.js';
 import { toast } from 'react-hot-toast';
-import cartservice from '../appwrite/config.js';
 import authService from '../appwrite/auth.js';
 
 function ProductPage() {
+    const {cartItems} = useSelector((state) => state.cart)
     const authStatus = useSelector((state) => state.auth.status);
     const { count } = useSelector((state) => state.product);
     const { productDetails } = useParams();
@@ -20,56 +20,55 @@ function ProductPage() {
         return <div className="h-[80vh] flex justify-center items-center">Product Not found!</div>;
     }
 
-    const getCurrentUser = async () => {
-        try {
-            const response = await authService.getCurrentUser();
-            if (response && response.$id) {
-                dispatch(setUserId(response.$id))
-            }
-            return response;
-        } catch (error) {
-            console.log(`error fetching the user ${error}`);
-            return null;
+    const handleAddtoCart = () => {
+        if (product) {
+            dispatch(add(product))
         }
-    };
+    }
 
-    const handleAddtoCart = async () => {
-        const user = await getCurrentUser();
-        if (user && user.$id) {
-            if (count > 0) {
-                const cartItem = { ...product, quantity: count, userId: user.$id };
-                dispatch(add(cartItem));
-                try {
-                    await cartservice.saveCartItems(cartItem);
-                    toast.success(`${count} item(s) added to cart and synced to the cloud`);
-                } catch (error) {
-                    console.error('Error syncing cart item:', error);
-                    toast.error('Failed to sync cart item to the cloud');
-                }
-            } else {
-                toast.error('Please select a quantity before adding to cart');
-            }
-        } else {
-            LoginAlert();
-        }
+    console.log(`You are watching the cart items: ${JSON.stringify(cartItems, null, 2)}`);
 
-    };
 
-    const handleIncrement = () => {
-        dispatch(increment());
-    };
 
-    const handleDecrement = () => {
-        dispatch(decrement());
-    };
 
-    useEffect(() => {
-        dispatch(resetCount());
-    }, [productDetails, dispatch]);
 
-    useEffect(() => {
-        getCurrentUser();
-    }, []);
+    // // const handleAddtoCart = async () => {
+    // //     const user = await getCurrentUser();
+    // //     if (user.$id) {
+
+    // //             const cartItem = { ...product, quantity: count, userId: user.$id };
+    // //             dispatch(add(cartItem));
+    // //             try {
+    // //                 await cartservice.saveCartItems(cartItem);
+    // //                 toast.success(`${count} item(s) added to cart and synced to the cloud`);
+    // //             } catch (error) {
+    // //                 console.error('Error syncing cart item:', error);
+    // //                 toast.error('Failed to sync cart item to the cloud');
+    // //             }
+    // //          else {
+    // //             toast.error('Please select a quantity before adding to cart');
+    // //         }
+    // //     } else {
+    // //         LoginAlert();
+    // //     }
+
+    // // };
+
+    // const handleIncrement = () => {
+    //     dispatch(increment());
+    // };
+
+    // const handleDecrement = () => {
+    //     dispatch(decrement());
+    // };
+
+    // useEffect(() => {
+    //     dispatch(resetCount());
+    // }, [productDetails, dispatch]);
+
+    // useEffect(() => {
+    //     getCurrentUser();
+    // }, []);
 
     const LoginAlert = () => {
         toast.error("Login to add to cart");
@@ -93,7 +92,7 @@ function ProductPage() {
                 <p className='text-base'> Omnis in totam nobis alias explicabo molestias asperiores? Magni, aliquid molestiae.!</p>
                 <div className='flex justify-start gap-5 items-center'>
                     <button
-                        onClick={handleDecrement}
+                        
                         className='bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white'>
                         -
                     </button>
@@ -101,7 +100,6 @@ function ProductPage() {
                         {count}
                     </span>
                     <button
-                        onClick={handleIncrement}
                         className='bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white'>
                         +
                     </button>
@@ -109,7 +107,7 @@ function ProductPage() {
                 <button
                     className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md w-[50%]'
                     type='submit'
-                    onClick={authStatus === false ? LoginAlert : handleAddtoCart}
+                    onClick={authStatus === true ? LoginAlert : handleAddtoCart}
                 >Add to Cart</button>
             </div>
         </div>
