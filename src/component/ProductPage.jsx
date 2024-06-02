@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
-import { incrementQuantity, decrementQuantity } from '../redux/slice/productSlice';
 import { add } from '../redux/slice/cartSlice';
+import cartservice from '../appwrite/config';
 
 function ProductPage() {
     const products = useSelector((state) => state.product.products);
@@ -11,36 +11,43 @@ function ProductPage() {
     const dispatch = useDispatch();
 
     const product = products.find(product => product.productName === productDetails);
-    const [isInCart, setIsInCart] = useState(false);
     const [quantity, setQuantity] = useState(1);
+
+    useEffect(() => {
+        if (!product) {
+            setQuantity(1);
+        }
+    }, [product]);
 
     if (!product) {
         return <div className="h-[80vh] flex justify-center items-center">Product Not found!</div>;
     }
 
-    const handleIncrement = () => {
-        if (isInCart) {
-            dispatch(incrementQuantity(product.id));
-            setQuantity(prevQuantity => prevQuantity + 1);
+    const saveCartItemsToCloud = async (cartItem) => {
+        try {
+            await cartservice.saveCartItems(cartItem);
+            toast.success("Cart item saved to the cloud");
+        } catch (error) {
+            toast.error("Failed to save to the cloud");
         }
     };
 
+    const handleIncrement = () => {
+        setQuantity(prevQuantity => prevQuantity + 1);
+    };
+
     const handleDecrement = () => {
-        if (isInCart && quantity > 1) {
-            dispatch(decrementQuantity(product.id));
+        if (quantity > 1) {
             setQuantity(prevQuantity => prevQuantity - 1);
         }
     };
 
-    const handleAddtoCart = () => {
+    const handleAddToCart = () => {
         if (product) {
-            dispatch(add(product));
-            setIsInCart(true);
+            const cartItem = { ...product, quantity };
+            dispatch(add(cartItem));
+            saveCartItemsToCloud(cartItem);
         }
-    };
-
-    const LoginAlert = () => {
-        toast.error("Login to add to cart");
     };
 
     return (
@@ -62,8 +69,8 @@ function ProductPage() {
                 <div className='flex justify-start gap-5 items-center'>
                     <button
                         onClick={handleDecrement}
-                        className={`bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white ${!isInCart && 'opacity-50 cursor-not-allowed'}`}
-                        disabled={!isInCart}>
+                        className='bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white'
+                    >
                         -
                     </button>
                     <span className='text-black dark:text-white text-xl font-bold'>
@@ -71,15 +78,16 @@ function ProductPage() {
                     </span>
                     <button
                         onClick={handleIncrement}
-                        className={`bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white ${!isInCart && 'opacity-50 cursor-not-allowed'}`}
-                        disabled={!isInCart}>
+                        className='bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white'
+                    >
                         +
                     </button>
                 </div>
                 <button
                     className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md w-[50%]'
-                    type='submit'
-                    onClick={handleAddtoCart}>
+                    type='button'
+                    onClick={handleAddToCart}
+                >
                     Add to Cart
                 </button>
             </div>

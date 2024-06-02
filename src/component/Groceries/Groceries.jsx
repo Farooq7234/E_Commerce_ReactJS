@@ -3,7 +3,8 @@ import ProductCard from '../ProductCard.jsx';
 import { products } from '../mockData';
 import Search from "../Search.jsx";
 import ThemeBtn from '../ThemeBtn.jsx';
-import NoproductPage from '../../NoproductPage.jsx';
+import NoproductPage from '../../component/NoproductPage.jsx';
+
 
 
 function Groceries() {

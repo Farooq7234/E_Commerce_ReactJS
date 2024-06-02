@@ -4,10 +4,11 @@ import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa6';
 import LogoutBtn from './LogoutBtn';
 import { useSelector } from 'react-redux';
+import TotalCalculator from '../TotalCalculator';
 
 const Header = ({ image }) => {
   const authStatus = useSelector(state => state.auth.status);
-  const cartItems = useSelector(state => state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -43,6 +44,7 @@ const Header = ({ image }) => {
           <li className='text-base cursor-pointer font-medium text-black hover:text-[#8bc34a] font-sans dark:text-white max-md:hidden'>
             <NavLink to='/github'>Github </NavLink>
           </li>
+          <TotalCalculator/>
           <li className='cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/cart' className='flex'>
               <RiShoppingBasketFill className='text-2xl' />

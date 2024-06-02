@@ -1,17 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { remove } from '../../redux/slice/cartSlice.js';
+import TotalCalculator from '../TotalCalculator.jsx';
+
 
 function Cart() {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const dispatch = useDispatch();
 
+   
+
     const handleRemove = (id) => {
         dispatch(remove(id));
-    };
-
-    const calculateTotal = () => {
-        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
     if (cartItems.length === 0) {
@@ -42,7 +42,7 @@ function Cart() {
                 </div>
             ))}
             <div className='w-full max-w-[600px] mt-5 bg-white shadow-md rounded-md p-4 flex flex-col items-center sm:flex-row justify-between'>
-                <p className='text-xl font-bold'>Total Cost: ${calculateTotal()}</p>
+                <p className='text-xl font-bold'>Total Cost: $<TotalCalculator/></p>
                 <button className='bg-[#6a9739] hover:bg-[#89c549] text-white py-2 px-4 rounded-md mt-3 sm:mt-0'>
                     Checkout
                 </button>
