@@ -6,7 +6,7 @@ function ProductCard({ productImage, productName, price, category }) {
   const starIcons = Array(5).fill(<FaRegStar />);
 
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-[#333] w-[300px]">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-[#333] w-[250px] sm:w-[300px]">
       <img className="w-full h-48 object-cover object-center" src={productImage} alt={productName} />
       <div className="p-4">
         <p className="text-gray-500 text-xs uppercase dark:text-gray-50">{category}</p>

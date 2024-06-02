@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import ProductCard from '../ProductCard.jsx';
 import { products } from '../mockData';
-import Search from "../Search.jsx"
+import Search from "../Search.jsx";
 import ThemeBtn from '../ThemeBtn.jsx';
-
+import NoproductPage from '../../NoproductPage.jsx';
 
 
 function Groceries() {
-  const [searchTerm, setSearchTerm] = useState('')
-
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (searchTerm) => {
-    setSearchTerm(searchTerm.toLowerCase())
-  }
+    setSearchTerm(searchTerm.toLowerCase());
+  };
 
   const filteredProducts = products.filter(item => {
     if (searchTerm === "") {
@@ -22,10 +21,9 @@ function Groceries() {
     }
   });
 
-
   return (
     <>
-    <ThemeBtn/>
+      <ThemeBtn />
       <div className='flex flex-col justify-center items-center gap-10 py-10 bg-[#f8f6f3] dark:bg-black pt-24'>
         <div className='flex flex-wrap gap-10 justify-around items-center w-full'>
           <p className='text-4xl font-medium text-[#8bc34a] font-serif'>Groceries</p>
@@ -43,15 +41,12 @@ function Groceries() {
               />
             ))
           ) : (
-            <div className="flex justify-center items-center col-span-full">
-              <p className="text-gray-600 text-3xl">No products found.</p>
-            </div>
-
+           <NoproductPage/>
           )}
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Groceries
+export default Groceries;

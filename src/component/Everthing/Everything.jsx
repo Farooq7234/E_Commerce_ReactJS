@@ -3,6 +3,7 @@ import ProductCard from '../ProductCard.jsx';
 import { products } from '../mockData';
 import Search from '../Search.jsx';
 import ThemeBtn from '../../component/ThemeBtn.jsx'
+import NoproductPage from '../../NoproductPage.jsx';
 
 function Everthing() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -49,9 +50,7 @@ function Everthing() {
               />
             ))
           ) : (
-            <div className="flex justify-center items-center col-span-full min-h-[60vh]">
-              <p className="text-gray-600 text-3xl">No product found.</p>
-            </div>
+            <NoproductPage/>
           )}
         </div>
       </div>

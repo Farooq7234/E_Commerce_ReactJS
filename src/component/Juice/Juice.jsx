@@ -3,6 +3,7 @@ import { products } from '../mockData.js';
 import ProductCard from '../ProductCard.jsx';
 import Search from '../Search.jsx';
 import ThemeBtn from '../ThemeBtn.jsx';
+import NoproductPage from '../../NoproductPage.jsx';
 
 function Juice() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,9 +42,7 @@ function Juice() {
             ))
           ) : (
            
-            <div className="flex justify-center items-center col-span-full">
-            <p className="text-gray-600 text-3xl">No products found.</p>
-          </div>
+            <NoproductPage/>
          
           )}
         </div>
