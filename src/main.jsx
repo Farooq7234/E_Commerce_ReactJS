@@ -16,6 +16,7 @@ import Everthing from './component/Everthing/Everything.jsx'
 import ProductPage from './component/ProductPage.jsx'
 import Login from './component/Login.jsx'
 import Signup from './component/Signup.jsx'
+import Cart from './component/Cart/Cart.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,7 +35,7 @@ const router = createBrowserRouter(
       <Route path='*' element={<NotFoundPage />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
-
+      <Route path='/cart' element={<Cart />} />
     </Route>
   )
 )

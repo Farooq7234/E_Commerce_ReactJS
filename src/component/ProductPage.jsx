@@ -1,74 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { products } from './mockData.js';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import cartSlice, { add, setUserId } from '../redux/slice/cartSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement, resetCount } from '../redux/slice/productSlice.js';
 import { toast } from 'react-hot-toast';
-import authService from '../appwrite/auth.js';
+import { incrementQuantity, decrementQuantity } from '../redux/slice/productSlice';
+import { add } from '../redux/slice/cartSlice';
 
 function ProductPage() {
-    const {cartItems} = useSelector((state) => state.cart)
-    const authStatus = useSelector((state) => state.auth.status);
-    const { count } = useSelector((state) => state.product);
+    const products = useSelector((state) => state.product.products);
     const { productDetails } = useParams();
     const dispatch = useDispatch();
 
     const product = products.find(product => product.productName === productDetails);
+    const [isInCart, setIsInCart] = useState(false);
+    const [quantity, setQuantity] = useState(1);
 
     if (!product) {
         return <div className="h-[80vh] flex justify-center items-center">Product Not found!</div>;
     }
 
+    const handleIncrement = () => {
+        if (isInCart) {
+            dispatch(incrementQuantity(product.id));
+            setQuantity(prevQuantity => prevQuantity + 1);
+        }
+    };
+
+    const handleDecrement = () => {
+        if (isInCart && quantity > 1) {
+            dispatch(decrementQuantity(product.id));
+            setQuantity(prevQuantity => prevQuantity - 1);
+        }
+    };
+
     const handleAddtoCart = () => {
         if (product) {
-            dispatch(add(product))
+            dispatch(add(product));
+            setIsInCart(true);
         }
-    }
-
-    console.log(`You are watching the cart items: ${JSON.stringify(cartItems, null, 2)}`);
-
-
-
-
-
-    // // const handleAddtoCart = async () => {
-    // //     const user = await getCurrentUser();
-    // //     if (user.$id) {
-
-    // //             const cartItem = { ...product, quantity: count, userId: user.$id };
-    // //             dispatch(add(cartItem));
-    // //             try {
-    // //                 await cartservice.saveCartItems(cartItem);
-    // //                 toast.success(`${count} item(s) added to cart and synced to the cloud`);
-    // //             } catch (error) {
-    // //                 console.error('Error syncing cart item:', error);
-    // //                 toast.error('Failed to sync cart item to the cloud');
-    // //             }
-    // //          else {
-    // //             toast.error('Please select a quantity before adding to cart');
-    // //         }
-    // //     } else {
-    // //         LoginAlert();
-    // //     }
-
-    // // };
-
-    // const handleIncrement = () => {
-    //     dispatch(increment());
-    // };
-
-    // const handleDecrement = () => {
-    //     dispatch(decrement());
-    // };
-
-    // useEffect(() => {
-    //     dispatch(resetCount());
-    // }, [productDetails, dispatch]);
-
-    // useEffect(() => {
-    //     getCurrentUser();
-    // }, []);
+    };
 
     const LoginAlert = () => {
         toast.error("Login to add to cart");
@@ -92,23 +61,27 @@ function ProductPage() {
                 <p className='text-base'> Omnis in totam nobis alias explicabo molestias asperiores? Magni, aliquid molestiae.!</p>
                 <div className='flex justify-start gap-5 items-center'>
                     <button
-                        
-                        className='bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white'>
+                        onClick={handleDecrement}
+                        className={`bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white ${!isInCart && 'opacity-50 cursor-not-allowed'}`}
+                        disabled={!isInCart}>
                         -
                     </button>
                     <span className='text-black dark:text-white text-xl font-bold'>
-                        {count}
+                        {quantity}
                     </span>
                     <button
-                        className='bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white'>
+                        onClick={handleIncrement}
+                        className={`bg-[#6a9739] hover:bg-[#89c549] h-10 w-10 rounded-full text-2xl font-bold text-white ${!isInCart && 'opacity-50 cursor-not-allowed'}`}
+                        disabled={!isInCart}>
                         +
                     </button>
                 </div>
                 <button
                     className='bg-[#6a9739] hover:bg-[#89c549] text-white p-2 rounded-md w-[50%]'
                     type='submit'
-                    onClick={authStatus === true ? LoginAlert : handleAddtoCart}
-                >Add to Cart</button>
+                    onClick={handleAddtoCart}>
+                    Add to Cart
+                </button>
             </div>
         </div>
     );

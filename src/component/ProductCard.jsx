@@ -2,26 +2,26 @@ import React from 'react';
 import { FaRegStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-
 function ProductCard({ productImage, productName, price, category }) {
   const starIcons = Array(5).fill(<FaRegStar />);
 
   return (
-    <>
-      <div className='shadow-lg flex flex-col justify-center items-center rounded-md gap-1 dark:bg-[#333333] w-[250px] sm:w-[290px]'>
-        <img className='rounded-t-md h-[200px] sm:h-[250px] w-[250px] sm:w-[300px]' src={productImage} alt="" />
-        <p className='capitalize text-gray-400 text-base'>{category}</p>
-        <p className='text-lg font-bold font-serif dark:text-white'>{productName}</p>
-        <ul className='flex'>
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-[#333] w-[300px]">
+      <img className="w-full h-48 object-cover object-center" src={productImage} alt={productName} />
+      <div className="p-4">
+        <p className="text-gray-500 text-xs uppercase dark:text-gray-50">{category}</p>
+        <h2 className="mt-1 font-semibold text-gray-900 dark:text-gray-200">{productName}</h2>
+        <div className="flex items-center mt-1">
           {starIcons.map((star, index) => (
-            <li className='text-orange-400' key={index}>{star}</li>
+            <span className="text-yellow-400 mr-1" key={index}>{star}</span>
           ))}
-        </ul>
-        <p className='text-lg text-gray-800 font-bold dark:text-white'>${price}</p>
-        <Link to={`/products/${productName}`} className='bg-black rounded-md text-white py-2 px-3 mb-5'>View Details</Link>
-        
+        </div>
+        <p className="mt-2 text-gray-600 dark:text-gray-200 font-semibold">${price}</p>
+        <div className="mt-4">
+          <Link to={`/products/${productName}`} className="block px-3 py-2 bg-gray-950  text-white text-center rounded-md transition duration-300 ease-in-out hover:bg-gray-900">View Details</Link>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
