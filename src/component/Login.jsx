@@ -23,9 +23,9 @@ function Login() {
             if (session) {
                 const userData = await authService.getCurrentUser();
                 if (userData) {
-                    dispatch(authLogin(userData));
-                    dispatch(setUserId(userData.$id));
-                    toast.success("Login successful");
+                    dispatch(authLogin(userData))
+                    dispatch(setUserId(userData.$id))
+                    toast.success("Login successful")
                     
                     // Fetch cart items after successful login
                     try {
@@ -46,6 +46,7 @@ function Login() {
         }
     };
 
+    
     return (
         <div className='flex justify-center items-center w-full dark:bg-black dark:text-white bg-[#f8f6f3] shadow-lg min-h-[100vh]'>
             <div className='mx-auto w-full max-w-lg dark:bg-[#333] bg-white border-2 border-gray-200 rounded-xl p-10'>

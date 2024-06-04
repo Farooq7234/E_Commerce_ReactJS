@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
-import { add } from '../redux/slice/cartSlice';
+import { add, setUserId } from '../redux/slice/cartSlice';
 import cartservice from '../appwrite/config';
+import authService from '../appwrite/auth';
 
 function ProductPage() {
     const products = useSelector((state) => state.product.products);
+    const userId = useSelector((state) => state.cart.userId);
     const { productDetails } = useParams();
     const dispatch = useDispatch();
 
@@ -18,6 +20,19 @@ function ProductPage() {
             setQuantity(1);
         }
     }, [product]);
+
+    useEffect(() => {
+        const fetchCurrentUser = async () => {
+            try {
+                const response = await authService.getCurrentUser();
+                dispatch(setUserId(response.$id));
+            } catch (error) {
+                console.log(`User not found error ${error}`);
+            }
+        };
+
+        fetchCurrentUser();
+    }, [dispatch]);
 
     if (!product) {
         return <div className="h-[80vh] flex justify-center items-center">Product Not found!</div>;
@@ -42,9 +57,13 @@ function ProductPage() {
         }
     };
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
+        if (!userId) {
+            toast.error("User not authenticated");
+            return;
+        }
         if (product) {
-            const cartItem = { ...product, quantity };
+            const cartItem = { ...product, quantity, userId };
             dispatch(add(cartItem));
             saveCartItemsToCloud(cartItem);
         }

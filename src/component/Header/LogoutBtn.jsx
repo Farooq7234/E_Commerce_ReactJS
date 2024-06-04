@@ -3,19 +3,17 @@ import { useDispatch } from "react-redux";
 import authService from "../../appwrite/auth";
 import { logout } from "../../redux/slice/authSlice";
 import toast from "react-hot-toast";
-import { clearCart } from "../../redux/slice/cartSlice";
-
+import { clearCart, setUserId } from "../../redux/slice/cartSlice";
 
 
 function LogoutBtn() {
-    
     const dispatch = useDispatch()
-
     
     const logoutHandler = () => {
        try {
         authService.logout().then(() => {
             dispatch(logout())
+            dispatch(setUserId(null))
             dispatch(clearCart())
             toast.error("Logout Succesfully")
         })

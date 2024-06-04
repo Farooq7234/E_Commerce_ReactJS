@@ -12,7 +12,13 @@ const Header = ({ image }) => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const navigate = useNavigate();
 
-  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalQuantity = cartItems.reduce((total, item) => {
+    if (typeof item.quantity !== 'number') {
+        throw new Error('Item quantity should be a number');
+    }
+    return total + item.quantity;
+}, 0);
+
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
@@ -22,6 +28,7 @@ const Header = ({ image }) => {
     navigate('/');
   };
 
+  console.log(totalQuantity)
   return (
     <>
       <div className='fixed w-full dark:bg-black bg-white h-20 flex justify-between items-center shadow-md px-3 z-40'>
@@ -48,7 +55,7 @@ const Header = ({ image }) => {
           <li className='cursor-pointer text-[#8bc34a] font-sans'>
             <NavLink to='/cart' className='flex'>
               <RiShoppingBasketFill className='text-2xl' />
-              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-white text-xs font-semibold animate-bounce'>{totalQuantity}</sup>
+              <sup className='bg-[#8bc34a] px-2 py-1 rounded-full text-white text-xs font-semibold animate-bounce'>{totalQuantity || 0}</sup>
             </NavLink>
           </li>
           <svg className='dark:text-white sm:hidden max-sm:visible w-8 h-7  text-white max-sm:bg-[#8bc34a]  p-1 rounded cursor-pointer' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' onClick={toggleSidebar}>
