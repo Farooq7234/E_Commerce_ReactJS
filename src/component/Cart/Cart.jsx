@@ -2,18 +2,28 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { remove } from '../../redux/slice/cartSlice.js';
 import TotalCalculator from '../TotalCalculator.jsx';
+import cartservice from '../../appwrite/config.js';
 
 
 function Cart() {
     const cartItems = useSelector((state) => state.cart.cartItems);
+    const userId = useSelector((state) => state.cart.userId);
     const dispatch = useDispatch();
 
    
+    // error deleting the item from the cloud
 
     const handleRemove = (id) => {
         dispatch(remove(id));
+        if (userId) {
+            cartservice.deleteCartItems(id).then((res) => {
+                console.log('Item removed successfully:', res);
+            }).catch((err) => {
+                console.error('Error removing cart item:', err);
+            });
+        }
     };
-
+    
     if (cartItems.length === 0) {
         return <div className="h-[90vh] flex justify-center items-center">
             <p className='text-xl font-bold'>Your cart is empty!</p>

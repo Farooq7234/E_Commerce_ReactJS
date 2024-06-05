@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import Input from './Input.jsx';
 import Button from './Button.jsx';
 import { login as authLogin } from '../redux/slice/authSlice.js';
-import { setUserId, setCartItems } from '../redux/slice/cartSlice.js';
+import { setCartItems, setUserId } from '../redux/slice/cartSlice.js';
 import authService from '../appwrite/auth.js';
 import cartservice from '../appwrite/config.js';
 
@@ -15,6 +15,8 @@ function Login() {
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");  
+    const [cartProducts, setCartProducts] = useState([])
+    const userId = useSelector((state) => state.cart.userId);
 
     const login = async (data) => {
         setError("");
@@ -26,16 +28,6 @@ function Login() {
                     dispatch(authLogin(userData))
                     dispatch(setUserId(userData.$id))
                     toast.success("Login successful")
-                    
-                    // Fetch cart items after successful login
-                    try {
-                        const response = await cartservice.getCartItems(userData.$id);
-                        dispatch(setCartItems(response));
-                        console.log(response);
-                    } catch (cartError) {
-                        console.error('Error fetching cart items:', cartError);
-                        toast.error('Failed to fetch cart items');
-                    }
 
                     navigate("/");
                 }
@@ -46,7 +38,23 @@ function Login() {
         }
     };
 
+
+    useEffect(() => {
+        if (userId) {
+            cartservice.getCartItems(userId).then((cartProducts) => {
+                if (cartProducts) {
+                    setCartProducts(cartProducts.documents);
+                    dispatch(setCartItems(cartProducts.documents));
+                }
+            }).catch(error => {
+                console.error('Error fetching cart items:', error);
+            });
+        }
+    }, [userId, dispatch]);
     
+
+    console.log(cartProducts)
+    console.log(userId)
     return (
         <div className='flex justify-center items-center w-full dark:bg-black dark:text-white bg-[#f8f6f3] shadow-lg min-h-[100vh]'>
             <div className='mx-auto w-full max-w-lg dark:bg-[#333] bg-white border-2 border-gray-200 rounded-xl p-10'>

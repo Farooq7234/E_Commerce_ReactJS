@@ -30,13 +30,15 @@ export class cartService {
         }
     }
 
-    async getCartItems(userId) {
+    async  getCartItems(userId) {
         try {
-             await this.databases.listDocuments(
+            const queries = [Query.equal('userId', userId)];
+            const response = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                [Query.equal('userId', userId)]
+                queries
             );
+            return response;
         } catch (error) {
             console.error('Error retrieving cart data:', error);
             throw error;
@@ -61,13 +63,14 @@ export class cartService {
 
 
 
-    async deleteCartItems(documentId, cartItems) {
+    async deleteCartItems(documentId) {
         try {
+            const queries = [Query.equal('userId', userId)];
             const response = await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 documentId,
-                {cartItems:cartItems}
+                queries
             )
 
             console("Cart Data is deleted", response)
