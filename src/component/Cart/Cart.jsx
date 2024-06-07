@@ -3,32 +3,40 @@ import { useSelector, useDispatch } from 'react-redux';
 import { remove } from '../../redux/slice/cartSlice.js';
 import TotalCalculator from '../TotalCalculator.jsx';
 import cartservice from '../../appwrite/config.js';
+import toast from 'react-hot-toast';
 
 
 function Cart() {
     const cartItems = useSelector((state) => state.cart.cartItems);
-    const userId = useSelector((state) => state.cart.userId);
+    const userId = useSelector((state) => state.cart.userId)
     const dispatch = useDispatch();
 
-   
-    // error deleting the item from the cloud
-
-    const handleRemove = (id) => {
-        dispatch(remove(id));
-        if (userId) {
-            cartservice.deleteCartItems(id).then((res) => {
-                console.log('Item removed successfully:', res);
-            }).catch((err) => {
-                console.error('Error removing cart item:', err);
-            });
+    const handleRemove = async (id) => {
+        try {
+            if (userId) {
+                const cartResponse = await cartservice.getCartItems(userId)
+                const documents = cartResponse.documents.find(doc => doc.id === id)
+                if (documents) {
+                    await cartservice.deleteCartItems(documents.$id, userId)
+                    dispatch(remove(id));
+                    toast.success("Item removed Successfully")
+                }
+                else {
+                    throw new Error('Document not found');
+                }
+            }
+        } catch (error) {
+            console.error('Failed to delete item from Appwrite:', error);
         }
     };
-    
+
+
     if (cartItems.length === 0) {
         return <div className="h-[90vh] flex justify-center items-center">
             <p className='text-xl font-bold'>Your cart is empty!</p>
         </div>;
     }
+
 
     return (
         <div className='flex flex-col items-center gap-5 p-5 pt-24 min-h-[90vh]'>
@@ -52,7 +60,7 @@ function Cart() {
                 </div>
             ))}
             <div className='w-full max-w-[600px] mt-5 bg-white shadow-md rounded-md p-4 flex flex-col items-center sm:flex-row justify-between'>
-                <p className='text-xl font-bold'>Total Cost: $<TotalCalculator/></p>
+                <p className='text-xl font-bold'>Total Cost: $<TotalCalculator /></p>
                 <button className='bg-[#6a9739] hover:bg-[#89c549] text-white py-2 px-4 rounded-md mt-3 sm:mt-0'>
                     Checkout
                 </button>

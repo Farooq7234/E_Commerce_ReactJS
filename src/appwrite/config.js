@@ -63,7 +63,7 @@ export class cartService {
 
 
 
-    async deleteCartItems(documentId) {
+    async deleteCartItems(documentId, userId) {
         try {
             const queries = [Query.equal('userId', userId)];
             const response = await this.databases.deleteDocument(
@@ -72,8 +72,6 @@ export class cartService {
                 documentId,
                 queries
             )
-
-            console("Cart Data is deleted", response)
             return response
         } catch (error) {
             console.log(`Error deleting the cart ${error}` )

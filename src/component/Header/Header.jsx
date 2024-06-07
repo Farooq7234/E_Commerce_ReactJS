@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { FaUser } from 'react-icons/fa6';
 import LogoutBtn from './LogoutBtn';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TotalCalculator from '../TotalCalculator';
+import authService from '../../appwrite/auth';
+import { login } from '../../redux/slice/authSlice';
 
 const Header = ({ image }) => {
   const authStatus = useSelector(state => state.auth.status);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const totalQuantity = cartItems.reduce((total, item) => {
     if (typeof item.quantity !== 'number') {
@@ -28,7 +31,18 @@ const Header = ({ image }) => {
     navigate('/');
   };
 
-  console.log(totalQuantity)
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      const user = await authService.getCurrentUser();
+      if (user) {
+        dispatch(login());
+      }
+    };
+    fetchCurrentUser();
+  }, [dispatch]);
+  
+
+  
   return (
     <>
       <div className='fixed w-full dark:bg-black bg-white h-20 flex justify-between items-center shadow-md px-3 z-40'>
@@ -62,8 +76,14 @@ const Header = ({ image }) => {
             <path d='M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z'></path>
           </svg>
           <div className='max-sm:hidden'>
-          <LogoutBtn />
-          <Link to='/login'>Login</Link>
+          {
+            authStatus === false ?
+           ( <Link
+            className='bg-green-500 px-4 py-2 rounded-md text-white'
+            to='/login'>Login</Link>)
+             :
+          (  <LogoutBtn />)
+          }
           </div>
         </ul>
 
