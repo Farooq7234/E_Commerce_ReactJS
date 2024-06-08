@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { products } from '../mockData.js';
 import Hero from './Hero';
 import Services from './Services.jsx';
@@ -7,9 +7,24 @@ import Offer from './Offer.jsx';
 import ReviewCard from './ReviewCard.jsx';
 import Logos from './Logos.jsx';
 import ProductCard from '../ProductCard.jsx';
+import { login } from '../../redux/slice/authSlice.js';
+import { useDispatch } from 'react-redux';
 
 
 function Home() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      const user = await authService.getCurrentUser();
+      if (user) {
+        dispatch(login());
+      }
+      
+    };
+    fetchCurrentUser();
+  }, [dispatch]);
+
   return (
     <>
       <div className='dark:text-white dark:bg-black bg-[#f8f6f3] flex flex-col gap-10'>

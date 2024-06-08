@@ -7,6 +7,7 @@ import cartservice from '../appwrite/config';
 import authService from '../appwrite/auth';
 
 function ProductPage() {
+    const authStatus = useSelector((state)=> state.auth.status)
     const products = useSelector((state) => state.product.products);
     const userId = useSelector((state) => state.cart.userId);
     const { productDetails } = useParams();
@@ -70,7 +71,7 @@ function ProductPage() {
     };
 
     return (
-        <div className='flex justify-around items-center gap-5 min-h-[90vh] flex-wrap bg-[#f8f6f3] dark:bg-black dark:text-white pt-24'>
+        <div className='flex justify-around items-center gap-5 min-h-[90vh] flex-wrap bg-[#f8f6f3] dark:bg-black dark:text-white pt-24 pb-10 px-5'>
             <img
                 src={product.productImage}
                 alt={product.productName}

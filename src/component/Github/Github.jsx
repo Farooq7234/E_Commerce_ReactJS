@@ -8,10 +8,6 @@ function Github() {
   const data = useLoaderData()
   let [loading, setLoading] = useState(true);
 
-
-
-
-
   useEffect(() => {
     if (data) {
       setTimeout(() => {
@@ -29,7 +25,7 @@ function Github() {
             <p className='animate-pulse'>Fetching data from github...</p>
           </div>
         ) : (
-          <div className='flex flex-wrap justify-around items-center gap-5 bg-[#f8f6f3]  dark:bg-black text-black dark:text-white p-4 min-h-[90vh] '>
+          <div className='flex flex-wrap justify-around items-center gap-5 bg-[#f8f6f3]  dark:bg-black text-black dark:text-white pt-28 px-4 min-h-[90vh] '>
             <div className='sm:w-[50%] flex flex-col gap-5'>
               <p className='text-xl sm:text-3xl font-bold'>Github followers: {data?.followers}</p>
               <p className='text-base sm:text-lg text-[#333] dark:text-white'> {data.bio}</p>
