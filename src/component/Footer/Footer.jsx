@@ -9,7 +9,7 @@ function Footer() {
         <div className='flex flex-col md:flex-row justify-between items-center'>
           <div className='text-center md:text-left mb-4 md:mb-0'>
             <p className='text-sm text-white'>
-              &copy; {new Date().getFullYear()} Organic Store | Made with <FaHeart className='inline text-red-500' /> by Umar Farooq
+              &copy; {new Date().getFullYear()} Organic Store | Made with ☕️  by Umar Farooq
             </p>
           </div>
           <div className='text-center md:text-right'>
