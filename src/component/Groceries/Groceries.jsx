@@ -7,6 +7,7 @@ import NoproductPage from '../../component/NoproductPage.jsx';
 
 
 
+
 function Groceries() {
   const [searchTerm, setSearchTerm] = useState('');
 
