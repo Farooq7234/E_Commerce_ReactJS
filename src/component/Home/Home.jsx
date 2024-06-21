@@ -9,6 +9,7 @@ import Logos from './Logos.jsx';
 import ProductCard from '../ProductCard.jsx';
 import { login } from '../../redux/slice/authSlice.js';
 import { useDispatch } from 'react-redux';
+import authService from '../../appwrite/auth.js';
 
 
 function Home() {

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useDispatch } from "react-redux";
 import authService from "../../appwrite/auth";
 import { logout } from "../../redux/slice/authSlice";
@@ -8,6 +8,7 @@ import { clearCart, setUserId } from "../../redux/slice/cartSlice";
 
 function LogoutBtn() {
     const dispatch = useDispatch()
+
     
     const logoutHandler = () => {
        try {
@@ -21,7 +22,7 @@ function LogoutBtn() {
         toast.error("Logout Failed");
        }
     }
-
+    
     return (
         <button
             className='px-4 py-2 bg-red-500 text-base text-white rounded-full'

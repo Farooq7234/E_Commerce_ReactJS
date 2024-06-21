@@ -46,7 +46,6 @@ const Header = ({ image }) => {
     fetchCurrentUser();
   }, [dispatch]);
 
-  console.log(authStatus)
 
   return (
     <>
@@ -82,12 +81,12 @@ const Header = ({ image }) => {
           </svg>
           <div className='max-sm:hidden'>
             {
-              authStatus === false ?
-                (<Link
-                  className='bg-[#6a9739] px-6 py-2 rounded-md text-white'
-                  to='/login'>Login</Link>)
+              authStatus === true ?
+              (<LogoutBtn />)
               :
-                (<LogoutBtn />)
+              (<Link
+                className='bg-[#6a9739] px-6 py-2 rounded-md text-white'
+                to='/login'>Login</Link>)
             }
           </div>
         </ul>
