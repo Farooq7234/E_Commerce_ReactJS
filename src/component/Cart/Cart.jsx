@@ -5,23 +5,23 @@ import TotalCalculator from '../TotalCalculator.jsx';
 import cartservice from '../../appwrite/config.js';
 import toast from 'react-hot-toast';
 
-
 function Cart() {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const userId = useSelector((state) => state.cart.userId)
     const dispatch = useDispatch();
 
+
+
     const handleRemove = async (id) => {
         try {
             if (userId) {
-                const cartResponse = await cartservice.getCartItems(userId)
-                const documents = cartResponse.documents.find(doc => doc.id === id)
+                const cartResponse = await cartservice.getCartItems(userId);
+                const documents = cartResponse.documents.find(doc => doc.id === id);
                 if (documents) {
-                    await cartservice.deleteCartItems(documents.$id, userId)
+                    await cartservice.deleteCartItems(documents.$id, userId);
                     dispatch(remove(id));
-                    toast.success("Item removed Successfully")
-                }
-                else {
+                    toast.success("Item removed Successfully");
+                } else {
                     throw new Error('Document not found');
                 }
             }
@@ -30,13 +30,11 @@ function Cart() {
         }
     };
 
-
     if (cartItems.length === 0) {
         return <div className="h-[90vh] flex justify-center items-center">
             <p className='text-xl font-bold'>Your cart is empty!</p>
         </div>;
     }
-
 
     return (
         <div className='flex flex-col items-center gap-5 p-5 pt-24 min-h-[90vh]'>

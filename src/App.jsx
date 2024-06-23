@@ -12,11 +12,13 @@ import ProductPage from './component/ProductPage.jsx'
 import Login from './component/Login.jsx'
 import Signup from './component/Signup.jsx'
 import Cart from './component/Cart/Cart.jsx'
-import { Toaster, toast } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 import authService from './appwrite/auth.js'
 import { login as authLogin, logout } from './redux/slice/authSlice.js'
-import ClipLoader from 'react-spinners/ClipLoader'
+import GridLoader from 'react-spinners/GridLoader'
+import cartservice from './appwrite/config.js'
+import { useSelector } from 'react-redux'
 
 const styles = {
   loaderContainer: {
@@ -49,6 +51,7 @@ const App = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
+  const userId = useSelector((state) => state.cart.userId)
 
   const loginStatus = async () => {
     setError("")
@@ -69,6 +72,21 @@ const App = () => {
     }
   }
 
+  const fetchCartItems = async () => {
+    try {
+        if (userId) {
+            const cartResponse = await cartservice.getCartItems(userId);
+            dispatch(setCartItems(cartResponse.documents));
+        }
+    } catch (error) {
+        console.error('Failed to fetch cart items from Appwrite:', error);
+    }
+};
+
+useEffect(() => {
+    fetchCartItems();
+}, [dispatch, userId]);
+
   useEffect(() => {
     loginStatus()
   }, [dispatch])
@@ -76,8 +94,8 @@ const App = () => {
   if (loading) {
     return (
       <div style={styles.loaderContainer}>
-        <ClipLoader color="#36d7b7" loading={loading} size={150} />
-      </div>
+      <GridLoader color="#8bc34a" loading={loading} size={20} />
+    </div>
     )
   }
 

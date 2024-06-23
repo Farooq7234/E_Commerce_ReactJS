@@ -173,11 +173,8 @@ export const productSlice = createSlice({
                 product.quantity -= 1;
             }
         },
-        resetProducts: (state) => {
-            state.products = initialState.products;
-        }
     }
 });
 
-export const { incrementQuantity, decrementQuantity, resetProducts } = productSlice.actions;
+export const { incrementQuantity, decrementQuantity } = productSlice.actions;
 export default productSlice.reducer;

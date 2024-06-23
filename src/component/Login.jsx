@@ -15,7 +15,6 @@ function Login() {
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
-    const [cartProducts, setCartProducts] = useState([])
     const userId = useSelector((state) => state.cart.userId);
 
     const login = async (data) => {
@@ -24,7 +23,7 @@ function Login() {
             const session = await authService.login(data);
             if (session) {
                 const userData = await authService.getCurrentUser();
-                if (userData) {
+                if (!userData) {
                     dispatch(authLogin(userData))
                     dispatch(setUserId(userData.$id))
                     toast.success("Login successful")
@@ -45,7 +44,6 @@ function Login() {
         if (userId) {
             cartservice.getCartItems(userId).then((cartProducts) => {
                 if (cartProducts) {
-                    setCartProducts(cartProducts.documents);
                     dispatch(setCartItems(cartProducts.documents));
                 }
             }).catch(error => {

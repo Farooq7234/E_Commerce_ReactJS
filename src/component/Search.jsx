@@ -33,7 +33,7 @@ function Search({ onSearch }) {
         </button>
       )}
       <button
-        className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg flex items-center"
+        className="bg-[#8bc34a] hover:bg-[#639130] text-white py-2 px-4 rounded-lg flex items-center"
         type="button"
         onClick={handleSearchClick}
       >

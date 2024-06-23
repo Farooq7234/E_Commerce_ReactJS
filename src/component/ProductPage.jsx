@@ -60,7 +60,7 @@ function ProductPage() {
 
     const handleAddToCart = async () => {
         if (!userId) {
-            toast.error("User not authenticated");
+            toast.error("Login to add to cart");
             return;
         }
         if (product) {

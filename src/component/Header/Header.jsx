@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RiShoppingBasketFill } from 'react-icons/ri';
-import { FaUser } from 'react-icons/fa6';
 import LogoutBtn from './LogoutBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import TotalCalculator from '../TotalCalculator';
-import authService from '../../appwrite/auth';
-import { login, logout } from '../../redux/slice/authSlice';
+// import authService from '../../appwrite/auth';
+// import { login, logout } from '../../redux/slice/authSlice';
 
 const Header = ({ image }) => {
   const authStatus = useSelector(state => state.auth.status);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const totalQuantity = cartItems.reduce((total, item) => {
     if (typeof item.quantity !== 'number') {
@@ -31,20 +30,20 @@ const Header = ({ image }) => {
     navigate('/');
   };
 
-  useEffect(() => {
-    const fetchCurrentUser = async () => {
-      const user = await authService.getCurrentUser();
-      if (user) {
-        dispatch(login());
-      }
+  // useEffect(() => {
+  //   const fetchCurrentUser = async () => {
+  //     const user = await authService.getCurrentUser();
+  //     if (user) {
+  //       dispatch(login());
+  //     }
 
-      else{
-        dispatch(logout())
-      }
+  //     else{
+  //       dispatch(logout())
+  //     }
       
-    };
-    fetchCurrentUser();
-  }, [dispatch]);
+  //   };
+  //   fetchCurrentUser();
+  // }, [dispatch]);
 
 
   return (
