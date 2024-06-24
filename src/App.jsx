@@ -17,8 +17,9 @@ import { useDispatch } from 'react-redux'
 import authService from './appwrite/auth.js'
 import { login as authLogin, logout } from './redux/slice/authSlice.js'
 import GridLoader from 'react-spinners/GridLoader'
-import cartservice from './appwrite/config.js'
+import { setUserId, setCartItems } from './redux/slice/cartSlice.js'
 import { useSelector } from 'react-redux'
+import cartservice from './appwrite/config.js'
 
 const styles = {
   loaderContainer: {
@@ -61,6 +62,7 @@ const App = () => {
         const userData = await authService.getCurrentUser()
         if (userData) {
           dispatch(authLogin(userData))
+          dispatch(setUserId(userData.$id))
         } else {
           dispatch(logout())
         }
@@ -72,30 +74,46 @@ const App = () => {
     }
   }
 
-  const fetchCartItems = async () => {
-    try {
-        if (userId) {
-            const cartResponse = await cartservice.getCartItems(userId);
-            dispatch(setCartItems(cartResponse.documents));
-        }
-    } catch (error) {
-        console.error('Failed to fetch cart items from Appwrite:', error);
-    }
-};
+  // fetching items of user after login 
 
-useEffect(() => {
-    fetchCartItems();
-}, [dispatch, userId]);
+  useEffect(() => {
+    const checkUserAndFetchCart = async () => {
+        try {
+            const userData = await authService.getCurrentUser();
+            if (userData) {
+                dispatch(authLogin(userData));
+                dispatch(setUserId(userData.$id));
+                fetchCartItems(userData.$id);
+            }
+        } catch (error) {
+            dispatch(logout());
+        }
+    };
+
+    const fetchCartItems = async (userId) => {
+        try {
+            const cartProducts = await cartservice.getCartItems(userId);
+            if (cartProducts) {
+                dispatch(setCartItems(cartProducts.documents));
+            }
+        } catch (error) {
+            console.error('Error fetching cart items:', error);
+        }
+    };
+
+    checkUserAndFetchCart();
+}, [dispatch]);
+
 
   useEffect(() => {
     loginStatus()
-  }, [dispatch])
+  }, [dispatch, userId])
 
   if (loading) {
     return (
       <div style={styles.loaderContainer}>
-      <GridLoader color="#8bc34a" loading={loading} size={20} />
-    </div>
+        <GridLoader color="#8bc34a" loading={loading} size={20} />
+      </div>
     )
   }
 

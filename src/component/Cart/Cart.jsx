@@ -10,8 +10,6 @@ function Cart() {
     const userId = useSelector((state) => state.cart.userId)
     const dispatch = useDispatch();
 
-
-
     const handleRemove = async (id) => {
         try {
             if (userId) {
