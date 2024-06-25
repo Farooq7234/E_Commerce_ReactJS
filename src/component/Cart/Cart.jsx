@@ -4,11 +4,13 @@ import { remove } from '../../redux/slice/cartSlice.js';
 import TotalCalculator from '../TotalCalculator.jsx';
 import cartservice from '../../appwrite/config.js';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const userId = useSelector((state) => state.cart.userId)
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const handleRemove = async (id) => {
         try {
@@ -34,6 +36,10 @@ function Cart() {
         </div>;
     }
 
+    const handleCheckout = () => {
+        navigate('/checkout')
+      }
+
     return (
         <div className='flex flex-col items-center gap-5 p-5 pt-24 min-h-[90vh]'>
             <h1 className='text-3xl font-bold mb-5'>Your Shopping Cart</h1>
@@ -57,7 +63,7 @@ function Cart() {
             ))}
             <div className='w-full max-w-[600px] mt-5 bg-white shadow-md rounded-md p-4 flex flex-col items-center sm:flex-row justify-between'>
                 <p className='text-xl font-bold'>Total Cost: $<TotalCalculator /></p>
-                <button className='bg-[#6a9739] hover:bg-[#89c549] text-white py-2 px-4 rounded-md mt-3 sm:mt-0'>
+                <button className='bg-[#6a9739] hover:bg-[#89c549] text-white py-2 px-4 rounded-md mt-3 sm:mt-0' onClick={handleCheckout}>
                     Checkout
                 </button>
             </div>

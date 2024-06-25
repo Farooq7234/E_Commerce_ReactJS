@@ -20,6 +20,12 @@ import GridLoader from 'react-spinners/GridLoader'
 import { setUserId, setCartItems } from './redux/slice/cartSlice.js'
 import { useSelector } from 'react-redux'
 import cartservice from './appwrite/config.js'
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './component/Checkout.jsx'
+
+
+const stripePromise = loadStripe('pk_test_51PVRaoRwFuvpAR7X9cfHGUDz8cuX1OsFVsG8YoCNr654hrxqJnIu0mKbmJLeX90uAqYk40L2cLhh04JfEyxVp77r00vBiGV1fZ');
 
 const styles = {
   loaderContainer: {
@@ -44,6 +50,11 @@ const router = createBrowserRouter(
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/cart' element={<Cart />} />
+      <Route path='/checkout' element={
+        <Elements stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
+      } />
     </Route>
   )
 )
