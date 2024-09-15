@@ -35,8 +35,8 @@ const router = createBrowserRouter(
     <Route path='/' element={<Layout />}>
       <Route path='/' element={<Home />} />
       <Route path='/everything' element={<Everything />} />
-      <Route path='/cars' element={<Groceries />} />
-      <Route path='/bikes' element={<Juice />} />
+      <Route path='/groceries' element={<Groceries />} />
+      <Route path='/juice' element={<Juice />} />
       <Route loader={githubInfoLoader} path='github' element={<Github />} />
       <Route path='/products/:productDetails' Component={ProductPage} />
       <Route path='/about' element={<About />} />
